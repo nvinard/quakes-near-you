@@ -1,1 +1,24 @@
-# routes and views for the application
+from flask import render_template
+from app import app
+from app.forms import LoginForm
+
+@app.route('/')
+@app.route('/index')
+def index():
+    user = {'username': 'Nicolas'}
+    posts = [
+        {
+            'author': {'username': 'Sandra'},
+            'body': 'I felt that earthquake!'
+        },
+        {
+            'author': {'username': 'Michael'},
+            'body': 'I was close to that earthquake, did not feel it though'
+        }
+    ]
+    return render_template('index.html', title='Home', user=user, posts=posts)
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign In', form=form)

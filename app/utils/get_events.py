@@ -16,8 +16,8 @@ us_gov_url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&st
 
 response = requests.get(us_gov_url)
 
-quakes_data = response.json()
-quakes_data = json.dumps(quakes_data, indent=4)
+data = response.json()
 
-df_quakes = pd.DataFrame(quakes_data.get('data'))
-df_quakes.to_csv('quakes.csv')
+df = pd.json_normalize(data['features'])
+
+df.to_csv('quakes.csv')

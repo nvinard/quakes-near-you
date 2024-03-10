@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} Latest earthquakes near you</title>
+        {% else %}
+        <title>Welcome to Latest earthquakes near you!</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Earthquakes near you:
+            <a href="/index">Home</a>
+            <a href="/login">Login</a>
+        </div>
+        <hr>
+            {% block content %} {% endblock %}
+    </body>
+</html>
