@@ -1,19 +1,27 @@
-<!DOCTYPE html>
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} Latest earthquakes near you</title>
+        <title>{{ title }} - Quakes near you</title>
         {% else %}
-        <title>Welcome to Latest earthquakes near you!</title>
+        <title>Earthquakes near you</title>
         {% endif %}
     </head>
     <body>
         <div>
-            Earthquakes near you:
+            Latest earthquakes near you:
             <a href="/index">Home</a>
             <a href="/login">Login</a>
         </div>
         <hr>
-            {% block content %} {% endblock %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
     </body>
 </html>
