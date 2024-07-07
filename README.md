@@ -1,4 +1,3 @@
-### Earthquakes near you
+### Earthquakes near me
 
-The intent of this project is to provide a website where the users can view the latest earthquakes that occured closest to them in the past 24 hours.
-This project is still under development...
+This web app will be showing users where earthquakes occured close to them in the past 24 hours. The project is sill under development.
