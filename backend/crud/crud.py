@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from backend.models import models
-from backend.schemas import schemas
+from models import models
+from schemas import schemas
 
 def create_earthquake(db: Session, earthquake: schemas.EarthquakeBase):
     db_earthquake = models.Earthquakes(
