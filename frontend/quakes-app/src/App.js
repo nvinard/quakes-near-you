@@ -2,14 +2,34 @@ import React, { useState, useEffect } from 'react';
 import api from './api';
 import './App.css';
 import logo from './quakes_near_me.JPG';
+import ReactMapGL, { Marker } from 'react-map-gl';
 
 const App = () => {
   const [earthquakes, setEarthquakes] = useState([]);
   const [fetchMessage, setFetchMessage] = useState('');
+  const [viewport, setViewport] = useState({
+    latitude: 0,
+    longitude: 0,
+    zoom: 2,
+  });
 
   const fetchQuakes = async () => {
-    const response = await api.get('/earthquakes/');
-    setEarthquakes(response.data);
+    try {
+      const response = await api.get('/earthquakes/');
+      if (response.data && response.data.length > 0) {
+        setEarthquakes(response.data);
+        setViewport({
+          ...viewport,
+          latitude: response.data[0].latitude,
+          longitude: response.data[0].longitude,
+          zoom: 8,
+        });
+      } else {
+        console.error('No earthquake data was returned');
+      }
+    } catch (error) {
+      console.error('Error fetching earthquake data:', error);
+    }
   };
 
   useEffect(() => {
@@ -45,7 +65,27 @@ const App = () => {
           </button>
           <span className='mx-3'>{fetchMessage}</span>
         </div>
-        
+
+        <div className='map-container'>
+          <ReactMapGL
+            {...viewport}
+            width="100%"
+            height="100%"
+            mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            onViewportChange={(newViewport) => setViewport(newViewport)}
+            mapStyle="mapbox://styles/mapbox/streets-v11"
+          >
+            <Marker
+              latitude={19.255} //</ReactMapGL>{earthquakes[0].latitude}
+              longitude={-155.398} //{earthquakes[0].longitude}
+              >
+              <div className="map-marker">
+                {"quake location"}
+              </div>
+            </Marker>
+          </ReactMapGL>
+        </div>
+
         <table className='table table-striped table-bordered table-hover'>
           <thead>
             <tr>
