@@ -49,7 +49,8 @@ def fetch_and_store(db: db_dependency):
         
     db.commit()
     
-    return {"message": "Data fetched from FDSN and stored successfully"}
+    return {"message": f"Fetched {len(features)} earthquakes",
+            "message2": "Data fetched from FDSN and stored successfully"}
 
 @app.post("/earthquakes/", response_model=schemas.EarthquakeModel)
 def create_earthquake(earthquake: schemas.EarthquakeBase, db: db_dependency):
@@ -57,6 +58,6 @@ def create_earthquake(earthquake: schemas.EarthquakeBase, db: db_dependency):
 
 
 @app.get("/earthquakes/", response_model=List[schemas.EarthquakeModel])
-async def read_earthquakes(db: db_dependency, skip: int=0, limit: int=100):
+async def read_earthquakes(db: db_dependency, skip: int=0, limit: int=10):
     earthquakes = db.query(models.Earthquakes).offset(skip).limit(limit).all()
     return earthquakes
