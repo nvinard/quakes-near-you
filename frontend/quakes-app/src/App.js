@@ -10,7 +10,7 @@ const App = () => {
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
-    zoom: 2,
+    zoom: 1,
   });
 
   const fetchQuakes = async () => {
@@ -22,7 +22,7 @@ const App = () => {
           ...viewport,
           latitude: response.data[0].latitude,
           longitude: response.data[0].longitude,
-          zoom: 8,
+          zoom: 6,
         });
       } else {
         console.error('No earthquake data was returned');
@@ -69,8 +69,7 @@ const App = () => {
         <div className='map-container'>
           <ReactMapGL
             {...viewport}
-            width="100%"
-            height="100%"
+            style={{width: 600, height: 400}}
             mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
             onViewportChange={(newViewport) => setViewport(newViewport)}
             mapStyle="mapbox://styles/mapbox/streets-v11"
@@ -78,6 +77,7 @@ const App = () => {
             <Marker
               latitude={19.255} //</ReactMapGL>{earthquakes[0].latitude}
               longitude={-155.398} //{earthquakes[0].longitude}
+              anchor="bottom"
               >
               <div className="map-marker">
                 {"quake location"}
