@@ -1,7 +1,5 @@
 from datetime import datetime, timedelta
-import pandas as pd
 import requests
-import json
 
 class Events:
     def __init__(self):
@@ -20,6 +18,7 @@ class Events:
             raise ValueError(f"Source {source} is not avalid source")
         
         url = self.sources[source]
+        print(url)
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
@@ -29,3 +28,6 @@ class Events:
             return data
         else:
             response.raise_for_status()
+            
+events = Events()
+events.fetch_events("FDSN")
