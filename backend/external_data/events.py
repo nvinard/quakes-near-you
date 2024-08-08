@@ -1,7 +1,5 @@
 from datetime import datetime, timedelta
-import pandas as pd
 import requests
-import json
 
 class Events:
     def __init__(self):
