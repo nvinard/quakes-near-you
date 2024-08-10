@@ -75,7 +75,7 @@ const App = () => {
             mapStyle="mapbox://styles/mapbox/streets-v11"
           >
             <Marker
-              latitude={19.255} //</ReactMapGL>{earthquakes[0].latitude}
+              latitude={47.255} //</ReactMapGL>{earthquakes[0].latitude}
               longitude={-155.398} //{earthquakes[0].longitude}
               anchor="bottom"
               >
