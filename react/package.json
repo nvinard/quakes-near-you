@@ -1,0 +1,14 @@
+{
+  "name": "quakes-near-me",
+  "version": "1.0.0",
+  "description": "Webapplication showing earthuakes that occured near the user in the last 24 hours.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicolas Vinard",
+  "license": "ISC",
+  "dependencies": {
+    "left-pad": "^1.3.0"
+  }
+}
