@@ -12,109 +12,41 @@ const App = () => {
     longitude: 0,
     zoom: 1,
   });
-
-  const fetchQuakes = async () => {
-    try {
-      const response = await api.get('/earthquakes/');
-      if (response.data && response.data.length > 0) {
-        setEarthquakes(response.data);
-        setViewport({
-          ...viewport,
-          latitude: response.data[0].latitude,
-          longitude: response.data[0].longitude,
-          zoom: 6,
-        });
-      } else {
-        console.error('No earthquake data was returned');
+const geojson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-77.032, 38.913]
+      },
+      properties: {
+        title: 'Mapbox',
+        description: 'Washington, D.C.'
       }
-    } catch (error) {
-      console.error('Error fetching earthquake data:', error);
+    },
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-122.414, 37.776]
+      },
+      properties: {
+        title: 'Mapbox',
+        description: 'San Francisco, California'
+      }
     }
-  };
+  ]
+};
+for (const feature of geojson.features) {
 
-  useEffect(() => {
-    fetchQuakes();
-  }, []);
+  // code from step 5-1 will go here
 
-  const handleFetchLatestData = async () => {
-    try {
-      const response = await api.post('/fetch_and_store_fdsn_earthquakes/');
-      setFetchMessage(response.data.message);
-      fetchQuakes();
-    } catch (error) {
-      console.error('Error fetching latest data:', error);
-      setFetchMessage('Error fetching latest data');
-    }
-  };
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker().setLngLat(feature.geometry.coordinates).addTo(map);  // Replace this line with code from step 5-2
 
-  return (
-    <div>
-      <nav className='navbar navbar-dark navbar-custom'>
-        <div className='container-fluid'>
-          <a className='navbar-brand' href="#">
-            <img src={logo} alt="Logo" />
-            Earthquakes near me
-          </a>
-        </div>
-      </nav>
-
-      <div className='container'>
-        <div className="d-flex align-items-center my-3">
-          <button className='btn btn-primary button-custom' onClick={handleFetchLatestData}>
-            Get latest data from FDSN
-          </button>
-          <span className='mx-3'>{fetchMessage}</span>
-        </div>
-
-        <div className='map-container'>
-          <ReactMapGL
-            {...viewport}
-            style={{width: 600, height: 400}}
-            mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-            onViewportChange={(newViewport) => setViewport(newViewport)}
-            mapStyle="mapbox://styles/mapbox/streets-v11"
-          >
-            <Marker
-              latitude={47.255} //</ReactMapGL>{earthquakes[0].latitude}
-              longitude={-155.398} //{earthquakes[0].longitude}
-              anchor="bottom"
-              >
-              <div className="map-marker">
-                {"quake location"}
-              </div>
-            </Marker>
-          </ReactMapGL>
-        </div>
-
-        <table className='table table-striped table-bordered table-hover'>
-          <thead>
-            <tr>
-              <th>Magnitude</th>
-              <th>Magnitude Type</th>
-              <th>Longitude</th>
-              <th>Latitude</th>
-              <th>Depth</th>
-              <th>Place</th>
-              <th>Title</th>
-            </tr>
-          </thead>
-          <tbody>
-            {earthquakes.map((earthquake) => (
-              <tr key={earthquake.id}>
-                <td>{earthquake.magnitude}</td>
-                <td>{earthquake.magnitude_type}</td>
-                <td>{earthquake.longitude}</td>
-                <td>{earthquake.latitude}</td>
-                <td>{earthquake.depth}</td>
-                <td>{earthquake.place}</td>
-                <td>{earthquake.title}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+   //code from step 6 will go here
 }
 
 export default App;
