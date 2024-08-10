@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import sessionmaker
-from models.models import Earthquakes
+from models import Earthquakes
 
 
 URL_DATABASE = 'sqlite:///./quakes_near_me.db'
