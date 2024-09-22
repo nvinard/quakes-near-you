@@ -12,14 +12,6 @@ code {
     monospace;
 }
 
-.map-container {
-  height: 60vh; /* Adjust as needed to take a portion of the viewport height */
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
 .map-marker {
   background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
   background-size: cover;
@@ -38,7 +30,17 @@ code {
   font-family: 'Open Sans', sans-serif;
 }
 
+
+
 .table-container {
   max-height: 40vh; /* Limit the table height */
   overflow-y: auto; /* Enable scrolling if the table is too tall */
+}
+
+.map-container {
+  height: 60vh; 
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: visible; /* Ensure scroll events reach the map */
 }

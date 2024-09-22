@@ -20,8 +20,8 @@ const App = () => {
         setEarthquakes(response.data);
         setViewport({
           ...viewport,
-          latitude: response.data[1].latitude,
-          longitude: response.data[1].longitude,
+          latitude: response.data[1]?.latitude || 0, // Use safe fallback values
+          longitude: response.data[1]?.longitude || 0,
           zoom: 6,
         });
       } else {
@@ -74,15 +74,18 @@ const App = () => {
             onViewportChange={(newViewport) => setViewport(newViewport)}
             mapStyle="mapbox://styles/mapbox/streets-v11"
           >
-            <Marker
-              latitude={earthquakes[1].latitude}
-              longitude={earthquakes[1].longitude}
-              anchor="bottom"
+            {/* Check if earthquakes[1] exists before rendering the marker */}
+            {earthquakes[1] && (
+              <Marker
+                latitude={earthquakes[1].latitude}
+                longitude={earthquakes[1].longitude}
+                anchor="bottom"
               >
-              <div className="map-marker">
-                {"quake location"}
-              </div>
-            </Marker>
+                <div className="map-marker">
+                  {"quake location"}
+                </div>
+              </Marker>
+            )}
           </ReactMapGL>
         </div>
 
