@@ -16,7 +16,7 @@ const App = () => {
   // Fetch the GeoJSON file
   const fetchGeojson = async () => {
     try {
-      const response = await fetch('/earthquakes.geojson'); // Use correct relative path
+      const response = await fetch('../../../backend/earthquakes.geojson'); // Use correct relative path
       const data = await response.json();
       setGeojsonData(data);
       if (data.features && data.features.length > 0) {
