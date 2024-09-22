@@ -13,7 +13,7 @@ code {
 }
 
 .map-container {
-  height: 60vh; /* Adjust as needed */
+  height: 60vh; /* Adjust as needed to take a portion of the viewport height */
   width: 100%;
   position: relative;
   z-index: 1;
@@ -21,13 +21,24 @@ code {
 }
 
 .map-marker {
-  background-color: red;
-  padding: 5px;
+  background-image: url('https://docs.mapbox.com/help/demos/custom-markers-gl-js/mapbox-icon.png');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.table-container {
+  max-height: 40vh; /* Limit the table height */
+  overflow-y: auto; /* Enable scrolling if the table is too tall */
 }
