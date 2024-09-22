@@ -1,12 +1,9 @@
-alembic @ file:///home/conda/feedstock_root/build_artifacts/alembic_1705179948871/work
 annotated-types==0.7.0
 anyio==4.4.0
 atlastk==0.13.3
-blinker @ file:///home/conda/feedstock_root/build_artifacts/blinker_1698890160476/work
 Cartopy==0.23.0
 certifi==2024.2.2
 charset-normalizer==3.3.2
-click @ file:///home/conda/feedstock_root/build_artifacts/click_1692311806742/work
 contourpy==1.2.1
 cycler==0.12.1
 decorator==5.1.1
@@ -14,26 +11,16 @@ dnspython==2.6.1
 email_validator==2.2.0
 fastapi==0.111.0
 fastapi-cli==0.0.4
-Flask @ file:///home/conda/feedstock_root/build_artifacts/flask_1707043907952/work
 Flask-Migrate==4.0.7
-Flask-SQLAlchemy==3.1.1
-Flask-WTF @ file:///home/conda/feedstock_root/build_artifacts/flask-wtf_1697216059914/work
 fonttools==4.53.1
-greenlet @ file:///Users/runner/miniforge3/conda-bld/greenlet_1703201728881/work
 h11==0.14.0
 httpcore==1.0.5
 httptools==0.6.1
 httpx==0.27.0
 idna==3.6
-importlib_metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1709821103657/work
-importlib_resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1709821111795/work
-itsdangerous @ file:///home/conda/feedstock_root/build_artifacts/itsdangerous_1648147185463/work
-Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1704966972576/work
 kiwisolver==1.4.5
 lxml==5.2.2
-Mako @ file:///home/conda/feedstock_root/build_artifacts/mako_1706629259024/work
 markdown-it-py==3.0.0
-MarkupSafe @ file:///Users/runner/miniforge3/conda-bld/markupsafe_1706899980634/work
 matplotlib==3.9.1
 mdurl==0.1.2
 numpy==1.26.4
@@ -63,7 +50,6 @@ sniffio==1.3.1
 SQLAlchemy==1.4.52
 starlette==0.37.2
 typer==0.12.3
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1708904622550/work
 tzdata==2024.1
 ujson==5.10.0
 urllib3==2.2.1
@@ -71,6 +57,3 @@ uvicorn==0.30.1
 uvloop==0.19.0
 watchfiles==0.22.0
 websockets==12.0
-Werkzeug @ file:///home/conda/feedstock_root/build_artifacts/werkzeug_1698235201373/work
-WTForms @ file:///home/conda/feedstock_root/build_artifacts/wtforms_1708541191515/work
-zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1695255097490/work
