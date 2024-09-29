@@ -75,11 +75,7 @@ def dict_to_geojson(dictionary):
     
     return geojson
 
-quake_dict = read_earthquakes(limit=100)
-geojson_data = dict_to_geojson(quake_dict)
 
 def save_geojson_to_file(geojson_data, filename):
     with open(filename, 'w') as geojson_file:
         json.dump(geojson_data, geojson_file, indent=2)
-
-save_geojson_to_file(geojson_data, "../earthquakes.geojson")

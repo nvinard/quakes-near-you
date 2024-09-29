@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 class EarthquakeBase(BaseModel):
+    id: str
     magnitude: float
     latitude: float
     longitude: float
@@ -11,7 +12,7 @@ class EarthquakeBase(BaseModel):
     title: str
     
 class EarthquakeModel(EarthquakeBase):
-    id: int
+    id: str
     
     class Config:
         orm_mode = True
