@@ -40,21 +40,23 @@ def fetch_and_store(db: db_dependency):
             depth = item.get('geometry').get('coordinates')[2],
             magnitude = item.get('properties').get('mag'),
             place = item.get('properties').get('place'),
-            origin_time = item.get('properties').get('time'),
+            origin_time = item.get('properties').get('time') // 1000,
             magnitude_type = item.get('properties').get('magType'),
-            title = item.get('properties').get('title')
+            title = item.get('properties').get('title'),
+            id = item.get('id')
         )
-             
-        crud.create_earthquake(db, earthquake_data)
+        print(earthquake_data)
+        
+        crud.create_or_update_earthquake(db, earthquake_data)
         
     db.commit()
     
-    return {"message": f"Fetched {len(features)} earthquakes",
+    return {"message": f"Fetched {len(features)} earthquake and stored successfully",
             "message2": "Data fetched from FDSN and stored successfully"}
 
 @app.post("/earthquakes/", response_model=schemas.EarthquakeModel)
 def create_earthquake(earthquake: schemas.EarthquakeBase, db: db_dependency):
-    return crud.create_earthquake(db, earthquake)
+    return crud.create_or_update_earthquake(db, earthquake)
 
 
 @app.get("/earthquakes/", response_model=List[schemas.EarthquakeModel])
