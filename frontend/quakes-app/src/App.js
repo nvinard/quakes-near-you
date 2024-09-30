@@ -67,6 +67,16 @@ const App = () => {
     }
   };
 
+  const saveToGeojson = async () => {
+    try {
+      const reponse = await api.get('/save_quakes_to_geojson/');
+      setFetchMessage(reponse.data.message);
+    } catch (error) {
+      console.error('Saving to geojon failed: ', error);
+      setFetchMessage("Error saving to Geojson");
+    }
+  };
+
 
   const handleViewportChange = (newViewport) => {
     console.log("New viewport:", newViewport); // Make sure 'newViewport' is the correct variable
@@ -131,6 +141,9 @@ const App = () => {
             Use my location
           </button>
           <span className='mx-3'>{fetchMessage}</span>
+          <button className='btn btn-primary button custom mx-3' onClick={saveToGeojson}>
+            Save data to Geojson
+          </button>
         </div>
 
         <div className='map-container'>
