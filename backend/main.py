@@ -45,7 +45,6 @@ def fetch_and_store(db: db_dependency):
             title = item.get('properties').get('title'),
             id = item.get('id')
         )
-        print(earthquake_data)
         
         crud.create_or_update_earthquake(db, earthquake_data)
         
