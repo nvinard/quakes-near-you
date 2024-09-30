@@ -8,7 +8,6 @@ import { bbox } from '@turf/turf';
 const App = () => {
   const [geojsonData, setGeojsonData] = useState(null);
   const [fetchMessage, setFetchMessage] = useState('');
-  const [earthquakes, setEarthquakes] = useState([]);
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
@@ -16,6 +15,16 @@ const App = () => {
   });
 
   const [isViewportSet, setIsViewportSet] = useState(false); // To prevent resetting after initial load
+  const [userLocation, setUserLocation] = useState(null); // State for user location
+
+  // use pagination for list
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10;
+
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedData = geojsonData ? geojsonData.features.slice(startIndex, endIndex) : [];
+  
 
   // Fetch the GeoJSON file
   const fetchGeojson = useCallback(async () => {
@@ -47,31 +56,24 @@ const App = () => {
     fetchGeojson();
   }, [fetchGeojson]); // Only run fetch once on mount
 
-  const fetchQuakes = async () => {
-    try {
-      const response = await api.get('/earthquakes/');
-      if (response.data && response.data.length > 0) {
-        setEarthquakes(response.data);
-      } else {
-        console.error('No earthquake data was returned');
-      }
-    } catch (error) {
-      console.error('Error fetching earthquake data:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchQuakes();
-  }, []);
 
   const handleFetchLatestData = async () => {
     try {
       const response = await api.post('/fetch_and_store_fdsn_earthquakes/');
       setFetchMessage(response.data.message);
-      fetchQuakes();
     } catch (error) {
       console.error('Error fetching latest data:', error);
       setFetchMessage('Error fetching latest data');
+    }
+  };
+
+  const saveToGeojson = async () => {
+    try {
+      const reponse = await api.get('/save_quakes_to_geojson/');
+      setFetchMessage(reponse.data.message);
+    } catch (error) {
+      console.error('Saving to geojon failed: ', error);
+      setFetchMessage("Error saving to Geojson");
     }
   };
 
@@ -79,7 +81,45 @@ const App = () => {
   const handleViewportChange = (newViewport) => {
     console.log("New viewport:", newViewport); // Make sure 'newViewport' is the correct variable
     setViewport(newViewport); // Update the viewport state
-  };  
+  };
+
+  // get user location
+  
+  const fetchUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude });
+          setViewport((prevViewport) => ({
+            ...prevViewport,
+            latitude: latitude,
+            longitude: longitude,
+            zoom: 10, // Adjust zoom to show the user's location more clearly
+            transitionDuration: 1000, // Smooth transition to user's location
+          }));
+        },
+        (error) => {
+          console.error('Error fetching user location:', error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
+
+  // functions to handle pagination of table
+  const nextPage = () => {
+    if (geojsonData && currentPage < Math.ceil(geojsonData.features.length / itemsPerPage) -1 ) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const previousPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
 
   return (
     <div>
@@ -97,7 +137,13 @@ const App = () => {
           <button className='btn btn-primary button custom' onClick={handleFetchLatestData}>
             Fetch latest earthquakes
           </button>
+          <button className='btn btn-primary buttom custom mx-3' onClick={fetchUserLocation}>
+            Use my location
+          </button>
           <span className='mx-3'>{fetchMessage}</span>
+          <button className='btn btn-primary button custom mx-3' onClick={saveToGeojson}>
+            Save data to Geojson
+          </button>
         </div>
 
         <div className='map-container'>
@@ -106,7 +152,7 @@ const App = () => {
             width="80%"
             height="100%" 
             mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-            onViewportChange={handleViewportChange} 
+            onMove={(evt) => setViewport(evt.viewState)}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             scrollZoom={true}
             doubleClickZoom={true}
@@ -127,6 +173,12 @@ const App = () => {
               )
             ))}
 
+            {userLocation && (
+              <Marker latitude={userLocation.latitude} longitude={userLocation.longitude}>
+                <div className="user-location-marker"></div>
+              </Marker>
+            )}
+
             <div style={{ position: 'absolute', right: 10, top: 10 }}>
               <NavigationControl />
             </div>
@@ -146,19 +198,31 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {geojsonData && geojsonData.features.map((feature, index) => (
+            {paginatedData.map((feature, index) => (
               <tr key={index}>
                 <td>{feature.properties.magnitude}</td>
                 <td>{feature.properties.magnitude_type}</td>
                 <td>{feature.geometry.coordinates[0]}</td> {/* Longitude */}
                 <td>{feature.geometry.coordinates[1]}</td> {/* Latitude */}
-                <td>{feature.properties.depth}</td>
+                <td>{feature.geometry.depth}</td>
                 <td>{feature.properties.place}</td>
                 <td>{feature.properties.title}</td>
-              </tr>
+            </tr>
             ))}
           </tbody>
         </table>
+
+        <div className="pagination-controls">
+          <button onClick={previousPage} disabled={currentPage === 0}>
+            Previous
+          </button>
+          <button
+            onClick={nextPage}
+            disabled={!geojsonData || currentPage >= Math.ceil(geojsonData.features.length / itemsPerPage) -1}
+            >
+              Next
+            </button>
+        </div>
       </div>
     </div>
   );

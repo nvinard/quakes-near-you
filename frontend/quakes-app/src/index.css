@@ -44,3 +44,12 @@ code {
   z-index: 1;
   overflow: visible; /* Ensure scroll events reach the map */
 }
+
+.user-location-marker {
+  background-color: blue;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+}
