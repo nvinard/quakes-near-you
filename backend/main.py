@@ -5,14 +5,14 @@ from fastapi.responses import FileResponse
 
 import datetime
 
-from database.database import engine, db_dependency
-from models import models
-from crud import crud
-from schemas import schemas
+from .database.database import engine, db_dependency
+from .models import models
+from .crud import crud
+from .schemas import schemas
 from typing import List
 
-from external_data.events import Events
-from geojson.geojson import ToGeojson
+from .external_data.events import Events
+from .geojson.geojson import ToGeojson
 
 app = FastAPI()
 
@@ -89,10 +89,10 @@ async def read_earthquakes(db: db_dependency, skip: int=0, limit: int=10):
 async def save_quakes_to_geojson():
     quake_dict = GeoWriter.read_earthquakes(limit=None)
     data = GeoWriter.dict_to_geojson(quake_dict)
-    GeoWriter.save_geojson_to_file(data, "../frontend/quakes-app/public/earthquakes.geojson")
+    GeoWriter.save_geojson_to_file(data, "../quakes-app/public/earthquakes.geojson")
 
-app.mount("/static", StaticFiles(directory="../quakes-app/build/static"), name="static")
+app.mount("/static", StaticFiles(directory="quakes-app/build/static"), name="static")
 
 @app.get("/")
 async def root():
-    return FileResponse("../quakes-app/build.index.html")
+    return FileResponse("quakes-app/build/index.html")

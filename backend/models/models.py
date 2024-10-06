@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 
-from database.database import Base
+from ..database.database import Base
 
 class Earthquakes(Base):
     __tablename__ = "earthquakes"

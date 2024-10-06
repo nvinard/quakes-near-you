@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models import models
-from schemas import schemas
+from ..models import models
+from ..schemas import schemas
 
 def create_or_update_earthquake(db: Session, earthquake: schemas.EarthquakeBase):
 
