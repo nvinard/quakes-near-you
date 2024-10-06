@@ -14,7 +14,7 @@ class Earthquakes(Base):
     depth = Column(Float)
     place = Column(String)
     origin_time = Column(Integer)
+    utc_time = Column(String)
     magnitude_type = Column(String)
     title = Column(String)
-
-
+    

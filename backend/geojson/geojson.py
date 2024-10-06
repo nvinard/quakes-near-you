@@ -1,9 +1,12 @@
 # geojson.py
 from sqlalchemy import inspect
 from sqlalchemy.orm import Session
+
 from models.models import Earthquakes
 from database.database import engine, SessionLocal  # Import the centralized engine and session
+
 import json
+from datetime import datetime, timedelta
 
 class ToGeojson:
     def __init__(self):
@@ -34,8 +37,10 @@ class ToGeojson:
                 print(f"Table '{Earthquakes.__tablename__}' does not exist.")
                 return []
             
+            last_twenty_four_hours = datetime.today() - timedelta(days=1)
+            print("last 24 hours: ", last_twenty_four_hours)
             # Query the data
-            query = db.query(Earthquakes)
+            query = db.query(Earthquakes).filter(Earthquakes.utc_time >= last_twenty_four_hours)
             if skip:
                 query = query.offset(skip)
             if limit:
@@ -70,7 +75,8 @@ class ToGeojson:
                     'title': quake['title'],
                     'place': quake['place'],
                     'magnitude': quake['magnitude'],
-                    'magnitude_type': quake['magnitude_type']
+                    'magnitude_type': quake['magnitude_type'],
+                    'utc_time': quake['utc_time']
                 }
             }
             geojson['features'].append(feature)

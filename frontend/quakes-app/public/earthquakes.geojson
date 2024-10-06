@@ -6,1036 +6,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.112,
-          28.876
+          -104.158,
+          31.697
         ],
-        "depth": 6.4821
+        "depth": 5.0166
       },
       "properties": {
-        "title": "M 1.7 - 14 km SW of Falls City, Texas",
-        "place": "14 km SW of Falls City, Texas",
-        "magnitude": 1.7,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -149.9505,
-          61.3438
-        ],
-        "depth": 56.6
-      },
-      "properties": {
-        "title": "M 1.4 - 2 km SE of Point MacKenzie, Alaska",
-        "place": "2 km SE of Point MacKenzie, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.2403333,
-          34.0651667
-        ],
-        "depth": 20.0
-      },
-      "properties": {
-        "title": "M 0.8 - 3 km NE of Loma Linda, CA",
-        "place": "3 km NE of Loma Linda, CA",
-        "magnitude": 0.77,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -97.52133333,
-          35.09916667
-        ],
-        "depth": 4.33
-      },
-      "properties": {
-        "title": "M 1.9 - 4 km E of Cole, Oklahoma",
-        "place": "4 km E of Cole, Oklahoma",
-        "magnitude": 1.93,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -147.3806,
-          64.9731
-        ],
-        "depth": 2.0
-      },
-      "properties": {
-        "title": "M 1.5 - 11 km E of Fox, Alaska",
-        "place": "11 km E of Fox, Alaska",
-        "magnitude": 1.5,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.117,
-          28.872
-        ],
-        "depth": 5.2751
-      },
-      "properties": {
-        "title": "M 1.5 - 15 km SW of Falls City, Texas",
-        "place": "15 km SW of Falls City, Texas",
-        "magnitude": 1.5,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6691667,
-          35.0465
-        ],
-        "depth": -0.64
-      },
-      "properties": {
-        "title": "M 1.3 - 6 km NNW of Boron, CA",
-        "place": "6 km NNW of Boron, CA",
-        "magnitude": 1.33,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.706,
-          33.3636667
-        ],
-        "depth": 10.02
-      },
-      "properties": {
-        "title": "M 1.2 - 11 km NW of Warner Springs, CA",
-        "place": "11 km NW of Warner Springs, CA",
-        "magnitude": 1.16,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.317166666667,
-          58.18
-        ],
-        "depth": 1.98
-      },
-      "properties": {
-        "title": "M -0.2 - 85 km NW of Karluk, Alaska",
-        "place": "85 km NW of Karluk, Alaska",
-        "magnitude": -0.15,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.7643333333333,
-          18.0306666666667
-        ],
-        "depth": 15.44
-      },
-      "properties": {
-        "title": "M 2.1 - 1 km NNE of Magas Arriba, Puerto Rico",
-        "place": "1 km NNE of Magas Arriba, Puerto Rico",
-        "magnitude": 2.14,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -89.611,
-          36.5503333333333
-        ],
-        "depth": 7.44
-      },
-      "properties": {
-        "title": "M 1.3 - 2 km SSW of Howardville, Missouri",
-        "place": "2 km SSW of Howardville, Missouri",
-        "magnitude": 1.33,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.0248333,
-          36.1566667
-        ],
-        "depth": 0.78
-      },
-      "properties": {
-        "title": "M 1.4 - 14 km S of Olancha, CA",
-        "place": "14 km S of Olancha, CA",
-        "magnitude": 1.42,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.8441667,
-          33.7126667
-        ],
-        "depth": 15.49
-      },
-      "properties": {
-        "title": "M 0.9 - 6 km SE of Valle Vista, CA",
-        "place": "6 km SE of Valle Vista, CA",
-        "magnitude": 0.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.596,
-          35.7746667
-        ],
-        "depth": 10.13
-      },
-      "properties": {
-        "title": "M 0.6 - 17 km W of Searles Valley, CA",
-        "place": "17 km W of Searles Valley, CA",
-        "magnitude": 0.64,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.482166666667,
-          19.1823333333333
-        ],
-        "depth": 30.81
-      },
-      "properties": {
-        "title": "M 1.4 - 2 km S of P\u0101hala, Hawaii",
-        "place": "2 km S of P\u0101hala, Hawaii",
-        "magnitude": 1.4,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.3193359,
-          32.9831657
-        ],
-        "depth": 8.15
-      },
-      "properties": {
-        "title": "M 1.1 - 25 km SW of Ocotillo Wells, CA",
-        "place": "25 km SW of Ocotillo Wells, CA",
-        "magnitude": 1.13,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.7281667,
-          33.699
-        ],
-        "depth": 17.35
-      },
-      "properties": {
-        "title": "M 1.6 - 5 km S of Idyllwild, CA",
-        "place": "5 km S of Idyllwild, CA",
-        "magnitude": 1.57,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.783836364746,
-          38.8338317871094
-        ],
-        "depth": 1.98000001907349
-      },
-      "properties": {
-        "title": "M 1.6 - 5 km WNW of Cobb, CA",
-        "place": "5 km WNW of Cobb, CA",
-        "magnitude": 1.55,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -154.2401,
-          58.9719
-        ],
-        "depth": 110.7
-      },
-      "properties": {
-        "title": "M 3.8 - 60 km SSE of Kokhanok, Alaska",
-        "place": "60 km SSE of Kokhanok, Alaska",
-        "magnitude": 3.8,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -147.9423,
-          63.4438
-        ],
-        "depth": 16.4
-      },
-      "properties": {
-        "title": "M 1.1 - 50 km E of Cantwell, Alaska",
-        "place": "50 km E of Cantwell, Alaska",
-        "magnitude": 1.1,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -147.6757,
-          63.8038
-        ],
-        "depth": 12.4
-      },
-      "properties": {
-        "title": "M 1.1 - 61 km E of Denali Park, Alaska",
-        "place": "61 km E of Denali Park, Alaska",
-        "magnitude": 1.1,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -112.874166666667,
-          38.4891666666667
-        ],
-        "depth": 0.82
-      },
-      "properties": {
-        "title": "M 0.8 - 15 km NE of Milford, Utah",
-        "place": "15 km NE of Milford, Utah",
-        "magnitude": 0.82,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.762168884277,
-          38.8139991760254
-        ],
-        "depth": 1.87999999523163
-      },
-      "properties": {
-        "title": "M 0.8 - 4 km W of Cobb, CA",
-        "place": "4 km W of Cobb, CA",
-        "magnitude": 0.76,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -152.3774,
-          59.8161
-        ],
-        "depth": 68.4
-      },
-      "properties": {
-        "title": "M 1.4 - 30 km W of Anchor Point, Alaska",
-        "place": "30 km W of Anchor Point, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.578,
-          47.5915
-        ],
-        "depth": 30.87
-      },
-      "properties": {
-        "title": "M 2.6 - 1 km ENE of Enetai, Washington",
-        "place": "1 km ENE of Enetai, Washington",
-        "magnitude": 2.59,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -149.8946,
-          61.5286
-        ],
-        "depth": 40.1
-      },
-      "properties": {
-        "title": "M 1.3 - 3 km ENE of Big Lake, Alaska",
-        "place": "3 km ENE of Big Lake, Alaska",
-        "magnitude": 1.3,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.586,
-          47.587666666666664
-        ],
-        "depth": 29.58
-      },
-      "properties": {
-        "title": "M 2.4 - 1 km ENE of Enetai, Washington",
-        "place": "1 km ENE of Enetai, Washington",
-        "magnitude": 2.44,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -70.8939,
-          46.8333
-        ],
-        "depth": 12.112
-      },
-      "properties": {
-        "title": "M 2.4 - 17 km SE of L'Ange-Gardien, Canada",
-        "place": "17 km SE of L'Ange-Gardien, Canada",
-        "magnitude": 2.4,
-        "magnitude_type": "mb_lg"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.56383333333333,
-          47.58316666666666
-        ],
-        "depth": 23.16
-      },
-      "properties": {
-        "title": "M 1.3 - 2 km E of Enetai, Washington",
-        "place": "2 km E of Enetai, Washington",
-        "magnitude": 1.32,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -110.992333333333,
-          43.5323333333333
-        ],
-        "depth": 5.58
-      },
-      "properties": {
-        "title": "M 0.1 - 10 km WNW of Wilson, Wyoming",
-        "place": "10 km WNW of Wilson, Wyoming",
-        "magnitude": 0.07,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.75883333333333,
-          45.55233333333334
-        ],
-        "depth": 21.1
-      },
-      "properties": {
-        "title": "M 1.6 - 3 km NNE of West Haven, Oregon",
-        "place": "3 km NNE of West Haven, Oregon",
-        "magnitude": 1.6,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.757,
-          18.0203333333333
-        ],
-        "depth": 15.82
-      },
-      "properties": {
-        "title": "M 3.1 - 1 km ENE of Magas Arriba, Puerto Rico",
-        "place": "1 km ENE of Magas Arriba, Puerto Rico",
-        "magnitude": 3.06,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -89.5198333333333,
-          36.48
-        ],
-        "depth": 6.04
-      },
-      "properties": {
-        "title": "M 1.7 - 9 km ESE of Marston, Missouri",
-        "place": "9 km ESE of Marston, Missouri",
-        "magnitude": 1.66,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -154.5822,
-          67.2135
-        ],
-        "depth": 0.0
-      },
-      "properties": {
-        "title": "M 1.3 - 105 km ENE of Kobuk, Alaska",
-        "place": "105 km ENE of Kobuk, Alaska",
-        "magnitude": 1.3,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.512,
-          35.7076667
-        ],
-        "depth": 6.24
-      },
-      "properties": {
-        "title": "M 0.1 - 12 km SW of Searles Valley, CA",
-        "place": "12 km SW of Searles Valley, CA",
-        "magnitude": 0.14,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.3645,
-          -20.7721
-        ],
-        "depth": 194.228
-      },
-      "properties": {
-        "title": "M 4.4 - 66 km WSW of Uyuni, Bolivia",
-        "place": "66 km WSW of Uyuni, Bolivia",
-        "magnitude": 4.4,
-        "magnitude_type": "mb"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.5186667,
-          34.2161667
-        ],
-        "depth": 3.49
-      },
-      "properties": {
-        "title": "M 0.6 - 5 km SSW of Lytle Creek, CA",
-        "place": "5 km SSW of Lytle Creek, CA",
-        "magnitude": 0.56,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.5168333,
-          34.2161667
-        ],
-        "depth": 4.16
-      },
-      "properties": {
-        "title": "M 0.5 - 5 km SSW of Lytle Creek, CA",
-        "place": "5 km SSW of Lytle Creek, CA",
-        "magnitude": 0.5,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.1021667,
-          33.173
-        ],
-        "depth": 9.76
-      },
-      "properties": {
-        "title": "M 1.4 - 4 km NE of Ocotillo Wells, CA",
-        "place": "4 km NE of Ocotillo Wells, CA",
-        "magnitude": 1.36,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6826667,
-          35.893
-        ],
-        "depth": 9.81
-      },
-      "properties": {
-        "title": "M 0.9 - 21 km ESE of Little Lake, CA",
-        "place": "21 km ESE of Little Lake, CA",
-        "magnitude": 0.86,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.684,
-          35.89
-        ],
-        "depth": 9.38
-      },
-      "properties": {
-        "title": "M 0.9 - 21 km ESE of Little Lake, CA",
-        "place": "21 km ESE of Little Lake, CA",
-        "magnitude": 0.94,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          145.2581,
-          18.8075
-        ],
-        "depth": 236.976
-      },
-      "properties": {
-        "title": "M 4.3 - Pagan region, Northern Mariana Islands",
-        "place": "Pagan region, Northern Mariana Islands",
-        "magnitude": 4.3,
-        "magnitude_type": "mb"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.011,
-          31.532
-        ],
-        "depth": 7.1252
-      },
-      "properties": {
-        "title": "M 1.6 - 31 km NW of Toyah, Texas",
-        "place": "31 km NW of Toyah, Texas",
-        "magnitude": 1.6,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -147.2724,
-          61.3533
-        ],
-        "depth": 19.7
-      },
-      "properties": {
-        "title": "M 1.9 - 54 km SSE of Glacier View, Alaska",
-        "place": "54 km SSE of Glacier View, Alaska",
-        "magnitude": 1.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.49299621582,
-          38.6904983520508
-        ],
-        "depth": 4.92999982833862
-      },
-      "properties": {
-        "title": "M 1.0 - 13 km SE of Middletown, CA",
-        "place": "13 km SE of Middletown, CA",
-        "magnitude": 1.02,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.646835327148,
-          36.913501739502
-        ],
-        "depth": 6.44000005722046
-      },
-      "properties": {
-        "title": "M 1.8 - 3 km N of Aromas, CA",
-        "place": "3 km N of Aromas, CA",
-        "magnitude": 1.77,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -103.999,
-          31.523
-        ],
-        "depth": 4.7653
-      },
-      "properties": {
-        "title": "M 1.9 - 30 km NW of Toyah, Texas",
-        "place": "30 km NW of Toyah, Texas",
-        "magnitude": 1.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -146.9189,
-          61.2119
-        ],
-        "depth": 0.0
-      },
-      "properties": {
-        "title": "M 1.6 - 32 km WNW of Valdez, Alaska",
-        "place": "32 km WNW of Valdez, Alaska",
-        "magnitude": 1.6,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -111.465666666667,
-          39.0805
-        ],
-        "depth": 1.95
-      },
-      "properties": {
-        "title": "M 1.2 - 21 km E of Mayfield, Utah",
-        "place": "21 km E of Mayfield, Utah",
-        "magnitude": 1.23,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.56383333333333,
-          47.5845
-        ],
-        "depth": 23.85
-      },
-      "properties": {
-        "title": "M 1.1 - 2 km E of Enetai, Washington",
-        "place": "2 km E of Enetai, Washington",
-        "magnitude": 1.06,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.706,
-          33.6438333
-        ],
-        "depth": 13.67
-      },
-      "properties": {
-        "title": "M 0.8 - 10 km NNW of Anza, CA",
-        "place": "10 km NNW of Anza, CA",
-        "magnitude": 0.78,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -144.4355,
-          69.1549
-        ],
-        "depth": 6.9
-      },
-      "properties": {
-        "title": "M 3.0 - 113 km SSW of Kaktovik, Alaska",
-        "place": "113 km SSW of Kaktovik, Alaska",
-        "magnitude": 3.0,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.466166666667,
-          19.2305
-        ],
-        "depth": 33.74
-      },
-      "properties": {
-        "title": "M 1.5 - 3 km NNE of P\u0101hala, Hawaii",
-        "place": "3 km NNE of P\u0101hala, Hawaii",
-        "magnitude": 1.52,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -113.619,
-          36.9828333333333
-        ],
-        "depth": 17.27
-      },
-      "properties": {
-        "title": "M 1.8 - 13 km SSW of Saint George, Utah",
-        "place": "13 km SSW of Saint George, Utah",
-        "magnitude": 1.76,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.142166137695,
-          19.34983253479
-        ],
-        "depth": 4.34000015258789
-      },
-      "properties": {
-        "title": "M 1.9 - 12 km S of Fern Forest, Hawaii",
-        "place": "12 km S of Fern Forest, Hawaii",
-        "magnitude": 1.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.495666503906,
-          19.3719997406006
-        ],
-        "depth": 2.09999990463257
-      },
-      "properties": {
-        "title": "M 2.1 - 18 km N of P\u0101hala, Hawaii",
-        "place": "18 km N of P\u0101hala, Hawaii",
-        "magnitude": 2.12,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.427505493164,
-          19.2453327178955
-        ],
-        "depth": 32.3600006103516
-      },
-      "properties": {
-        "title": "M 2.1 - 7 km NE of P\u0101hala, Hawaii",
-        "place": "7 km NE of P\u0101hala, Hawaii",
-        "magnitude": 2.08,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -146.4495,
-          61.5666
-        ],
-        "depth": 55.8
-      },
-      "properties": {
-        "title": "M 1.3 - 48 km N of Valdez, Alaska",
-        "place": "48 km N of Valdez, Alaska",
-        "magnitude": 1.3,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.0045,
-          58.279
-        ],
-        "depth": 3.11
-      },
-      "properties": {
-        "title": "M 0.0 - 85 km NNW of Karluk, Alaska",
-        "place": "85 km NNW of Karluk, Alaska",
-        "magnitude": -0.02,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -111.9425,
-          39.2993333333333
-        ],
-        "depth": 3.15
-      },
-      "properties": {
-        "title": "M 0.6 - 11 km NW of Fayette, Utah",
-        "place": "11 km NW of Fayette, Utah",
-        "magnitude": 0.59,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -146.5692,
-          61.509
-        ],
-        "depth": 28.2
-      },
-      "properties": {
-        "title": "M 2.3 - 43 km NNW of Valdez, Alaska",
-        "place": "43 km NNW of Valdez, Alaska",
+        "title": "M 2.3 - 52 km W of Mentone, Texas",
+        "place": "52 km W of Mentone, Texas",
         "magnitude": 2.3,
-        "magnitude_type": "ml"
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 23:56:08"
       }
     },
     {
@@ -1043,16 +24,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.851501464844,
-          38.8240013122559
+          -80.5293,
+          -2.0657
         ],
-        "depth": 2.01999998092651
+        "depth": 35.0
       },
       "properties": {
-        "title": "M 1.1 - 10 km NW of The Geysers, CA",
-        "place": "10 km NW of The Geysers, CA",
-        "magnitude": 1.08,
-        "magnitude_type": "md"
+        "title": "M 4.2 - 40 km ENE of Santa Elena, Ecuador",
+        "place": "40 km ENE of Santa Elena, Ecuador",
+        "magnitude": 4.2,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 23:54:02"
       }
     },
     {
@@ -1060,985 +42,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          70.7965,
-          36.4983
+          -149.5126,
+          63.0636
         ],
-        "depth": 187.853
+        "depth": 75.8
       },
       "properties": {
-        "title": "M 4.4 - 40 km S of Jurm, Afghanistan",
-        "place": "40 km S of Jurm, Afghanistan",
-        "magnitude": 4.4,
-        "magnitude_type": "mb"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.834167480469,
-          38.8368339538574
-        ],
-        "depth": 2.0
-      },
-      "properties": {
-        "title": "M 0.6 - 9 km NW of The Geysers, CA",
-        "place": "9 km NW of The Geysers, CA",
-        "magnitude": 0.61,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -153.308,
-          60.1474
-        ],
-        "depth": 148.6
-      },
-      "properties": {
-        "title": "M 2.1 - 56 km E of Port Alsworth, Alaska",
-        "place": "56 km E of Port Alsworth, Alaska",
-        "magnitude": 2.1,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.403,
-          18.9036666666667
-        ],
-        "depth": 3.81
-      },
-      "properties": {
-        "title": "M 3.2 - 55 km NW of San Antonio, Puerto Rico",
-        "place": "55 km NW of San Antonio, Puerto Rico",
-        "magnitude": 3.16,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.993,
-          28.736
-        ],
-        "depth": 4.5654
-      },
-      "properties": {
-        "title": "M 2.0 - 18 km ENE of Hilltop, Texas",
-        "place": "18 km ENE of Hilltop, Texas",
-        "magnitude": 2.0,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.844169616699,
-          38.8199996948242
-        ],
-        "depth": 1.87000000476837
-      },
-      "properties": {
-        "title": "M 0.8 - 9 km NW of The Geysers, CA",
-        "place": "9 km NW of The Geysers, CA",
-        "magnitude": 0.77,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.58166666666666,
-          47.58416666666667
-        ],
-        "depth": 24.28
-      },
-      "properties": {
-        "title": "M 1.9 - 1 km E of Enetai, Washington",
-        "place": "1 km E of Enetai, Washington",
-        "magnitude": 1.94,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -163.463333333333,
-          54.7133333333333
-        ],
-        "depth": 1.8
-      },
-      "properties": {
-        "title": "M 2.6 - 16 km SSW of False Pass, Alaska",
-        "place": "16 km SSW of False Pass, Alaska",
-        "magnitude": 2.57,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -148.2879,
-          62.9185
-        ],
-        "depth": 59.8
-      },
-      "properties": {
-        "title": "M 1.4 - 62 km SSE of Cantwell, Alaska",
-        "place": "62 km SSE of Cantwell, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -150.1218,
-          62.1904
-        ],
-        "depth": 18.2
-      },
-      "properties": {
-        "title": "M 1.2 - 14 km WNW of Susitna North, Alaska",
-        "place": "14 km WNW of Susitna North, Alaska",
-        "magnitude": 1.2,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -151.003,
-          65.8572
-        ],
-        "depth": 0.0
-      },
-      "properties": {
-        "title": "M 1.7 - 54 km NW of Rampart, Alaska",
-        "place": "54 km NW of Rampart, Alaska",
-        "magnitude": 1.7,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.486831665039,
-          19.16233253479
-        ],
-        "depth": 31.0499992370605
-      },
-      "properties": {
-        "title": "M 2.0 - 4 km S of P\u0101hala, Hawaii",
-        "place": "4 km S of P\u0101hala, Hawaii",
-        "magnitude": 2.00999999,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -150.9628,
-          64.8554
-        ],
-        "depth": 6.7
-      },
-      "properties": {
-        "title": "M 1.2 - 22 km SW of Manley Hot Springs, Alaska",
-        "place": "22 km SW of Manley Hot Springs, Alaska",
-        "magnitude": 1.2,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -149.8928,
-          61.4398
-        ],
-        "depth": 33.0
-      },
-      "properties": {
-        "title": "M 1.4 - 8 km WSW of Knik, Alaska",
-        "place": "8 km WSW of Knik, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -97.52516667,
-          35.099
-        ],
-        "depth": 4.54
-      },
-      "properties": {
-        "title": "M 1.7 - 4 km E of Cole, Oklahoma",
-        "place": "4 km E of Cole, Oklahoma",
-        "magnitude": 1.69,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -148.2587,
-          65.6039
-        ],
-        "depth": 3.2
-      },
-      "properties": {
-        "title": "M 1.4 - 15 km ENE of Livengood, Alaska",
-        "place": "15 km ENE of Livengood, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.57366666666667,
-          47.585166666666666
-        ],
-        "depth": 27.63
-      },
-      "properties": {
-        "title": "M 1.3 - 1 km E of Enetai, Washington",
-        "place": "1 km E of Enetai, Washington",
-        "magnitude": 1.27,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6865,
-          35.893
-        ],
-        "depth": 9.73
-      },
-      "properties": {
-        "title": "M 0.7 - 20 km ESE of Little Lake, CA",
-        "place": "20 km ESE of Little Lake, CA",
-        "magnitude": 0.7,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.58033333333333,
-          47.588
-        ],
-        "depth": 27.59
-      },
-      "properties": {
-        "title": "M 1.3 - 1 km ENE of Enetai, Washington",
-        "place": "1 km ENE of Enetai, Washington",
-        "magnitude": 1.27,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.695,
-          35.864
-        ],
-        "depth": 10.27
-      },
-      "properties": {
-        "title": "M 1.1 - 21 km ESE of Little Lake, CA",
-        "place": "21 km ESE of Little Lake, CA",
-        "magnitude": 1.07,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.5201667,
-          34.2173333
-        ],
-        "depth": 4.07
-      },
-      "properties": {
-        "title": "M 0.9 - 5 km SSW of Lytle Creek, CA",
-        "place": "5 km SSW of Lytle Creek, CA",
-        "magnitude": 0.86,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.59466666666667,
-          47.584666666666664
-        ],
-        "depth": 26.95
-      },
-      "properties": {
-        "title": "M 3.0 - 0 km E of Enetai, Washington",
-        "place": "0 km E of Enetai, Washington",
-        "magnitude": 2.96,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -149.0912,
-          60.6946
-        ],
-        "depth": 29.4
-      },
-      "properties": {
-        "title": "M 1.4 - 23 km WSW of Whittier, Alaska",
-        "place": "23 km WSW of Whittier, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.6868333,
-          33.6338333
-        ],
-        "depth": 14.1
-      },
-      "properties": {
-        "title": "M 0.5 - 9 km N of Anza, CA",
-        "place": "9 km N of Anza, CA",
-        "magnitude": 0.52,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.238327026367,
-          19.3799991607666
-        ],
-        "depth": 0.0799999982118607
-      },
-      "properties": {
-        "title": "M 2.0 - 6 km S of Volcano, Hawaii",
-        "place": "6 km S of Volcano, Hawaii",
-        "magnitude": 1.96000004,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.434173583984,
-          19.2514991760254
-        ],
-        "depth": 32.4099998474121
-      },
-      "properties": {
-        "title": "M 2.2 - 7 km NE of P\u0101hala, Hawaii",
-        "place": "7 km NE of P\u0101hala, Hawaii",
-        "magnitude": 2.17,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6858333,
-          35.8903333
-        ],
-        "depth": 9.15
-      },
-      "properties": {
-        "title": "M 1.6 - 20 km ESE of Little Lake, CA",
-        "place": "20 km ESE of Little Lake, CA",
-        "magnitude": 1.64,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.245,
-          32.9175
-        ],
-        "depth": 9.87
-      },
-      "properties": {
-        "title": "M 1.4 - 27 km SSW of Ocotillo Wells, CA",
-        "place": "27 km SSW of Ocotillo Wells, CA",
-        "magnitude": 1.37,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.803665161133,
-          38.8235015869141
-        ],
-        "depth": 2.5
-      },
-      "properties": {
-        "title": "M 1.3 - 7 km NNW of The Geysers, CA",
-        "place": "7 km NNW of The Geysers, CA",
-        "magnitude": 1.34,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6063333,
-          36.168
-        ],
-        "depth": -0.24
-      },
-      "properties": {
-        "title": "M 1.3 - 34 km ENE of Coso Junction, CA",
-        "place": "34 km ENE of Coso Junction, CA",
-        "magnitude": 1.25,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -119.3465,
-          38.6392
-        ],
-        "depth": 10.7
-      },
-      "properties": {
-        "title": "M 1.3 - 15 km E of Topaz, California",
-        "place": "15 km E of Topaz, California",
-        "magnitude": 1.3,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.790000915527,
-          38.7511672973633
-        ],
-        "depth": -0.689999997615814
-      },
-      "properties": {
-        "title": "M 0.6 - 4 km WSW of The Geysers, CA",
-        "place": "4 km WSW of The Geysers, CA",
-        "magnitude": 0.6,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -146.1103,
-          61.5889
-        ],
-        "depth": 36.6
-      },
-      "properties": {
-        "title": "M 1.6 - 50 km W of Tonsina, Alaska",
-        "place": "50 km W of Tonsina, Alaska",
-        "magnitude": 1.6,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6835,
-          35.8921667
-        ],
-        "depth": 9.85
-      },
-      "properties": {
-        "title": "M 0.5 - 21 km ESE of Little Lake, CA",
-        "place": "21 km ESE of Little Lake, CA",
-        "magnitude": 0.45,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.887336730957,
-          37.6561660766602
-        ],
-        "depth": 3.66000008583069
-      },
-      "properties": {
-        "title": "M 1.1 - 8 km E of Mammoth Lakes, CA",
-        "place": "8 km E of Mammoth Lakes, CA",
-        "magnitude": 1.06,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.889167785645,
-          37.6508331298828
-        ],
-        "depth": 3.19000005722046
-      },
-      "properties": {
-        "title": "M 1.0 - 8 km E of Mammoth Lakes, CA",
-        "place": "8 km E of Mammoth Lakes, CA",
-        "magnitude": 0.98,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.491333007812,
-          19.1768341064453
-        ],
-        "depth": 30.4200000762939
-      },
-      "properties": {
-        "title": "M 2.0 - 3 km SSW of P\u0101hala, Hawaii",
-        "place": "3 km SSW of P\u0101hala, Hawaii",
-        "magnitude": 1.98,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.3098333,
-          32.9845
-        ],
-        "depth": 9.57
-      },
-      "properties": {
-        "title": "M 1.0 - 24 km SW of Ocotillo Wells, CA",
-        "place": "24 km SW of Ocotillo Wells, CA",
-        "magnitude": 1.0,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.092,
-          34.5183333
-        ],
-        "depth": 7.89
-      },
-      "properties": {
-        "title": "M 0.9 - 3 km NE of Vincent, CA",
-        "place": "3 km NE of Vincent, CA",
-        "magnitude": 0.91,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.5155,
-          34.2186667
-        ],
-        "depth": 4.05
-      },
-      "properties": {
-        "title": "M 0.7 - 5 km SSW of Lytle Creek, CA",
-        "place": "5 km SSW of Lytle Creek, CA",
-        "magnitude": 0.74,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.113,
-          47.7153333333333
-        ],
-        "depth": 6.34
-      },
-      "properties": {
-        "title": "M 2.1 - 19 km N of Kellogg, Idaho",
-        "place": "19 km N of Kellogg, Idaho",
-        "magnitude": 2.11,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.238006591797,
-          19.3806667327881
-        ],
-        "depth": 0.839999973773956
-      },
-      "properties": {
-        "title": "M 2.0 - 6 km S of Volcano, Hawaii",
-        "place": "6 km S of Volcano, Hawaii",
-        "magnitude": 2.0,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.287,
-          31.716
-        ],
-        "depth": 6.6638
-      },
-      "properties": {
-        "title": "M 2.1 - 51 km S of Whites City, New Mexico",
-        "place": "51 km S of Whites City, New Mexico",
-        "magnitude": 2.1,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -150.5265,
-          63.2425
-        ],
-        "depth": 112.0
-      },
-      "properties": {
-        "title": "M 1.4 - 68 km ESE of Denali National Park, Alaska",
-        "place": "68 km ESE of Denali National Park, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.789001464844,
-          38.8348350524902
-        ],
-        "depth": 1.77999997138977
-      },
-      "properties": {
-        "title": "M 0.7 - 6 km WNW of Cobb, CA",
-        "place": "6 km WNW of Cobb, CA",
-        "magnitude": 0.7,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.471160888672,
-          19.1455001831055
-        ],
-        "depth": 31.3299999237061
-      },
-      "properties": {
-        "title": "M 1.7 - 6 km S of P\u0101hala, Hawaii",
-        "place": "6 km S of P\u0101hala, Hawaii",
-        "magnitude": 1.74000001,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -97.53683333,
-          35.082
-        ],
-        "depth": 5.45
-      },
-      "properties": {
-        "title": "M 0.9 - 3 km SE of Cole, Oklahoma",
-        "place": "3 km SE of Cole, Oklahoma",
-        "magnitude": 0.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6875,
-          35.8923333
-        ],
-        "depth": 9.19
-      },
-      "properties": {
-        "title": "M 0.9 - 20 km ESE of Little Lake, CA",
-        "place": "20 km ESE of Little Lake, CA",
-        "magnitude": 0.88,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -115.9658333,
-          32.699
-        ],
-        "depth": 11.19
-      },
-      "properties": {
-        "title": "M 1.1 - 5 km SSE of Ocotillo, CA",
-        "place": "5 km SSE of Ocotillo, CA",
-        "magnitude": 1.09,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.8245,
-          38.8406666666667
-        ],
-        "depth": 1.9
-      },
-      "properties": {
-        "title": "M 0.4 - 9 km WNW of Cobb, CA",
-        "place": "9 km WNW of Cobb, CA",
-        "magnitude": 0.38,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.828666687012,
-          38.8424987792969
-        ],
-        "depth": 2.97000002861023
-      },
-      "properties": {
-        "title": "M 0.3 - 9 km WNW of Cobb, CA",
-        "place": "9 km WNW of Cobb, CA",
-        "magnitude": 0.32,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.682,
-          35.8923333
-        ],
-        "depth": 9.8
-      },
-      "properties": {
-        "title": "M 0.5 - 21 km ESE of Little Lake, CA",
-        "place": "21 km ESE of Little Lake, CA",
-        "magnitude": 0.45,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.6865,
-          35.8933333
-        ],
-        "depth": 9.63
-      },
-      "properties": {
-        "title": "M 0.5 - 20 km ESE of Little Lake, CA",
-        "place": "20 km ESE of Little Lake, CA",
-        "magnitude": 0.52,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.554,
-          31.8915
-        ],
-        "depth": 15.46
-      },
-      "properties": {
-        "title": "M 2.6 - 7 km ENE of Ensenada, B.C., MX",
-        "place": "7 km ENE of Ensenada, B.C., MX",
-        "magnitude": 2.55,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.7675,
-          34.0186667
-        ],
-        "depth": 13.54
-      },
-      "properties": {
-        "title": "M 2.2 - 11 km N of Cabazon, CA",
-        "place": "11 km N of Cabazon, CA",
-        "magnitude": 2.22,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -149.718,
-          61.8427
-        ],
-        "depth": 34.2
-      },
-      "properties": {
-        "title": "M 1.4 - 19 km ENE of Willow, Alaska",
-        "place": "19 km ENE of Willow, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.8046667,
-          33.881
-        ],
-        "depth": 9.36
-      },
-      "properties": {
-        "title": "M 1.2 - 1 km SE of Yorba Linda, CA",
-        "place": "1 km SE of Yorba Linda, CA",
-        "magnitude": 1.22,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -148.7032,
-          64.8791
-        ],
-        "depth": 17.8
-      },
-      "properties": {
-        "title": "M 1.5 - 32 km W of Ester, Alaska",
-        "place": "32 km W of Ester, Alaska",
+        "title": "M 1.5 - 46 km SW of Cantwell, Alaska",
+        "place": "46 km SW of Cantwell, Alaska",
         "magnitude": 1.5,
-        "magnitude_type": "ml"
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 23:45:19"
       }
     },
     {
@@ -2046,16 +60,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -116.7276667,
-          33.6796667
+          -163.1907,
+          53.4293
         ],
-        "depth": 15.35
+        "depth": 32.948
       },
       "properties": {
-        "title": "M 0.7 - 7 km S of Idyllwild, CA",
-        "place": "7 km S of Idyllwild, CA",
-        "magnitude": 0.68,
-        "magnitude_type": "ml"
+        "title": "M 3.8 - 159 km S of False Pass, Alaska",
+        "place": "159 km S of False Pass, Alaska",
+        "magnitude": 3.8,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 23:34:19"
       }
     },
     {
@@ -2063,16 +78,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -152.297166666667,
-          61.0698333333333
+          -155.229339599609,
+          19.3181667327881
         ],
-        "depth": 16.37
+        "depth": 0.239999994635582
       },
       "properties": {
-        "title": "M -0.2 - 62 km W of Tyonek, Alaska",
-        "place": "62 km W of Tyonek, Alaska",
-        "magnitude": -0.21,
-        "magnitude_type": "ml"
+        "title": "M 1.9 - 13 km S of Volcano, Hawaii",
+        "place": "13 km S of Volcano, Hawaii",
+        "magnitude": 1.90999997,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 23:31:25"
       }
     },
     {
@@ -2080,16 +96,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.829,
-          2.5052
+          -66.8625,
+          17.905
         ],
-        "depth": 25.543
+        "depth": 10.19
       },
       "properties": {
-        "title": "M 5.2 - 156 km WNW of Tobelo, Indonesia",
-        "place": "156 km WNW of Tobelo, Indonesia",
-        "magnitude": 5.2,
-        "magnitude_type": "mww"
+        "title": "M 2.9 - 8 km SSE of Maria Antonia, Puerto Rico",
+        "place": "8 km SSE of Maria Antonia, Puerto Rico",
+        "magnitude": 2.85,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 23:14:50"
       }
     },
     {
@@ -2097,424 +114,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.765167236328,
-          38.8238334655762
-        ],
-        "depth": 2.17000007629395
-      },
-      "properties": {
-        "title": "M 1.1 - 4 km WNW of Cobb, CA",
-        "place": "4 km WNW of Cobb, CA",
-        "magnitude": 1.06,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.2486,
-          37.0755
-        ],
-        "depth": 1.8
-      },
-      "properties": {
-        "title": "M -0.3 - 49 km ENE of Beatty, Nevada",
-        "place": "49 km ENE of Beatty, Nevada",
-        "magnitude": -0.3,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.821166992188,
-          38.8333320617676
-        ],
-        "depth": 1.62999999523163
-      },
-      "properties": {
-        "title": "M 0.2 - 8 km NNW of The Geysers, CA",
-        "place": "8 km NNW of The Geysers, CA",
-        "magnitude": 0.19,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.646667480469,
-          36.9129981994629
-        ],
-        "depth": 6.84000015258789
-      },
-      "properties": {
-        "title": "M 1.8 - 3 km N of Aromas, CA",
-        "place": "3 km N of Aromas, CA",
-        "magnitude": 1.77,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -112.840333333333,
-          38.4921666666667
-        ],
-        "depth": 0.12
-      },
-      "properties": {
-        "title": "M 0.3 - 18 km NE of Milford, Utah",
-        "place": "18 km NE of Milford, Utah",
-        "magnitude": 0.29,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.653333333333,
-          36.9118333333333
-        ],
-        "depth": 6.94
-      },
-      "properties": {
-        "title": "M 4.2 - 3 km  of Aromas, CA",
-        "place": "3 km  of Aromas, CA",
-        "magnitude": 4.15,
-        "magnitude_type": "mw"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -150.119,
-          61.5371
-        ],
-        "depth": 51.6
-      },
-      "properties": {
-        "title": "M 1.2 - 8 km W of Big Lake, Alaska",
-        "place": "8 km W of Big Lake, Alaska",
-        "magnitude": 1.2,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -113.028166666667,
-          46.7095
-        ],
-        "depth": 12.67
-      },
-      "properties": {
-        "title": "M 1.0 - 10 km ENE of Drummond, Montana",
-        "place": "10 km ENE of Drummond, Montana",
-        "magnitude": 1.04,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -151.8183,
-          61.8887
-        ],
-        "depth": 10.6
-      },
-      "properties": {
-        "title": "M 1.8 - 24 km WSW of Skwentna, Alaska",
-        "place": "24 km WSW of Skwentna, Alaska",
-        "magnitude": 1.8,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.81266784668,
-          38.8193321228027
-        ],
-        "depth": 3.15000009536743
-      },
-      "properties": {
-        "title": "M 0.7 - 7 km NW of The Geysers, CA",
-        "place": "7 km NW of The Geysers, CA",
-        "magnitude": 0.69,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -89.4506666666667,
-          36.2466666666667
-        ],
-        "depth": 6.41
-      },
-      "properties": {
-        "title": "M 1.7 - 3 km ESE of Ridgely, Tennessee",
-        "place": "3 km ESE of Ridgely, Tennessee",
-        "magnitude": 1.68,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -112.299666666667,
-          44.9765
-        ],
-        "depth": 4.99
-      },
-      "properties": {
-        "title": "M 0.4 - 37 km SE of Dillon, Montana",
-        "place": "37 km SE of Dillon, Montana",
-        "magnitude": 0.43,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.4473,
-          36.6838
-        ],
-        "depth": 15.8
-      },
-      "properties": {
-        "title": "M 1.0 - 43 km ENE of Keeler, California",
-        "place": "43 km ENE of Keeler, California",
-        "magnitude": 1.0,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.3182,
-          36.7098
-        ],
-        "depth": 9.2
-      },
-      "properties": {
-        "title": "M -0.1 - 45 km ESE of Beatty, Nevada",
-        "place": "45 km ESE of Beatty, Nevada",
-        "magnitude": -0.1,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.7295,
-          34.018
-        ],
-        "depth": 11.92
-      },
-      "properties": {
-        "title": "M 0.9 - 12 km NNE of Cabazon, CA",
-        "place": "12 km NNE of Cabazon, CA",
-        "magnitude": 0.92,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -96.18816667,
-          34.71866667
-        ],
-        "depth": 5.0
-      },
-      "properties": {
-        "title": "M 1.3 - 12 km WSW of Ashland, Oklahoma",
-        "place": "12 km WSW of Ashland, Oklahoma",
-        "magnitude": 1.27,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -150.2853,
-          60.9387
-        ],
-        "depth": 36.6
-      },
-      "properties": {
-        "title": "M 1.6 - 21 km E of Point Possession, Alaska",
-        "place": "21 km E of Point Possession, Alaska",
-        "magnitude": 1.6,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.790336608887,
-          38.8344993591309
-        ],
-        "depth": 1.66999995708466
-      },
-      "properties": {
-        "title": "M 1.1 - 6 km WNW of Cobb, CA",
-        "place": "6 km WNW of Cobb, CA",
-        "magnitude": 1.05,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.212,
-          31.921
-        ],
-        "depth": 7.15
-      },
-      "properties": {
-        "title": "M 3.1 - 39 km E of Ensenada, B.C., MX",
-        "place": "39 km E of Ensenada, B.C., MX",
-        "magnitude": 3.08,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.1878333,
-          31.9275
-        ],
-        "depth": 11.77
-      },
-      "properties": {
-        "title": "M 2.2 - 41 km E of Ensenada, B.C., MX",
-        "place": "41 km E of Ensenada, B.C., MX",
-        "magnitude": 2.16,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.776832580566,
-          38.7975006103516
-        ],
-        "depth": 3.0
-      },
-      "properties": {
-        "title": "M 0.8 - 3 km NNW of The Geysers, CA",
-        "place": "3 km NNW of The Geysers, CA",
-        "magnitude": 0.8,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.7708333,
-          33.987
-        ],
-        "depth": 17.53
-      },
-      "properties": {
-        "title": "M 0.8 - 8 km N of Cabazon, CA",
-        "place": "8 km N of Cabazon, CA",
-        "magnitude": 0.82,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.814834594727,
-          38.8461685180664
-        ],
-        "depth": 0.790000021457672
-      },
-      "properties": {
-        "title": "M 0.5 - 8 km WNW of Cobb, CA",
-        "place": "8 km WNW of Cobb, CA",
-        "magnitude": 0.47,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.806831359863,
-          38.8358345031738
-        ],
-        "depth": 2.04999995231628
-      },
-      "properties": {
-        "title": "M 0.7 - 7 km WNW of Cobb, CA",
-        "place": "7 km WNW of Cobb, CA",
-        "magnitude": 0.73,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -140.3149,
-          60.0085
+          -150.2722,
+          65.0314
         ],
         "depth": 4.7
       },
       "properties": {
-        "title": "M 2.0 - 61 km NNW of Yakutat, Alaska",
-        "place": "61 km NNW of Yakutat, Alaska",
-        "magnitude": 2.0,
-        "magnitude_type": "ml"
+        "title": "M 1.4 - 17 km E of Manley Hot Springs, Alaska",
+        "place": "17 km E of Manley Hot Springs, Alaska",
+        "magnitude": 1.4,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 23:14:20"
       }
     },
     {
@@ -2522,16 +132,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -151.7784,
-          59.7957
+          -120.333831787109,
+          35.7831649780273
         ],
-        "depth": 55.5
+        "depth": 8.0
       },
       "properties": {
-        "title": "M 2.6 - 3 km NE of Anchor Point, Alaska",
-        "place": "3 km NE of Anchor Point, Alaska",
-        "magnitude": 2.6,
-        "magnitude_type": "ml"
+        "title": "M 1.9 - 8 km NNW of Cholame, CA",
+        "place": "8 km NNW of Cholame, CA",
+        "magnitude": 1.87,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 23:14:15"
       }
     },
     {
@@ -2539,186 +150,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155.480163574219,
-          19.1706657409668
+          -175.7417,
+          -28.5736
         ],
-        "depth": 29.25
+        "depth": 34.954
       },
       "properties": {
-        "title": "M 1.7 - 3 km S of P\u0101hala, Hawaii",
-        "place": "3 km S of P\u0101hala, Hawaii",
-        "magnitude": 1.74000001,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -154.904,
-          59.5331
-        ],
-        "depth": 10.2
-      },
-      "properties": {
-        "title": "M 3.0 - 12 km NW of Kokhanok, Alaska",
-        "place": "12 km NW of Kokhanok, Alaska",
-        "magnitude": 3.0,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.1986667,
-          31.923
-        ],
-        "depth": 10.34
-      },
-      "properties": {
-        "title": "M 2.4 - 40 km E of Ensenada, B.C., MX",
-        "place": "40 km E of Ensenada, B.C., MX",
-        "magnitude": 2.39,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -115.7602,
-          36.7331
-        ],
-        "depth": 0.7
-      },
-      "properties": {
-        "title": "M 0.9 - 19 km NNW of Indian Springs, Nevada",
-        "place": "19 km NNW of Indian Springs, Nevada",
-        "magnitude": 0.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.465835571289,
-          19.2134990692139
-        ],
-        "depth": 29.5
-      },
-      "properties": {
-        "title": "M 1.8 - 1 km NE of P\u0101hala, Hawaii",
-        "place": "1 km NE of P\u0101hala, Hawaii",
-        "magnitude": 1.84000003,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -111.731333333333,
-          44.8191666666667
-        ],
-        "depth": 13.85
-      },
-      "properties": {
-        "title": "M 0.7 - 43 km W of Hebgen Lake Estates, Montana",
-        "place": "43 km W of Hebgen Lake Estates, Montana",
-        "magnitude": 0.72,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.1424,
-          6.7894
-        ],
-        "depth": 156.292
-      },
-      "properties": {
-        "title": "M 4.7 - 8 km NW of Jord\u00e1n, Colombia",
-        "place": "8 km NW of Jord\u00e1n, Colombia",
-        "magnitude": 4.7,
-        "magnitude_type": "mb"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.7895,
-          33.9008333
-        ],
-        "depth": 3.6
-      },
-      "properties": {
-        "title": "M 0.8 - 3 km ENE of Yorba Linda, CA",
-        "place": "3 km ENE of Yorba Linda, CA",
-        "magnitude": 0.79,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -148.4377,
-          63.1342
-        ],
-        "depth": 78.7
-      },
-      "properties": {
-        "title": "M 1.2 - 38 km SE of Cantwell, Alaska",
-        "place": "38 km SE of Cantwell, Alaska",
-        "magnitude": 1.2,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -112.3195,
-          44.9886666666667
-        ],
-        "depth": 4.99
-      },
-      "properties": {
-        "title": "M 0.7 - 35 km SE of Dillon, Montana",
-        "place": "35 km SE of Dillon, Montana",
-        "magnitude": 0.72,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.3913,
-          10.5372
-        ],
-        "depth": 10.0
-      },
-      "properties": {
-        "title": "M 5.1 - 10 km S of Poro, Philippines",
-        "place": "10 km S of Poro, Philippines",
+        "title": "M 5.1 - Kermadec Islands region",
+        "place": "Kermadec Islands region",
         "magnitude": 5.1,
-        "magnitude_type": "mww"
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 23:02:00"
       }
     },
     {
@@ -2726,16 +168,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.806167602539,
-          38.8359985351562
+          -169.898,
+          52.797
         ],
-        "depth": 1.87000000476837
+        "depth": 9.38
       },
       "properties": {
-        "title": "M 0.3 - 7 km WNW of Cobb, CA",
-        "place": "7 km WNW of Cobb, CA",
-        "magnitude": 0.33,
-        "magnitude_type": "md"
+        "title": "M 2.5 - 71 km WSW of Nikolski, Alaska",
+        "place": "71 km WSW of Nikolski, Alaska",
+        "magnitude": 2.48,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 22:48:17"
       }
     },
     {
@@ -2743,441 +186,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -112.717666666667,
-          47.4695
+          -122.786834716797,
+          38.8273315429688
         ],
-        "depth": 24.87
+        "depth": 1.23000001907349
       },
       "properties": {
-        "title": "M 1.6 - 24 km W of Augusta, Montana",
-        "place": "24 km W of Augusta, Montana",
-        "magnitude": 1.56,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -115.7193,
-          36.61
-        ],
-        "depth": 9.1
-      },
-      "properties": {
-        "title": "M 0.4 - 6 km NW of Indian Springs, Nevada",
-        "place": "6 km NW of Indian Springs, Nevada",
-        "magnitude": 0.4,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -111.726,
-          44.8176666666667
-        ],
-        "depth": 14.02
-      },
-      "properties": {
-        "title": "M 1.0 - 42 km W of Hebgen Lake Estates, Montana",
-        "place": "42 km W of Hebgen Lake Estates, Montana",
-        "magnitude": 1.04,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.761329650879,
-          38.7919998168945
-        ],
-        "depth": 1.04999995231628
-      },
-      "properties": {
-        "title": "M 1.2 - 2 km  of The Geysers, CA",
-        "place": "2 km  of The Geysers, CA",
-        "magnitude": 1.22,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.105833333333,
-          58.2375
-        ],
-        "depth": 5.53
-      },
-      "properties": {
-        "title": "M -0.1 - 83 km NNW of Karluk, Alaska",
-        "place": "83 km NNW of Karluk, Alaska",
-        "magnitude": -0.1,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.8534,
-          -4.1149
-        ],
-        "depth": 31.342
-      },
-      "properties": {
-        "title": "M 4.7 - 133 km SE of Masohi, Indonesia",
-        "place": "133 km SE of Masohi, Indonesia",
-        "magnitude": 4.7,
-        "magnitude_type": "mb"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -150.4811,
-          62.8945
-        ],
-        "depth": 85.0
-      },
-      "properties": {
-        "title": "M 1.8 - 46 km NNE of Petersville, Alaska",
-        "place": "46 km NNE of Petersville, Alaska",
-        "magnitude": 1.8,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.4036667,
-          33.015
-        ],
-        "depth": 9.36
-      },
-      "properties": {
-        "title": "M 1.0 - 20 km ESE of Julian, CA",
-        "place": "20 km ESE of Julian, CA",
-        "magnitude": 1.02,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -155.406326293945,
-          19.0276660919189
-        ],
-        "depth": 36.1500015258789
-      },
-      "properties": {
-        "title": "M 2.8 - 18 km ESE of Naalehu, Hawaii",
-        "place": "18 km ESE of Naalehu, Hawaii",
-        "magnitude": 2.75,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.82983333333334,
-          48.376666666666665
-        ],
-        "depth": 4.0
-      },
-      "properties": {
-        "title": "M 1.3 - 12 km WNW of Ault Field, Washington",
-        "place": "12 km WNW of Ault Field, Washington",
-        "magnitude": 1.3,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          136.8281,
-          79.9698
-        ],
-        "depth": 10.0
-      },
-      "properties": {
-        "title": "M 4.6 - north of the New Siberian Islands",
-        "place": "north of the New Siberian Islands",
-        "magnitude": 4.6,
-        "magnitude_type": "mb"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -150.0342,
-          61.3982
-        ],
-        "depth": 34.0
-      },
-      "properties": {
-        "title": "M 1.9 - 5 km NW of Point MacKenzie, Alaska",
-        "place": "5 km NW of Point MacKenzie, Alaska",
-        "magnitude": 1.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -119.802,
-          46.599333333333334
-        ],
-        "depth": 7.79
-      },
-      "properties": {
-        "title": "M 0.7 - 12 km SE of Desert Aire, Washington",
-        "place": "12 km SE of Desert Aire, Washington",
-        "magnitude": 0.7000000000000001,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.80883026123,
-          38.8348350524902
-        ],
-        "depth": 1.85000002384186
-      },
-      "properties": {
-        "title": "M 1.1 - 8 km WNW of Cobb, CA",
-        "place": "8 km WNW of Cobb, CA",
-        "magnitude": 1.07,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.793,
-          36.0078333
-        ],
-        "depth": 1.6
-      },
-      "properties": {
-        "title": "M 0.8 - 13 km NE of Little Lake, CA",
-        "place": "13 km NE of Little Lake, CA",
-        "magnitude": 0.82,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -115.197166666667,
-          44.3396666666667
-        ],
-        "depth": 4.83
-      },
-      "properties": {
-        "title": "M 1.5 - 24 km WNW of Stanley, Idaho",
-        "place": "24 km WNW of Stanley, Idaho",
-        "magnitude": 1.51,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -148.0763,
-          61.1287
-        ],
-        "depth": 10.2
-      },
-      "properties": {
-        "title": "M 0.7 - 51 km NE of Whittier, Alaska",
-        "place": "51 km NE of Whittier, Alaska",
-        "magnitude": 0.7,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          70.953,
-          34.0907
-        ],
-        "depth": 49.326
-      },
-      "properties": {
-        "title": "M 4.5 - 17 km W of Landi Kotal, Pakistan",
-        "place": "17 km W of Landi Kotal, Pakistan",
-        "magnitude": 4.5,
-        "magnitude_type": "mb"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -147.748,
-          60.3946
-        ],
-        "depth": 15.5
-      },
-      "properties": {
-        "title": "M 1.6 - 39 km NNE of Chenega, Alaska",
-        "place": "39 km NNE of Chenega, Alaska",
-        "magnitude": 1.6,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.0153333,
-          36.2125
-        ],
-        "depth": 2.16
-      },
-      "properties": {
-        "title": "M 1.6 - 8 km S of Olancha, CA",
-        "place": "8 km S of Olancha, CA",
-        "magnitude": 1.62,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.825836181641,
-          38.8418350219727
-        ],
-        "depth": 1.86000001430511
-      },
-      "properties": {
-        "title": "M 0.8 - 9 km WNW of Cobb, CA",
-        "place": "9 km WNW of Cobb, CA",
-        "magnitude": 0.82,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -117.8246667,
-          33.768
-        ],
-        "depth": 6.08
-      },
-      "properties": {
-        "title": "M 0.7 - 2 km N of Tustin, CA",
-        "place": "2 km N of Tustin, CA",
-        "magnitude": 0.72,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -119.084,
-          35.0956667
-        ],
-        "depth": 11.2
-      },
-      "properties": {
-        "title": "M 1.2 - 22 km NW of Grapevine, CA",
-        "place": "22 km NW of Grapevine, CA",
-        "magnitude": 1.15,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -97.888,
-          29.164
-        ],
-        "depth": 5.7861
-      },
-      "properties": {
-        "title": "M 1.6 - 10 km SE of Stockdale, Texas",
-        "place": "10 km SE of Stockdale, Texas",
-        "magnitude": 1.6,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -115.1621,
-          44.3121
-        ],
-        "depth": 12.486
-      },
-      "properties": {
-        "title": "M 2.7 - 20 km WNW of Stanley, Idaho",
-        "place": "20 km WNW of Stanley, Idaho",
-        "magnitude": 2.7,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -116.2526667,
-          33.8916667
-        ],
-        "depth": 8.06
-      },
-      "properties": {
-        "title": "M 0.8 - 15 km ENE of Thousand Palms, CA",
-        "place": "15 km ENE of Thousand Palms, CA",
+        "title": "M 0.8 - 6 km WNW of Cobb, CA",
+        "place": "6 km WNW of Cobb, CA",
         "magnitude": 0.76,
-        "magnitude_type": "ml"
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 22:41:16"
       }
     },
     {
@@ -3185,16 +204,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -119.037,
-          35.1143333
+          -155.274337768555,
+          19.4163341522217
         ],
-        "depth": 12.11
+        "depth": 8.96000003814697
       },
       "properties": {
-        "title": "M 1.5 - 20 km SW of Lamont, CA",
-        "place": "20 km SW of Lamont, CA",
-        "magnitude": 1.45,
-        "magnitude_type": "ml"
+        "title": "M 2.5 - 5 km SW of Volcano, Hawaii",
+        "place": "5 km SW of Volcano, Hawaii",
+        "magnitude": 2.52999997,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 22:35:14"
       }
     },
     {
@@ -3202,16 +222,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.803337097168,
-          38.8214988708496
+          -103.412,
+          31.474
         ],
-        "depth": 2.95000004768372
+        "depth": 7.2752
       },
       "properties": {
-        "title": "M 0.8 - 6 km NNW of The Geysers, CA",
-        "place": "6 km NNW of The Geysers, CA",
-        "magnitude": 0.78,
-        "magnitude_type": "md"
+        "title": "M 2.0 - 2 km NW of Barstow, Texas",
+        "place": "2 km NW of Barstow, Texas",
+        "magnitude": 2.0,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 22:23:38"
       }
     },
     {
@@ -3219,16 +240,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -153.440333333333,
-          59.3575
+          -118.0701667,
+          33.8418333
         ],
-        "depth": -0.49
+        "depth": 7.77
       },
       "properties": {
-        "title": "M 0.5 - 60 km SE of Pedro Bay, Alaska",
-        "place": "60 km SE of Pedro Bay, Alaska",
-        "magnitude": 0.53,
-        "magnitude_type": "ml"
+        "title": "M 1.7 - 1 km NNE of Hawaiian Gardens, CA",
+        "place": "1 km NNE of Hawaiian Gardens, CA",
+        "magnitude": 1.72,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 22:14:13"
       }
     },
     {
@@ -3236,16 +258,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -153.44,
-          59.3571666666667
+          -122.814331054688,
+          39.1440010070801
         ],
-        "depth": -0.05
+        "depth": 7.84000015258789
       },
       "properties": {
-        "title": "M 0.6 - 60 km SE of Pedro Bay, Alaska",
-        "place": "60 km SE of Pedro Bay, Alaska",
-        "magnitude": 0.58,
-        "magnitude_type": "ml"
+        "title": "M 1.7 - 4 km ENE of Nice, CA",
+        "place": "4 km ENE of Nice, CA",
+        "magnitude": 1.72,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 22:14:07"
       }
     },
     {
@@ -3253,152 +276,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -155.171661376953,
-          18.8474998474121
-        ],
-        "depth": 9.05000019073486
-      },
-      "properties": {
-        "title": "M 2.8 - 49 km ESE of Naalehu, Hawaii",
-        "place": "49 km ESE of Naalehu, Hawaii",
-        "magnitude": 2.79,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.0143333,
-          36.2116667
-        ],
-        "depth": 2.22
-      },
-      "properties": {
-        "title": "M 2.0 - 8 km S of Olancha, CA",
-        "place": "8 km S of Olancha, CA",
-        "magnitude": 2.03,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -152.8711,
-          59.5476
-        ],
-        "depth": 85.6
-      },
-      "properties": {
-        "title": "M 0.9 - 57 km WNW of Nanwalek, Alaska",
-        "place": "57 km WNW of Nanwalek, Alaska",
-        "magnitude": 0.9,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -115.6095,
-          33.1838333
-        ],
-        "depth": 4.05
-      },
-      "properties": {
-        "title": "M 1.3 - 10 km SW of Niland, CA",
-        "place": "10 km SW of Niland, CA",
-        "magnitude": 1.32,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.22200012207,
-          37.795166015625
-        ],
-        "depth": 5.42999982833862
-      },
-      "properties": {
-        "title": "M 1.1 - 1 km ESE of Oakland, CA",
-        "place": "1 km ESE of Oakland, CA",
-        "magnitude": 1.08,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -149.5305,
-          61.3973
-        ],
-        "depth": 4.0
-      },
-      "properties": {
-        "title": "M 1.7 - 8 km NNE of Eagle River, Alaska",
-        "place": "8 km NNE of Eagle River, Alaska",
-        "magnitude": 1.7,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.037170410156,
-          36.4588317871094
-        ],
-        "depth": 6.69999980926514
-      },
-      "properties": {
-        "title": "M 1.8 - 12 km SE of Pinnacles, CA",
-        "place": "12 km SE of Pinnacles, CA",
-        "magnitude": 1.75,
-        "magnitude_type": "md"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -151.1683,
-          62.9258
-        ],
-        "depth": 100.5
-      },
-      "properties": {
-        "title": "M 1.7 - 52 km NNW of Petersville, Alaska",
-        "place": "52 km NNW of Petersville, Alaska",
-        "magnitude": 1.7,
-        "magnitude_type": "ml"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -151.3522,
-          63.0911
+          -144.9285,
+          69.3498
         ],
         "depth": 0.0
       },
       "properties": {
-        "title": "M 1.4 - 53 km SSE of Denali National Park, Alaska",
-        "place": "53 km SSE of Denali National Park, Alaska",
-        "magnitude": 1.4,
-        "magnitude_type": "ml"
+        "title": "M 2.1 - 100 km SSW of Kaktovik, Alaska",
+        "place": "100 km SSW of Kaktovik, Alaska",
+        "magnitude": 2.1,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 22:06:14"
       }
     },
     {
@@ -3406,16 +294,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.1585,
-          46.19383333333333
+          -148.1518,
+          64.0791
         ],
-        "depth": 0.14
+        "depth": 0.0
       },
       "properties": {
-        "title": "M 0.2 - 38 km NE of Amboy, Washington",
-        "place": "38 km NE of Amboy, Washington",
-        "magnitude": 0.17,
-        "magnitude_type": "mh"
+        "title": "M 1.5 - 46 km ENE of Healy, Alaska",
+        "place": "46 km ENE of Healy, Alaska",
+        "magnitude": 1.5,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 22:02:24"
       }
     },
     {
@@ -3423,16 +312,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.23766666666667,
-          46.20433333333333
+          -122.068168640137,
+          37.928165435791
         ],
-        "depth": -1.26
+        "depth": 11.1599998474121
       },
       "properties": {
-        "title": "M 0.5 - 36 km NNE of Amboy, Washington",
-        "place": "36 km NNE of Amboy, Washington",
-        "magnitude": 0.47000000000000003,
-        "magnitude_type": "ml"
+        "title": "M 1.0 - 2 km SSW of Pleasant Hill, CA",
+        "place": "2 km SSW of Pleasant Hill, CA",
+        "magnitude": 0.95,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 22:00:16"
       }
     },
     {
@@ -3440,16 +330,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -121.019165039062,
-          36.4528350830078
+          -148.2397,
+          62.1193
         ],
-        "depth": 0.189999997615814
+        "depth": 33.3
       },
       "properties": {
-        "title": "M 1.8 - 14 km SE of Pinnacles, CA",
-        "place": "14 km SE of Pinnacles, CA",
-        "magnitude": 1.84,
-        "magnitude_type": "md"
+        "title": "M 2.0 - 37 km NNE of Chickaloon, Alaska",
+        "place": "37 km NNE of Chickaloon, Alaska",
+        "magnitude": 2.0,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 21:51:58"
       }
     },
     {
@@ -3457,16 +348,341 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -70.2415,
-          -21.2604
+          -122.443832397461,
+          38.5223350524902
         ],
-        "depth": 62.86
+        "depth": 8.72000026702881
       },
       "properties": {
-        "title": "M 4.5 - 92 km N of Tocopilla, Chile",
-        "place": "92 km N of Tocopilla, Chile",
+        "title": "M 2.6 - 3 km ENE of Saint Helena, CA",
+        "place": "3 km ENE of Saint Helena, CA",
+        "magnitude": 2.58,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 21:47:59"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.338836669922,
+          19.0238342285156
+        ],
+        "depth": 32.4799995422363
+      },
+      "properties": {
+        "title": "M 2.1 - 24 km SE of P\u0101hala, Hawaii",
+        "place": "24 km SE of P\u0101hala, Hawaii",
+        "magnitude": 2.05999994,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 21:45:32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.3526667,
+          33.0325
+        ],
+        "depth": 10.8
+      },
+      "properties": {
+        "title": "M 1.1 - 24 km ESE of Julian, CA",
+        "place": "24 km ESE of Julian, CA",
+        "magnitude": 1.12,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 21:41:03"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -148.1029,
+          61.9967
+        ],
+        "depth": 36.7
+      },
+      "properties": {
+        "title": "M 1.3 - 29 km NE of Chickaloon, Alaska",
+        "place": "29 km NE of Chickaloon, Alaska",
+        "magnitude": 1.3,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 21:38:31"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.783668518066,
+          38.7905006408691
+        ],
+        "depth": 2.75999999046326
+      },
+      "properties": {
+        "title": "M 1.3 - 3 km NW of The Geysers, CA",
+        "place": "3 km NW of The Geysers, CA",
+        "magnitude": 1.32,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 21:30:24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.436668395996,
+          38.5245018005371
+        ],
+        "depth": 6.88000011444092
+      },
+      "properties": {
+        "title": "M 1.3 - 4 km ENE of Saint Helena, CA",
+        "place": "4 km ENE of Saint Helena, CA",
+        "magnitude": 1.29,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 21:16:30"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.3896,
+          19.6541
+        ],
+        "depth": 15.0
+      },
+      "properties": {
+        "title": "M 3.6 - 132 km NNW of San Antonio, Puerto Rico",
+        "place": "132 km NNW of San Antonio, Puerto Rico",
+        "magnitude": 3.55,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 21:15:35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.559,
+          35.7463333
+        ],
+        "depth": 7.39
+      },
+      "properties": {
+        "title": "M 1.0 - 14 km W of Searles Valley, CA",
+        "place": "14 km W of Searles Valley, CA",
+        "magnitude": 0.96,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 21:03:52"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -167.0581,
+          53.2052
+        ],
+        "depth": 51.993
+      },
+      "properties": {
+        "title": "M 4.4 - 82 km SSW of Unalaska, Alaska",
+        "place": "82 km SSW of Unalaska, Alaska",
+        "magnitude": 4.4,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 20:52:08"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -150.0601,
+          62.4056
+        ],
+        "depth": 23.2
+      },
+      "properties": {
+        "title": "M 1.7 - 5 km SSE of Chase, Alaska",
+        "place": "5 km SSE of Chase, Alaska",
+        "magnitude": 1.7,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 20:49:34"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.5587,
+          -21.596
+        ],
+        "depth": 143.663
+      },
+      "properties": {
+        "title": "M 4.2 - 51 km SW of Ollag\u00fce, Chile",
+        "place": "51 km SW of Ollag\u00fce, Chile",
+        "magnitude": 4.2,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 20:44:22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -174.4417,
+          52.1416
+        ],
+        "depth": 101.428
+      },
+      "properties": {
+        "title": "M 4.1 - 17 km WSW of Atka, Alaska",
+        "place": "17 km WSW of Atka, Alaska",
+        "magnitude": 4.1,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 20:40:52"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.273498535156,
+          19.3104991912842
+        ],
+        "depth": 5.46000003814697
+      },
+      "properties": {
+        "title": "M 1.9 - 15 km SSW of Volcano, Hawaii",
+        "place": "15 km SSW of Volcano, Hawaii",
+        "magnitude": 1.89999998,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 20:25:48"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -151.8382,
+          60.9247
+        ],
+        "depth": 72.9
+      },
+      "properties": {
+        "title": "M 1.5 - 39 km NW of Nikiski, Alaska",
+        "place": "39 km NW of Nikiski, Alaska",
+        "magnitude": 1.5,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 20:15:37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.442665100098,
+          38.5243339538574
+        ],
+        "depth": 2.20000004768372
+      },
+      "properties": {
+        "title": "M 1.1 - 3 km ENE of Saint Helena, CA",
+        "place": "3 km ENE of Saint Helena, CA",
+        "magnitude": 1.07,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 20:07:47"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.4186667,
+          33.0378333
+        ],
+        "depth": 8.91
+      },
+      "properties": {
+        "title": "M 0.6 - 18 km ESE of Julian, CA",
+        "place": "18 km ESE of Julian, CA",
+        "magnitude": 0.6,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 19:56:18"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.44100189209,
+          38.5221672058105
+        ],
+        "depth": 8.3100004196167
+      },
+      "properties": {
+        "title": "M 2.3 - 3 km ENE of Saint Helena, CA",
+        "place": "3 km ENE of Saint Helena, CA",
+        "magnitude": 2.28,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 19:51:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.148,
+          31.71
+        ],
+        "depth": 7.0302
+      },
+      "properties": {
+        "title": "M 1.6 - 52 km W of Mentone, Texas",
+        "place": "52 km W of Mentone, Texas",
+        "magnitude": 1.6,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 19:46:46"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.9923,
+          35.2905
+        ],
+        "depth": 10.0
+      },
+      "properties": {
+        "title": "M 4.5 - 48 km SW of Semnan, Iran",
+        "place": "48 km SW of Semnan, Iran",
         "magnitude": 4.5,
-        "magnitude_type": "mb"
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 19:15:33"
       }
     },
     {
@@ -3474,16 +690,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.24,
-          46.209666666666664
+          -145.0851,
+          69.3276
         ],
-        "depth": -1.65
+        "depth": 2.0
       },
       "properties": {
-        "title": "M 0.3 - 36 km NNE of Amboy, Washington",
-        "place": "36 km NNE of Amboy, Washington",
-        "magnitude": 0.26,
-        "magnitude_type": "mh"
+        "title": "M 2.8 - 106 km SSW of Kaktovik, Alaska",
+        "place": "106 km SSW of Kaktovik, Alaska",
+        "magnitude": 2.8,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 19:03:19"
       }
     },
     {
@@ -3491,16 +708,539 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -97.888,
-          29.142
+          -145.3715,
+          68.8275
         ],
-        "depth": 8.5419
+        "depth": 0.0
       },
       "properties": {
-        "title": "M 1.8 - 12 km SSE of Stockdale, Texas",
-        "place": "12 km SSE of Stockdale, Texas",
+        "title": "M 2.4 - 78 km N of Arctic Village, Alaska",
+        "place": "78 km N of Arctic Village, Alaska",
+        "magnitude": 2.4,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 19:00:44"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.6298333,
+          33.8465
+        ],
+        "depth": 9.9
+      },
+      "properties": {
+        "title": "M 0.9 - 6 km WSW of Corona, CA",
+        "place": "6 km WSW of Corona, CA",
+        "magnitude": 0.89,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 18:56:54"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.393493652344,
+          19.2684993743896
+        ],
+        "depth": 0.689999997615814
+      },
+      "properties": {
+        "title": "M 1.7 - 11 km NE of P\u0101hala, Hawaii",
+        "place": "11 km NE of P\u0101hala, Hawaii",
+        "magnitude": 1.73000002,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 18:56:39"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.6035,
+          33.1893333
+        ],
+        "depth": 3.08
+      },
+      "properties": {
+        "title": "M 1.4 - 10 km SW of Niland, CA",
+        "place": "10 km SW of Niland, CA",
+        "magnitude": 1.37,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 18:49:29"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -150.6048,
+          61.3752
+        ],
+        "depth": 85.5
+      },
+      "properties": {
+        "title": "M 1.9 - 19 km SSW of Susitna, Alaska",
+        "place": "19 km SSW of Susitna, Alaska",
+        "magnitude": 1.9,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 18:41:37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -149.7479,
+          63.1898
+        ],
+        "depth": 78.2
+      },
+      "properties": {
+        "title": "M 1.9 - 45 km WSW of Cantwell, Alaska",
+        "place": "45 km WSW of Cantwell, Alaska",
+        "magnitude": 1.9,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 18:30:46"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.5786666870117,
+          36.5584983825684
+        ],
+        "depth": 5.01000022888184
+      },
+      "properties": {
+        "title": "M 1.4 - 2 km ESE of Howardville, Missouri",
+        "place": "2 km ESE of Howardville, Missouri",
+        "magnitude": 1.35000002,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 18:15:52"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -176.1515,
+          51.117
+        ],
+        "depth": 25.6
+      },
+      "properties": {
+        "title": "M 3.5 - 90 km SSE of Adak, Alaska",
+        "place": "90 km SSE of Adak, Alaska",
+        "magnitude": 3.5,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 18:15:12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.5796666666667,
+          36.5566666666667
+        ],
+        "depth": 5.0
+      },
+      "properties": {
+        "title": "M 2.1 - 2 km SE of Howardville, Missouri",
+        "place": "2 km SE of Howardville, Missouri",
+        "magnitude": 2.05,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 18:01:56"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.809829711914,
+          38.8263320922852
+        ],
+        "depth": 1.6599999666214
+      },
+      "properties": {
+        "title": "M 1.1 - 7 km NNW of The Geysers, CA",
+        "place": "7 km NNW of The Geysers, CA",
+        "magnitude": 1.11,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 17:42:19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.206832885742,
+          19.2968330383301
+        ],
+        "depth": 6.96000003814697
+      },
+      "properties": {
+        "title": "M 1.8 - 16 km S of Volcano, Hawaii",
+        "place": "16 km S of Volcano, Hawaii",
+        "magnitude": 1.80999994,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 17:34:10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.6163333,
+          32.9193333
+        ],
+        "depth": 16.63
+      },
+      "properties": {
+        "title": "M 1.4 - 9 km NNW of Imperial, CA",
+        "place": "9 km NNW of Imperial, CA",
+        "magnitude": 1.42,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 17:25:49"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -161.7046,
+          54.4484
+        ],
+        "depth": 9.6
+      },
+      "properties": {
+        "title": "M 3.5 - 78 km SSE of King Cove, Alaska",
+        "place": "78 km SSE of King Cove, Alaska",
+        "magnitude": 3.5,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 17:20:20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -150.5148,
+          62.9678
+        ],
+        "depth": 95.8
+      },
+      "properties": {
+        "title": "M 1.6 - 54 km NNE of Petersville, Alaska",
+        "place": "54 km NNE of Petersville, Alaska",
+        "magnitude": 1.6,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 17:09:43"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.609336853027,
+          40.3633346557617
+        ],
+        "depth": 25.8099994659424
+      },
+      "properties": {
+        "title": "M 2.7 - 28 km WNW of Petrolia, CA",
+        "place": "28 km WNW of Petrolia, CA",
+        "magnitude": 2.67,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 16:49:37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -150.4601,
+          63.2783
+        ],
+        "depth": 118.7
+      },
+      "properties": {
+        "title": "M 1.9 - 69 km ESE of Denali National Park, Alaska",
+        "place": "69 km ESE of Denali National Park, Alaska",
+        "magnitude": 1.9,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 16:47:43"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.591666666667,
+          40.3673333333333
+        ],
+        "depth": 25.93
+      },
+      "properties": {
+        "title": "M 3.4 - 26 km WNW of Petrolia, CA",
+        "place": "26 km WNW of Petrolia, CA",
+        "magnitude": 3.43,
+        "magnitude_type": "mw",
+        "utc_time": "2024-10-05 16:24:35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.836334228516,
+          38.8383331298828
+        ],
+        "depth": 1.13999998569489
+      },
+      "properties": {
+        "title": "M 0.3 - 10 km NW of The Geysers, CA",
+        "place": "10 km NW of The Geysers, CA",
+        "magnitude": 0.32,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 16:15:43"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.835830688477,
+          38.8373336791992
+        ],
+        "depth": 1.19000005722046
+      },
+      "properties": {
+        "title": "M 0.5 - 10 km NW of The Geysers, CA",
+        "place": "10 km NW of The Geysers, CA",
+        "magnitude": 0.45,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 16:15:19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -148.8436,
+          62.2204
+        ],
+        "depth": 32.3
+      },
+      "properties": {
+        "title": "M 2.5 - 49 km N of Sutton-Alpine, Alaska",
+        "place": "49 km N of Sutton-Alpine, Alaska",
+        "magnitude": 2.5,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 16:13:46"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -153.0511,
+          60.0332
+        ],
+        "depth": 117.2
+      },
+      "properties": {
+        "title": "M 2.3 - 65 km ENE of Pedro Bay, Alaska",
+        "place": "65 km ENE of Pedro Bay, Alaska",
+        "magnitude": 2.3,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 16:12:02"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -146.5395,
+          61.3463
+        ],
+        "depth": 27.5
+      },
+      "properties": {
+        "title": "M 2.5 - 26 km NNW of Valdez, Alaska",
+        "place": "26 km NNW of Valdez, Alaska",
+        "magnitude": 2.5,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 16:10:32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          174.4207,
+          -41.3377
+        ],
+        "depth": 48.54
+      },
+      "properties": {
+        "title": "M 5.1 - 27 km WSW of Karori, New Zealand",
+        "place": "27 km WSW of Karori, New Zealand",
+        "magnitude": 5.1,
+        "magnitude_type": "mww",
+        "utc_time": "2024-10-05 16:08:55"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.737831115723,
+          38.7978324890137
+        ],
+        "depth": 2.3199999332428
+      },
+      "properties": {
+        "title": "M 0.8 - 3 km NE of The Geysers, CA",
+        "place": "3 km NE of The Geysers, CA",
+        "magnitude": 0.79,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 16:01:10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.80766666666666,
+          47.483666666666664
+        ],
+        "depth": 19.97
+      },
+      "properties": {
+        "title": "M 0.9 - 3 km NNE of Belfair, Washington",
+        "place": "3 km NNE of Belfair, Washington",
+        "magnitude": 0.9400000000000001,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 15:59:43"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.269836425781,
+          19.4236660003662
+        ],
+        "depth": 8.78999996185303
+      },
+      "properties": {
+        "title": "M 2.5 - 4 km WSW of Volcano, Hawaii",
+        "place": "4 km WSW of Volcano, Hawaii",
+        "magnitude": 2.47000003,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 15:40:44"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.1247,
+          11.6489
+        ],
+        "depth": 44.782
+      },
+      "properties": {
+        "title": "M 4.3 - 68 km WSW of Masachapa, Nicaragua",
+        "place": "68 km WSW of Masachapa, Nicaragua",
+        "magnitude": 4.3,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 15:26:19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.7298333,
+          33.5228333
+        ],
+        "depth": 3.55
+      },
+      "properties": {
+        "title": "M 0.2 - 6 km SW of Anza, CA",
+        "place": "6 km SW of Anza, CA",
+        "magnitude": 0.23,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 15:14:22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.479507446289,
+          19.1653327941895
+        ],
+        "depth": 32.0499992370605
+      },
+      "properties": {
+        "title": "M 2.0 - 4 km S of P\u0101hala, Hawaii",
+        "place": "4 km S of P\u0101hala, Hawaii",
+        "magnitude": 1.97000003,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 15:04:52"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.006,
+          31.639
+        ],
+        "depth": 5.9073
+      },
+      "properties": {
+        "title": "M 1.8 - 39 km W of Mentone, Texas",
+        "place": "39 km W of Mentone, Texas",
         "magnitude": 1.8,
-        "magnitude_type": "ml"
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 15:00:49"
       }
     },
     {
@@ -3508,16 +1248,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.18866666666666,
-          46.1935
+          -68.436,
+          -21.7033
         ],
-        "depth": -1.77
+        "depth": 152.757
       },
       "properties": {
-        "title": "M -0.3 - 37 km NNE of Amboy, Washington",
-        "place": "37 km NNE of Amboy, Washington",
-        "magnitude": -0.26,
-        "magnitude_type": "mh"
+        "title": "M 4.2 - 56 km SSW of Ollag\u00fce, Chile",
+        "place": "56 km SSW of Ollag\u00fce, Chile",
+        "magnitude": 4.2,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 14:53:47"
       }
     },
     {
@@ -3525,16 +1266,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.814834594727,
-          38.8456649780273
+          -118.3021667,
+          33.948
         ],
-        "depth": 1.36000001430511
+        "depth": 13.43
       },
       "properties": {
-        "title": "M 0.8 - 8 km WNW of Cobb, CA",
-        "place": "8 km WNW of Cobb, CA",
-        "magnitude": 0.77,
-        "magnitude_type": "md"
+        "title": "M 1.4 - 4 km ESE of Inglewood, CA",
+        "place": "4 km ESE of Inglewood, CA",
+        "magnitude": 1.43,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 14:44:54"
       }
     },
     {
@@ -3542,16 +1284,269 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -151.9973,
-          61.7614
+          -118.3041667,
+          33.9468333
         ],
-        "depth": 80.0
+        "depth": 13.43
       },
       "properties": {
-        "title": "M 1.2 - 40 km SW of Skwentna, Alaska",
-        "place": "40 km SW of Skwentna, Alaska",
+        "title": "M 1.5 - 4 km ESE of Inglewood, CA",
+        "place": "4 km ESE of Inglewood, CA",
+        "magnitude": 1.54,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 14:44:05"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.3331,
+          9.9631
+        ],
+        "depth": 35.0
+      },
+      "properties": {
+        "title": "M 4.9 - 27 km ENE of Pilar, Philippines",
+        "place": "27 km ENE of Pilar, Philippines",
+        "magnitude": 4.9,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 14:40:36"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.305,
+          33.9436667
+        ],
+        "depth": 15.13
+      },
+      "properties": {
+        "title": "M 1.6 - 4 km ESE of Inglewood, CA",
+        "place": "4 km ESE of Inglewood, CA",
+        "magnitude": 1.57,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 14:31:38"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.804664611816,
+          38.8231658935547
+        ],
+        "depth": 1.72000002861023
+      },
+      "properties": {
+        "title": "M 0.9 - 7 km NNW of The Geysers, CA",
+        "place": "7 km NNW of The Geysers, CA",
+        "magnitude": 0.89,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 14:28:37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.7237,
+          36.6233
+        ],
+        "depth": 3.4
+      },
+      "properties": {
+        "title": "M 0.1 - 7 km NW of Indian Springs, Nevada",
+        "place": "7 km NW of Indian Springs, Nevada",
+        "magnitude": 0.1,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 14:00:25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.0628333,
+          33.0818333
+        ],
+        "depth": 9.05
+      },
+      "properties": {
+        "title": "M 0.9 - 9 km SE of Ocotillo Wells, CA",
+        "place": "9 km SE of Ocotillo Wells, CA",
+        "magnitude": 0.92,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 13:43:42"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.990325927734,
+          19.3901672363281
+        ],
+        "depth": 6.6399998664856
+      },
+      "properties": {
+        "title": "M 1.7 - 11 km SW of Leilani Estates, Hawaii",
+        "place": "11 km SW of Leilani Estates, Hawaii",
+        "magnitude": 1.73,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 13:23:54"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.7241666666667,
+          18.8096666666667
+        ],
+        "depth": 40.41
+      },
+      "properties": {
+        "title": "M 3.0 - 36 km N of Carrizales, Puerto Rico",
+        "place": "36 km N of Carrizales, Puerto Rico",
+        "magnitude": 2.98,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 13:16:21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -167.1452,
+          53.2485
+        ],
+        "depth": 53.7
+      },
+      "properties": {
+        "title": "M 2.4 - 80 km SSW of Unalaska, Alaska",
+        "place": "80 km SSW of Unalaska, Alaska",
+        "magnitude": 2.4,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 13:11:12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.435836791992,
+          38.5233345031738
+        ],
+        "depth": 5.92999982833862
+      },
+      "properties": {
+        "title": "M 1.7 - 4 km ENE of Saint Helena, CA",
+        "place": "4 km ENE of Saint Helena, CA",
+        "magnitude": 1.67,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 13:04:58"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.3755,
+          19.1203333333333
+        ],
+        "depth": 43.06
+      },
+      "properties": {
+        "title": "M 2.2 - 14 km SE of P\u0101hala, Hawaii",
+        "place": "14 km SE of P\u0101hala, Hawaii",
+        "magnitude": 2.2,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 12:57:37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -167.1235,
+          53.2363
+        ],
+        "depth": 47.041
+      },
+      "properties": {
+        "title": "M 5.4 - 81 km SSW of Unalaska, Alaska",
+        "place": "81 km SSW of Unalaska, Alaska",
+        "magnitude": 5.4,
+        "magnitude_type": "mww",
+        "utc_time": "2024-10-05 12:50:42"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -166.98,
+          53.0819
+        ],
+        "depth": 35.0
+      },
+      "properties": {
+        "title": "M 5.1 - 93 km SSW of Unalaska, Alaska",
+        "place": "93 km SSW of Unalaska, Alaska",
+        "magnitude": 5.1,
+        "magnitude_type": "mwr",
+        "utc_time": "2024-10-05 12:50:23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9838333,
+          32.4788322
+        ],
+        "depth": 0.42
+      },
+      "properties": {
+        "title": "M 0.9 - 7 km SSE of Tijuana, B.C., MX",
+        "place": "7 km SSE of Tijuana, B.C., MX",
+        "magnitude": 0.87,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 12:47:25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -148.1702,
+          65.4494
+        ],
+        "depth": 0.0
+      },
+      "properties": {
+        "title": "M 1.2 - 19 km ESE of Livengood, Alaska",
+        "place": "19 km ESE of Livengood, Alaska",
         "magnitude": 1.2,
-        "magnitude_type": "ml"
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 12:46:43"
       }
     },
     {
@@ -3559,16 +1554,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -151.8456,
-          61.5547
+          -149.3681,
+          61.2454
         ],
-        "depth": 14.6
+        "depth": 31.3
       },
       "properties": {
-        "title": "M 0.8 - 53 km SSW of Skwentna, Alaska",
-        "place": "53 km SSW of Skwentna, Alaska",
-        "magnitude": 0.8,
-        "magnitude_type": "ml"
+        "title": "M 1.9 - 13 km SE of Eagle River, Alaska",
+        "place": "13 km SE of Eagle River, Alaska",
+        "magnitude": 1.9,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 12:35:53"
       }
     },
     {
@@ -3576,16 +1572,17 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -116.626,
-          33.8861667
+          -147.817,
+          61.3427
         ],
-        "depth": 16.35
+        "depth": 4.5
       },
       "properties": {
-        "title": "M 0.7 - 8 km WSW of Garnet, CA",
-        "place": "8 km WSW of Garnet, CA",
-        "magnitude": 0.74,
-        "magnitude_type": "ml"
+        "title": "M 1.6 - 52 km S of Glacier View, Alaska",
+        "place": "52 km S of Glacier View, Alaska",
+        "magnitude": 1.6,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 12:29:39"
       }
     },
     {
@@ -3593,16 +1590,233 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -150.8831,
-          60.7588
+          -155.944333333333,
+          19.839
         ],
-        "depth": 28.7
+        "depth": 35.51
       },
       "properties": {
-        "title": "M 1.8 - 21 km SSW of Point Possession, Alaska",
-        "place": "21 km SSW of Point Possession, Alaska",
+        "title": "M 1.8 - 12 km NNE of Kalaoa, Hawaii",
+        "place": "12 km NNE of Kalaoa, Hawaii",
+        "magnitude": 1.82,
+        "magnitude_type": "md",
+        "utc_time": "2024-10-05 12:24:37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.6237,
+          39.2286
+        ],
+        "depth": 4.3
+      },
+      "properties": {
+        "title": "M 0.9 - 2 km WSW of Dayton, Nevada",
+        "place": "2 km WSW of Dayton, Nevada",
+        "magnitude": 0.9,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 12:21:13"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -125.5585,
+          40.3975
+        ],
+        "depth": 10.0
+      },
+      "properties": {
+        "title": "M 3.7 - 108 km WNW of Petrolia, CA",
+        "place": "108 km WNW of Petrolia, CA",
+        "magnitude": 3.74,
+        "magnitude_type": "mw",
+        "utc_time": "2024-10-05 12:17:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -31.6445,
+          37.6351
+        ],
+        "depth": 10.0
+      },
+      "properties": {
+        "title": "M 4.8 - 197 km SSW of Lajes das Flores, Portugal",
+        "place": "197 km SSW of Lajes das Flores, Portugal",
+        "magnitude": 4.8,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 12:08:12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.3728333,
+          33.2540016
+        ],
+        "depth": 12.67
+      },
+      "properties": {
+        "title": "M 0.7 - 0 km SE of Borrego Springs, CA",
+        "place": "0 km SE of Borrego Springs, CA",
+        "magnitude": 0.66,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 12:02:33"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.939,
+          31.603
+        ],
+        "depth": 4.3182
+      },
+      "properties": {
+        "title": "M 2.0 - 34 km WSW of Mentone, Texas",
+        "place": "34 km WSW of Mentone, Texas",
+        "magnitude": 2.0,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 11:58:07"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.8288333,
+          34.0025
+        ],
+        "depth": 4.94
+      },
+      "properties": {
+        "title": "M 1.1 - 10 km NNE of Banning, CA",
+        "place": "10 km NNE of Banning, CA",
+        "magnitude": 1.06,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 11:51:32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.7725,
+          33.6865
+        ],
+        "depth": 13.77
+      },
+      "properties": {
+        "title": "M 0.5 - 8 km SW of Idyllwild, CA",
+        "place": "8 km SW of Idyllwild, CA",
+        "magnitude": 0.48,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 11:51:12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.6176667,
+          33.4286667
+        ],
+        "depth": 8.9
+      },
+      "properties": {
+        "title": "M 0.5 - 15 km SSE of Anza, CA",
+        "place": "15 km SSE of Anza, CA",
+        "magnitude": 0.47,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 11:46:51"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -173.4475,
+          -17.3967
+        ],
+        "depth": 40.756
+      },
+      "properties": {
+        "title": "M 5.4 - 150 km NNE of Neiafu, Tonga",
+        "place": "150 km NNE of Neiafu, Tonga",
+        "magnitude": 5.4,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 11:45:30"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -151.3304,
+          63.1949
+        ],
+        "depth": 0.0
+      },
+      "properties": {
+        "title": "M 1.8 - 43 km SSE of Denali National Park, Alaska",
+        "place": "43 km SSE of Denali National Park, Alaska",
         "magnitude": 1.8,
-        "magnitude_type": "ml"
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 11:42:55"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -156.8131,
+          19.8879
+        ],
+        "depth": 14.654
+      },
+      "properties": {
+        "title": "M 2.7 - 88 km WNW of Kalaoa, Hawaii",
+        "place": "88 km WNW of Kalaoa, Hawaii",
+        "magnitude": 2.7,
+        "magnitude_type": "ml",
+        "utc_time": "2024-10-05 11:34:34"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -177.5599,
+          -18.7626
+        ],
+        "depth": 371.448
+      },
+      "properties": {
+        "title": "M 4.5 - Fiji region",
+        "place": "Fiji region",
+        "magnitude": 4.5,
+        "magnitude_type": "mb",
+        "utc_time": "2024-10-05 11:19:10"
       }
     }
   ]

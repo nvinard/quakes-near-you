@@ -8,6 +8,7 @@ class EarthquakeBase(BaseModel):
     depth: float
     place: str
     origin_time: int
+    utc_time: str
     magnitude_type: str
     title: str
     
