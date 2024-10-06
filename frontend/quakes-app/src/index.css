@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #181818; /* Darker background */
+  color: #e0e0e0; /* Light text color for contrast */
 }
 
 code {
@@ -12,15 +14,31 @@ code {
     monospace;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Navbar styling */
+.app-container .navbar-custom {
+  background-color: #1E3A5F; /* Deep blue background for navbar */
+  padding: 10px; /* Padding for navbar */
+}
+
+.app-container .navbar-custom .navbar-brand {
+  color: #ffffff; /* White text for brand */
+  font-size: 1.5em; /* Larger font size for the title */
+}
+
 .map-marker {
   background-image: url('../public/earthquake.png');
   background-size: cover;
   width: 50px; /* Default width */
   height: 50px; /* Default height */
-  border-radius: 50%; /* If using a circular icon */
+  border-radius: 50%; /* Circular icon */
   cursor: pointer;
 }
-
 
 .mapboxgl-popup {
   max-width: 200px;
@@ -31,20 +49,11 @@ code {
   font-family: 'Open Sans', sans-serif;
 }
 
-.table-container {
-  max-height: 40vh; /* Limit the table height */
-  overflow-y: auto; /* Enable scrolling if the table is too tall */
-  border: 1px solid #ddd; /* Optional: Add border around the table container */
-  border-radius: 4px; /* Optional: Rounded corners */
-  margin-top: 20px; /* Spacing above the table */
-}
-
 .map-container {
   height: 60vh; 
   width: 100%;
   position: relative;
   z-index: 1;
-  overflow: visible; /* Ensure scroll events reach the map */
 }
 
 .user-location-marker {
@@ -66,7 +75,7 @@ code {
 }
 
 .sort-button:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #66ccff; /* Lighter blue on hover */
 }
 
 .sort-button:focus {
@@ -74,31 +83,34 @@ code {
 }
 
 .table-hover tbody tr:hover {
-  background-color: #f1f1f1; /* Light gray background on row hover */
+  background-color: #444444; /* Darker hover background for better visibility */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9; /* Alternate row colors */
+  background-color: #3a3a3a; /* Darker alternate row colors */
 }
 
 .table-striped tbody tr:nth-of-type(even) {
-  background-color: #ffffff;
+  background-color: #2c2c2c; /* Slightly lighter for even rows */
 }
 
 .table {
   width: 100%; /* Full width */
   border-collapse: collapse; /* Remove space between borders */
-}
-
-.table th, .table td {
-  padding: 12px; /* Padding for cells */
-  text-align: left; /* Align text to the left */
-  vertical-align: middle; /* Vertically center content */
+  border: 1px solid #555; /* Light border color */
 }
 
 .table th {
-  background-color: #212125; /* Header background color */
-  color: white; /* Header text color */
+  background-color: #2c2c2c; /* Lighter header background for contrast */
+  color: #ffffff; /* White text color */
+  padding: 12px; /* Padding for header cells */
+}
+
+.table td {
+  color: #e0e0e0; /* Light grey text for the table body */
+  padding: 12px; /* Padding for cells */
+  vertical-align: middle; /* Vertically center content */
+  border: 1px solid #555; /* Light border for cells */
 }
 
 @media (max-width: 600px) {
