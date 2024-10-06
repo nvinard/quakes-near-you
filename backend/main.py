@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 import datetime
 
 from database.database import engine, db_dependency
@@ -14,7 +17,8 @@ from geojson.geojson import ToGeojson
 app = FastAPI()
 
 origins = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://quakes-near-me.herokuapp.com'
 ]
 
 app.add_middleware(
@@ -86,3 +90,9 @@ async def save_quakes_to_geojson():
     quake_dict = GeoWriter.read_earthquakes(limit=None)
     data = GeoWriter.dict_to_geojson(quake_dict)
     GeoWriter.save_geojson_to_file(data, "../frontend/quakes-app/public/earthquakes.geojson")
+
+app.mount("/static", StaticFiles(directory="../quakes-app/build/static"), name="static")
+
+@app.get("/")
+async def root():
+    return FileResponse("../quakes-app/build.index.html")
