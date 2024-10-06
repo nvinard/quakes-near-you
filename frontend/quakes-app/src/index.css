@@ -30,11 +30,12 @@ code {
   font-family: 'Open Sans', sans-serif;
 }
 
-
-
 .table-container {
   max-height: 40vh; /* Limit the table height */
   overflow-y: auto; /* Enable scrolling if the table is too tall */
+  border: 1px solid #ddd; /* Optional: Add border around the table container */
+  border-radius: 4px; /* Optional: Rounded corners */
+  margin-top: 20px; /* Spacing above the table */
 }
 
 .map-container {
@@ -52,4 +53,62 @@ code {
   border-radius: 50%;
   border: 2px solid white;
   cursor: pointer;
+}
+
+.sort-button {
+  background: none;
+  border: none;
+  color: #ffffff; /* Button color */
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.sort-button:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.sort-button:focus {
+  outline: none; /* Remove outline on focus */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1; /* Light gray background on row hover */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Alternate row colors */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.table {
+  width: 100%; /* Full width */
+  border-collapse: collapse; /* Remove space between borders */
+}
+
+.table th, .table td {
+  padding: 12px; /* Padding for cells */
+  text-align: left; /* Align text to the left */
+  vertical-align: middle; /* Vertically center content */
+}
+
+.table th {
+  background-color: #212125; /* Header background color */
+  color: white; /* Header text color */
+}
+
+@media (max-width: 600px) {
+  .table {
+    display: block; /* Block layout on small screens */
+    overflow-x: auto; /* Allow horizontal scrolling */
+  }
+}
+
+.header-container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space out elements */
+  align-items: center; /* Center vertically */
 }

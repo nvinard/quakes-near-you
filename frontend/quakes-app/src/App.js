@@ -4,6 +4,8 @@ import './App.css';
 import logo from './quakes_near_me.JPG';
 import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
 import { bbox } from '@turf/turf';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
   const [geojsonData, setGeojsonData] = useState(null);
@@ -17,16 +19,17 @@ const App = () => {
   const [isViewportSet, setIsViewportSet] = useState(false); // To prevent resetting after initial load
   const [userLocation, setUserLocation] = useState(null); // State for user location
 
-  // use pagination for list
+  // Use pagination for list
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10;
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const paginatedData = geojsonData ? geojsonData.features.slice(startIndex, endIndex) : [];
-  
 
-  // Fetch the GeoJSON file
+  // Sorting state
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+
   const fetchGeojson = useCallback(async () => {
     try {
       const response = await fetch('earthquakes.geojson'); // Use correct relative path
@@ -43,19 +46,18 @@ const App = () => {
           latitude: (minLat + maxLat) / 2, // Correct latitude
           longitude: (minLng + maxLng) / 2, // Correct longitude
           zoom: 2, // Adjust zoom level as needed
-          transitionDuration: 1000, // Smooth transition, no FlyToInterpolator
+          transitionDuration: 1000, // Smooth transition
         });
         setIsViewportSet(true); // Mark viewport as set
       }
     } catch (error) {
       console.error('Error loading GeoJSON data:', error);
     }
-  }, [isViewportSet, viewport]); // Add dependencies so it only runs when needed
+  }, [isViewportSet, viewport]); // Add dependencies
 
   useEffect(() => {
     fetchGeojson();
   }, [fetchGeojson]); // Only run fetch once on mount
-
 
   const handleFetchLatestData = async () => {
     try {
@@ -69,22 +71,18 @@ const App = () => {
 
   const saveToGeojson = async () => {
     try {
-      const reponse = await api.get('/save_quakes_to_geojson/');
-      setFetchMessage(reponse.data.message);
+      const response = await api.get('/save_quakes_to_geojson/');
+      setFetchMessage(response.data.message);
     } catch (error) {
-      console.error('Saving to geojon failed: ', error);
-      setFetchMessage("Error saving to Geojson");
+      console.error('Saving to GeoJSON failed: ', error);
+      setFetchMessage("Error saving to GeoJSON");
     }
   };
 
-
   const handleViewportChange = (newViewport) => {
-    console.log("New viewport:", newViewport); // Make sure 'newViewport' is the correct variable
     setViewport(newViewport); // Update the viewport state
   };
 
-  // get user location
-  
   const fetchUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -95,7 +93,7 @@ const App = () => {
             ...prevViewport,
             latitude: latitude,
             longitude: longitude,
-            zoom: 10, // Adjust zoom to show the user's location more clearly
+            zoom: 10, // Adjust zoom to show the user's location
             transitionDuration: 1000, // Smooth transition to user's location
           }));
         },
@@ -108,18 +106,50 @@ const App = () => {
     }
   };
 
-  // functions to handle pagination of table
+  // Functions to handle pagination of table
   const nextPage = () => {
-    if (geojsonData && currentPage < Math.ceil(geojsonData.features.length / itemsPerPage) -1 ) {
+    if (geojsonData && currentPage < Math.ceil(geojsonData.features.length / itemsPerPage) - 1) {
       setCurrentPage(currentPage + 1);
     }
   };
+  
   const previousPage = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
   };
 
+  // Sorting function
+  const onSort = (columnKey) => {
+    let direction = 'ascending';
+    if (sortConfig.key === columnKey && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+    setSortConfig({ key: columnKey, direction });
+  };
+
+  // Sorted and paginated data
+  const sortedData = React.useMemo(() => {
+    if (!geojsonData || !geojsonData.features) return []; // Check if geojsonData is available
+
+    let sortableData = [...geojsonData.features];
+    if (sortConfig.key) {
+      sortableData.sort((a, b) => {
+        const aValue = a.properties[sortConfig.key];
+        const bValue = b.properties[sortConfig.key];
+
+        if (aValue < bValue) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (aValue > bValue) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+
+    return sortableData.slice(startIndex, endIndex);
+  }, [geojsonData, sortConfig, startIndex, endIndex]);
 
   return (
     <div>
@@ -137,7 +167,7 @@ const App = () => {
           <button className='btn btn-primary button custom' onClick={handleFetchLatestData}>
             Fetch latest earthquakes
           </button>
-          <button className='btn btn-primary buttom custom mx-3' onClick={fetchUserLocation}>
+          <button className='btn btn-primary button custom mx-3' onClick={fetchUserLocation}>
             Use my location
           </button>
           <span className='mx-3'>{fetchMessage}</span>
@@ -188,27 +218,103 @@ const App = () => {
         <table className='table table-striped table-bordered table-hover'>
           <thead>
             <tr>
-              <th>Place</th>
-              <th>Magnitude</th>
-              <th>Magnitude Type</th>
-              <th>Longitude</th>
-              <th>Latitude</th>
-              <th>Depth</th>
-              <th>Origin Time (UTC)</th>
+              <th>
+                <div className="header-container">
+                  <span>Place</span>
+                  <button onClick={() => onSort('place')} className="sort-button">
+                    {sortConfig.key === 'place' 
+                      ? (sortConfig.direction === 'ascending' 
+                        ? <FontAwesomeIcon icon={faSortUp} /> 
+                        : <FontAwesomeIcon icon={faSortDown} />) 
+                      : <FontAwesomeIcon icon={faSort} />}
+                  </button>
+               </div>
+              </th>
+              <th>
+                <div className="header-container">
+                  <span>Magnitude</span>
+                  <button onClick={() => onSort('magnitude')} className="sort-button">
+                    {sortConfig.key === 'magnitude' 
+                      ? (sortConfig.direction === 'ascending' 
+                        ? <FontAwesomeIcon icon={faSortUp} /> 
+                        : <FontAwesomeIcon icon={faSortDown} />) 
+                      : <FontAwesomeIcon icon={faSort} />}
+                  </button>
+                </div>
+             </th>
+              <th>
+                <div className="header-container">
+                  <span>Magnitude Type</span>
+                  <button onClick={() => onSort('magnitude_type')} className="sort-button">                  
+                  {sortConfig.key === 'magnitude_type'
+                    ? (sortConfig.direction === 'ascending'
+                     ? <FontAwesomeIcon icon={faSortUp} />
+                     : <FontAwesomeIcon icon={faSortDown} />)
+                    : <FontAwesomeIcon icon={faSort} />}
+                  </button>
+                </div>
+              </th>
+              <th>
+                <div className="header-container">
+                  <span>Longitude</span>
+                  <button onClick={() => onSort('longitude')} className="sort-button">                  
+                  {sortConfig.key === 'longitude'
+                    ? (sortConfig.direction === 'ascending'
+                     ? <FontAwesomeIcon icon={faSortUp} />
+                     : <FontAwesomeIcon icon={faSortDown} />)
+                    : <FontAwesomeIcon icon={faSort} />}
+                  </button>
+                </div>
+              </th>
+              <th>
+                <div className="header-container">
+                  <span>Latitude</span>
+                  <button onClick={() => onSort('latitude')} className="sort-button">                  
+                  {sortConfig.key === 'latitude'
+                    ? (sortConfig.direction === 'ascending'
+                     ? <FontAwesomeIcon icon={faSortUp} />
+                     : <FontAwesomeIcon icon={faSortDown} />)
+                    : <FontAwesomeIcon icon={faSort} />}
+                  </button>
+                </div>
+              </th>
+              <th>
+                <div className="header-container">
+                  <span>Depth </span>
+                  <button onClick={() => onSort('depth')} className="sort-button">                  
+                  {sortConfig.key === 'depth'
+                    ? (sortConfig.direction === 'ascending'
+                     ? <FontAwesomeIcon icon={faSortUp} />
+                     : <FontAwesomeIcon icon={faSortDown} />)
+                    : <FontAwesomeIcon icon={faSort} />}
+                  </button>
+                </div>
+              </th>
+              <th>
+                <div className="header-container">
+                  <span>Origin Time (UTC)</span>
+                  <button onClick={() => onSort('utc_time')} className="sort-button">                  
+                  {sortConfig.key === 'utc_time'
+                    ? (sortConfig.direction === 'ascending'
+                     ? <FontAwesomeIcon icon={faSortUp} />
+                     : <FontAwesomeIcon icon={faSortDown} />)
+                    : <FontAwesomeIcon icon={faSort} />}
+                  </button>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
-            {paginatedData.map((feature, index) => (
+            {sortedData.map((feature, index) => (
               <tr key={index}>
                 <td>{feature.properties.place}</td>
-                <td>{feature.properties.magnitude}</td>
+                <td>{feature.properties.magnitude.toFixed(2)}</td>
                 <td>{feature.properties.magnitude_type}</td>
-                <td>{feature.geometry.coordinates[0]}</td> {/* Longitude */}
-                <td>{feature.geometry.coordinates[1]}</td> {/* Latitude */}
-                <td>{feature.geometry.depth}</td>
+                <td>{feature.geometry.coordinates[0].toFixed(2)}</td> {/* Longitude */}
+                <td>{feature.geometry.coordinates[1].toFixed(2)}</td> {/* Latitude */}
+                <td>{feature.geometry.depth.toFixed(2)}</td>
                 <td>{feature.properties.utc_time}</td>
-                
-            </tr>
+              </tr>
             ))}
           </tbody>
         </table>
@@ -219,10 +325,10 @@ const App = () => {
           </button>
           <button
             onClick={nextPage}
-            disabled={!geojsonData || currentPage >= Math.ceil(geojsonData.features.length / itemsPerPage) -1}
-            >
-              Next
-            </button>
+            disabled={!geojsonData || currentPage >= Math.ceil(geojsonData.features.length / itemsPerPage) - 1}
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
