@@ -4,6 +4,7 @@
     "description": "A web application to visualize recent earthquakes.",
     "main": "index.js",
     "scripts": {
+      "postinstall": "npm install && npm run build",
       "start": "react-scripts start",
       "build": "react-scripts build",
       "test": "react-scripts test",
