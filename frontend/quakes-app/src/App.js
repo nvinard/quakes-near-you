@@ -151,6 +151,21 @@ const App = () => {
     return sortableData.slice(startIndex, endIndex);
   }, [geojsonData, sortConfig, startIndex, endIndex]);
 
+
+  const getMarkerSize = (magnitude) => {
+    if (magnitude < -1.0) return 5;
+    if (magnitude < 0.0) return 10;
+    if (magnitude < 1.0) return 15;
+    if (magnitude < 2.0) return 20;
+    if (magnitude < 3.0) return 30;
+    if (magnitude < 4.0) return 40;
+    if (magnitude < 5.0) return 45;
+    if (magnitude < 6.0) return 50;
+    if (magnitude < 7.0) return 55;
+    if (magnitude < 8.0) return 60;
+    return 70; //
+  };
+
   return (
     <div>
       <nav className='navbar navbar-dark navbar-custom'>
@@ -198,7 +213,16 @@ const App = () => {
                   longitude={feature.geometry.coordinates[0]} // Correct longitude
                   anchor="bottom"
                 >
-                  <div className="map-marker"></div>
+                  <div
+                    className="map-marker"
+                    style={{
+                      width: `${getMarkerSize(feature.properties.magnitude)}px`,
+                      height: `${getMarkerSize(feature.properties.magnitude)}px`, // Unique height based on magnitude
+                      backgroundImage: `url('./earthquake.png')`, // Your icon
+                      backgroundSize: 'cover', // Ensure the image covers the div
+                      borderRadius: '50%', // Circular marker (if desired)
+                    }}
+                  ></div>
                 </Marker>
               )
             ))}
