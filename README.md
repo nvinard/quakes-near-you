@@ -5,5 +5,5 @@ This web app will show the the latest earthquakes that occured in the past 24 ho
 Start the backend:
 navigate to backend and run uvicorn main:app --reload
 
-Start frontend
-Navigate to frontend/quakes-app and run npm start
+Start frontend:
+Navigate to quakes-app and run npm start
