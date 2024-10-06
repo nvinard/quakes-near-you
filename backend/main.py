@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import datetime
+
 from database.database import engine, db_dependency
 from models import models
 from crud import crud
@@ -28,6 +30,10 @@ models.Base.metadata.create_all(bind=engine, checkfirst=True)
 fetcher = Events()
 GeoWriter = ToGeojson()
 
+def ms_to_utc(ts):
+    utc = datetime.datetime.fromtimestamp(ts/1000.0, tz=datetime.timezone.utc)
+    return utc.strftime("%Y-%m-%d %H:%M:%S")
+
 @app.post("/fetch_and_store_fdsn_earthquakes/")
 def fetch_and_store(db: db_dependency):
     data = fetcher.fetch_events("FDSN")
@@ -47,7 +53,8 @@ def fetch_and_store(db: db_dependency):
                 longitude=coordinates[0],
                 depth=coordinates[2],
                 place=properties.get('place', ''),
-                origin_time=properties.get('time', 0) // 1000,
+                origin_time=properties.get('time', 0),
+                utc_time=ms_to_utc(properties.get('time', 0)),
                 magnitude_type=properties.get('magType', ''),
                 title=properties.get('title', '')
             )

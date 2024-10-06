@@ -127,7 +127,7 @@ const App = () => {
         <div className='container-fluid'>
           <a className='navbar-brand' href="/home">
             <img src={logo} alt="Logo" />
-            Earthquakes near me
+            Earthquakes near you
           </a>
         </div>
       </nav>
@@ -153,7 +153,7 @@ const App = () => {
             height="100%" 
             mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
             onMove={(evt) => setViewport(evt.viewState)}
-            mapStyle="mapbox://styles/mapbox/streets-v11"
+            mapStyle="mapbox://styles/mapbox/dark-v11"
             scrollZoom={true}
             doubleClickZoom={true}
             dragPan={true}
@@ -188,25 +188,26 @@ const App = () => {
         <table className='table table-striped table-bordered table-hover'>
           <thead>
             <tr>
+              <th>Place</th>
               <th>Magnitude</th>
               <th>Magnitude Type</th>
               <th>Longitude</th>
               <th>Latitude</th>
               <th>Depth</th>
-              <th>Place</th>
-              <th>Title</th>
+              <th>Origin Time (UTC)</th>
             </tr>
           </thead>
           <tbody>
             {paginatedData.map((feature, index) => (
               <tr key={index}>
+                <td>{feature.properties.place}</td>
                 <td>{feature.properties.magnitude}</td>
                 <td>{feature.properties.magnitude_type}</td>
                 <td>{feature.geometry.coordinates[0]}</td> {/* Longitude */}
                 <td>{feature.geometry.coordinates[1]}</td> {/* Latitude */}
                 <td>{feature.geometry.depth}</td>
-                <td>{feature.properties.place}</td>
-                <td>{feature.properties.title}</td>
+                <td>{feature.properties.utc_time}</td>
+                
             </tr>
             ))}
           </tbody>
