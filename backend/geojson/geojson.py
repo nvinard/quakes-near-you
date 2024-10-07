@@ -2,8 +2,8 @@
 from sqlalchemy import inspect
 from sqlalchemy.orm import Session
 
-from ..models.models import Earthquakes
-from ..database.database import engine, SessionLocal  # Import the centralized engine and session
+from models.models import Earthquakes
+from database.database import engine, SessionLocal  # Import the centralized engine and session
 
 import json
 from datetime import datetime, timedelta
