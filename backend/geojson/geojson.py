@@ -37,8 +37,7 @@ class ToGeojson:
                 print(f"Table '{Earthquakes.__tablename__}' does not exist.")
                 return []
             
-            last_twenty_four_hours = datetime.today() - timedelta(days=1)
-            print("last 24 hours: ", last_twenty_four_hours)
+            last_twenty_four_hours = datetime.today() - timedelta(days=1.0)
             # Query the data
             query = db.query(Earthquakes).filter(Earthquakes.utc_time >= last_twenty_four_hours)
             if skip:
