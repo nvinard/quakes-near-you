@@ -89,10 +89,10 @@ async def read_earthquakes(db: db_dependency, skip: int=0, limit: int=10):
 async def save_quakes_to_geojson():
     quake_dict = GeoWriter.read_earthquakes(limit=None)
     data = GeoWriter.dict_to_geojson(quake_dict)
-    GeoWriter.save_geojson_to_file(data, "../quakes-app/public/earthquakes.geojson")
+    GeoWriter.save_geojson_to_file(data, "../frontend/public/earthquakes.geojson")
 
-app.mount("/static", StaticFiles(directory="../quakes-app/build/static"), name="static")
+app.mount("/static", StaticFiles(directory="../frontend/build/static"), name="static")
 
 @app.get("/")
 async def root():
-    return FileResponse("../quakes-app/build/index.html")
+    return FileResponse("../frontend/build/index.html")
