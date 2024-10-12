@@ -55,3 +55,31 @@
   background-color: #138496;
   border-color: #2caa0d;
 }
+
+.tooltip {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.map-marker {
+  z-index: 1000;  /* Ensure markers are on top */
+  pointer-events: auto;  /* Ensure markers can receive pointer events */
+}
+
+.hover-popup {
+  background-color: #282c34;;  /* Green theme with slight transparency */
+  color: white;  /* White text for readability */
+  padding: 8px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  text-align: center;
+  word-wrap: break-word;  /* Ensure long text wraps within the container */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);  /* Shadow for better visibility */
+  z-index: 1000;  /* Ensure it's above other elements */
+}
