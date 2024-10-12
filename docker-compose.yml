@@ -1,20 +1,28 @@
 services:
-  backend:
-    build:
-      context: ./backend
-    volumes:
-      - ./backend:/app
-    ports:
-      - "8000:8000"
-    command: ["python", "main.py"]
-
   frontend:
     build:
-      context: ./quakes-app
-    volumes:
-      - ./quakes-app:/srv/app/fr-shohin-admin-client
+      context: .
+      dockerfile: ./frontend/frontend.dockerfile
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=development
-    command: ["npm", "start"]
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - quake-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/backend.dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///app/data/quakes_near_me.db
+    networks:
+      - quake-net
+
+networks:
+  quake-net:
+    driver: bridge

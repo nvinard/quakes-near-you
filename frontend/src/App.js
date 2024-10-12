@@ -27,11 +27,15 @@ const App = () => {
 
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
 
+  const [geojsonFetched, setGeojsonFetched] = useState(false);
+
   const fetchGeojson = useCallback(async () => {
     try {
-      const response = await fetch('earthquakes.geojson');
+      const response = await fetch('http://localhost:8000/earthquakes.geojson?v=' + new Date().getTime());
       const data = await response.json();
+      console.log('Fetched GeoJSON data:', data); // Log fetched data
       setGeojsonData(data);
+      setGeojsonFetched(true);
 
       if (data.features && data.features.length > 0 && !isViewportSet) {
         const boundingBox = bbox(data);
@@ -49,7 +53,7 @@ const App = () => {
     } catch (error) {
       console.error('Error loading GeoJSON data:', error);
     }
-  }, [isViewportSet, viewport]);
+  }, [geojsonFetched, isViewportSet, viewport]);
 
   useEffect(() => {
     fetchGeojson();
@@ -59,6 +63,8 @@ const App = () => {
     try {
       const response = await api.post('/fetch_and_store_fdsn_earthquakes/');
       setFetchMessage(response.data.message);
+      setGeojsonFetched(false);
+      fetchGeojson();
     } catch (error) {
       console.error('Error fetching latest data:', error);
       setFetchMessage('Error fetching latest data');
@@ -69,6 +75,8 @@ const App = () => {
     try {
       const response = await api.get('/save_quakes_to_geojson/');
       setFetchMessage(response.data.message);
+
+      await fetchGeojson();
     } catch (error) {
       console.error('Saving to GeoJSON failed: ', error);
       setFetchMessage("Error saving to GeoJSON");
@@ -162,22 +170,15 @@ const App = () => {
         <div className='container-fluid'>
           <a className='navbar-brand' href="/home">
             <img src={logo} alt="Logo" />
-            Earthquakes near you
+            Earthquakes near me
           </a>
         </div>
       </nav>
 
       <div className='container'>
         <div className="d-flex align-items-center my-3">
-          <button className='btn btn-primary button custom' onClick={handleFetchLatestData}>
-            Fetch latest earthquakes
-          </button>
           <button className='btn btn-primary button custom mx-3' onClick={fetchUserLocation}>
             Use my location
-          </button>
-          <span className='mx-3'>{fetchMessage}</span>
-          <button className='btn btn-primary button custom mx-3' onClick={saveToGeojson}>
-            Save data to Geojson
           </button>
         </div>
 

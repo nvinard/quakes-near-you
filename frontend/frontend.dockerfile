@@ -1,27 +1,22 @@
+# Frontend Dockerfile
 FROM node:16.20.2-alpine
 
-# create application directory
-RUN mkdir -p /app
-
+# Create and set working directory
 WORKDIR /app
 
-# copy package and package-json file
-COPY frontend/package*.json ./
-
-# install node packages
+# Copy package files and install dependencies
+COPY ./frontend/package*.json ./
 RUN npm install
 
-COPY frontend/ ./
-
+# Copy the rest of the frontend code and build
+COPY ./frontend ./
 RUN npm run build
 
-# Expose the port the app will run on
-EXPOSE 3000
-
-# Set environment variables
-ENV PORT=3000
-
+# Install 'serve' to serve the build directory
 RUN npm install -g serve
 
-# Command to run the app, serving the built static files
-CMD ["serve", "-s", "build"]
+# Expose the port to match the host
+EXPOSE 3000
+
+# Command to run the app
+CMD ["serve", "-s", "build", "-l", "3000"]

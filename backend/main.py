@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -16,9 +17,12 @@ from geojson.geojson import ToGeojson
 
 app = FastAPI()
 
+#frontend_build_dir = os.path.join(os.path.dirname(__file__), "frontend/build")
+#app.mount("/public", StaticFiles(directory=os.path.join(os.path.dirname(__file__), "../frontend/public")), name="public")
+#app.mount("/static", StaticFiles(directory=frontend_build_dir), name="static")
+
 origins = [
     'http://localhost:3000',
-    'https://quakes-near-me.herokuapp.com'
 ]
 
 app.add_middleware(
@@ -85,14 +89,25 @@ async def read_earthquakes(db: db_dependency, skip: int=0, limit: int=10):
     earthquakes = db.query(models.Earthquakes).offset(skip).limit(limit).all()
     return earthquakes
 
+geojson_file_path = os.path.join(os.path.dirname(__file__), "geojson_files/earthquakes.geojson")
+
 @app.get("/save_quakes_to_geojson/")
 async def save_quakes_to_geojson():
     quake_dict = GeoWriter.read_earthquakes(limit=None)
     data = GeoWriter.dict_to_geojson(quake_dict)
-    GeoWriter.save_geojson_to_file(data, "../frontend/public/earthquakes.geojson")
 
-app.mount("/static", StaticFiles(directory="../frontend/build/static"), name="static")
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(geojson_file_path), exist_ok=True)  # Create if it doesn't exist
+
+    # Save the GeoJSON data
+    GeoWriter.save_geojson_to_file(data, geojson_file_path)
+
+    return {"message": "GeoJSON file saved successfully!"}
+
+@app.get("/earthquakes.geojson")
+async def get_geojson_file():
+    return FileResponse(geojson_file_path)
 
 @app.get("/")
 async def root():
-    return FileResponse("../frontend/build/index.html")
+    return {"message": "Backend is running"}
