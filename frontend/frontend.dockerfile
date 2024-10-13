@@ -8,10 +8,12 @@ WORKDIR /app
 COPY ./frontend/package*.json ./
 RUN npm install
 
-# Copy the rest of the frontend code and build
+# Copy the rest of the frontend code
 COPY ./frontend ./
-#RUN npm run build
-RUN node --max-old-space-size=4096 node_modules/.bin/npm run build
+
+# Ensure that the path to npm is correct and run the build with increased memory
+RUN npm install -g npm && \
+    node --max-old-space-size=4096 $(npm bin)/npm run build
 
 # Install 'serve' to serve the build directory
 RUN npm install -g serve
