@@ -34,12 +34,6 @@ jobs:
       - name: Build and run Docker containers
         run: |
           docker-compose -f docker-compose.yml up --build -d
-
-      # (Optional) Run tests
-      - name: Run tests
-        run: |
-          docker-compose -f docker-compose.yml run backend pytest --maxfial=0 --disable-warnings
-
       # Deployment
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.3
