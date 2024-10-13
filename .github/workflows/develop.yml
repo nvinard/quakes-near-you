@@ -39,3 +39,13 @@ jobs:
       - name: Run tests
         run: |
           docker-compose -f docker-compose.yml run backend pytest
+
+      # Deployment
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_Key }}
+
+      - name: Deploy to Development Server
+        run: | 
+          ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-instance-public-ip 'cd quakes-near-you && git pull && docker-compose -f docker-compose.yml pull && docker-compose up -d'
