@@ -1,0 +1,53 @@
+name: CI/CD Pipeline for Development
+
+on:
+  push:
+    branches:
+      - develop  # Triggers pipeline when code is pushed to 'develop'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository's code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Docker
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+
+      # Install Docker Compose
+      - name: Install Docker Compose
+        run: |
+          curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version  # Verify installation
+
+      - name: Create .env file
+        run: |
+          cp .env.local .env || echo "No .env.local found, creating empty .env file"
+          ls -al  # List the files to verify the .env exists
+
+      # Build and run Docker containers for development
+      - name: Build and run Docker containers
+        run: |
+          docker-compose -f docker-compose.yml up --build -d
+
+      # Deployment
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_Key }}
+
+      - name: Deploy to Development Server
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 << 'EOF'
+            cd quakes-near-you
+            echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
+            echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env
+            git pull
+            docker-compose -f docker-compose.yml pull
+            docker-compose up -d
+          EOF

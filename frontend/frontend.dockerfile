@@ -1,5 +1,5 @@
 # Frontend Dockerfile
-FROM node:16.20.2-alpine
+FROM node:18.18.0-alpine
 
 # Create and set working directory
 WORKDIR /app
@@ -8,10 +8,14 @@ WORKDIR /app
 COPY ./frontend/package*.json ./
 RUN npm install
 
-# Copy the rest of the frontend code and build
+# Copy the rest of the frontend code
 COPY ./frontend ./
+
+# Increase Node.js memory limit globally - may not longer be required
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+# Run the build
 RUN npm run build
-#node --max-old-space-size=2048 node_modules/.bin/npm run build
 
 # Install 'serve' to serve the build directory
 RUN npm install -g serve
