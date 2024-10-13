@@ -10,8 +10,8 @@ RUN npm install
 
 # Copy the rest of the frontend code and build
 COPY ./frontend ./
-RUN npm run build
-#node --max-old-space-size=2048 node_modules/.bin/npm run build
+#RUN npm run build
+RUN node --max-old-space-size=4096 node_modules/.bin/npm run build
 
 # Install 'serve' to serve the build directory
 RUN npm install -g serve
