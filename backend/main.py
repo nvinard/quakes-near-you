@@ -19,7 +19,6 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 
 
-
 app = FastAPI()
 
 #frontend_build_dir = os.path.join(os.path.dirname(__file__), "frontend/build")
