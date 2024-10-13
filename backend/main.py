@@ -6,7 +6,7 @@ from fastapi.responses import FileResponse
 
 import datetime
 
-from database.database import engine, db_dependency
+from database.database import engine, db_dependency, SessionLocal
 from models import models
 from crud import crud
 from schemas import schemas
@@ -14,6 +14,10 @@ from typing import List
 
 from external_data.events import Events
 from geojson.geojson import ToGeojson
+
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.interval import IntervalTrigger
+
 
 app = FastAPI()
 
@@ -23,6 +27,8 @@ app = FastAPI()
 
 origins = [
     'http://localhost:3000',
+    'https://quakesnearme.com',
+    'http://quakesnearme.com',
 ]
 
 app.add_middleware(
@@ -111,3 +117,65 @@ async def get_geojson_file():
 @app.get("/")
 async def root():
     return {"message": "Backend is running"}
+
+def fetch_and_generate():
+    data = fetcher.fetch_events("FDSN")
+    features = data.get("features", [])
+    
+    # Manually create a new database session
+    db = SessionLocal()
+    try:
+        # Store in the database
+        for item in features:
+            try:
+                coordinates = item.get('geometry', {}).get('coordinates', [0, 0, 0])
+                properties = item.get('properties', {})
+
+                earthquake_data = schemas.EarthquakeBase(
+                    id=item.get('id', ''),
+                    magnitude=properties.get('mag', 0.0),
+                    latitude=coordinates[1],
+                    longitude=coordinates[0],
+                    depth=coordinates[2],
+                    place=properties.get('place', ''),
+                    origin_time=properties.get('time', 0),
+                    utc_time=ms_to_utc(properties.get('time', 0)),
+                    magnitude_type=properties.get('magType', ''),
+                    title=properties.get('title', '')
+                )
+
+                crud.create_or_update_earthquake(db, earthquake_data)
+            except Exception as e:
+                print(f"Error processing earthquake ID {item.get('id')}: {e}")
+                continue
+
+        db.commit()
+
+        # Generate and save GeoJSON
+        quake_dict = GeoWriter.read_earthquakes(limit=None)
+        data = GeoWriter.dict_to_geojson(quake_dict)
+
+        geojson_file_path = os.path.join(os.path.dirname(__file__), "geojson_files/earthquakes.geojson")
+        os.makedirs(os.path.dirname(geojson_file_path), exist_ok=True)
+        GeoWriter.save_geojson_to_file(data, geojson_file_path)
+        print("GeoJSON file updated")
+    
+    finally:
+        db.close()  # Always close the database session
+# Initialize scheduler
+scheduler = BackgroundScheduler()
+scheduler.start()
+
+# Schedule the job to run once per hour
+scheduler.add_job(
+    fetch_and_generate,
+    trigger=IntervalTrigger(hours=1),
+    id='fetch_and_generate_job',
+    name='Fetch earthquake data and update GeoJSON every hour',
+    replace_existing=True
+)
+
+# Shutdown scheduler when app shuts down
+@app.on_event("shutdown")
+def shutdown_event():
+    scheduler.shutdown()

@@ -59,3 +59,4 @@ watchfiles==0.22.0
 websockets==12.0
 gunicorn==23.0.0
 pytest
+APScheduler==3.8.1
