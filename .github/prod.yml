@@ -43,7 +43,7 @@ jobs:
 
       - name: Deploy to Production Server
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@3.140.216.75 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 << 'EOF'
             cd quakes-near-you
             echo "DATABASE_URL=${{ secrets.PROD_DATABASE_URL }}" >> .env
             echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" >> .env
