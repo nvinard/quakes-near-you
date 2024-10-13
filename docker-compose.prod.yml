@@ -27,6 +27,7 @@ services:
       - quake-net
     volumes:
       - ./backend/data:/app/data  # Ensure data is persisted across container restarts
+      - ./backend/geojson_files:/app/backend/geojson_files
     restart: always  # Ensure the service restarts in case of failure
 
 networks:
