@@ -11,8 +11,8 @@ RUN npm install
 # Copy the rest of the frontend code
 COPY ./frontend ./
 
-# Set memory limit via environment variable
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+# Increase Node.js memory limit globally
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 # Run the build
 RUN npm run build
