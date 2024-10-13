@@ -3,8 +3,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-
 import datetime
+import time
+import threading  # This will allow the job to run without blocking FastAPI
 
 from database.database import engine, db_dependency, SessionLocal
 from models import models
@@ -14,14 +15,8 @@ from typing import List
 
 from external_data.events import Events
 from geojson.geojson import ToGeojson
-import time
-
 
 app = FastAPI()
-
-#frontend_build_dir = os.path.join(os.path.dirname(__file__), "frontend/build")
-#app.mount("/public", StaticFiles(directory=os.path.join(os.path.dirname(__file__), "../frontend/public")), name="public")
-#app.mount("/static", StaticFiles(directory=frontend_build_dir), name="static")
 
 origins = [
     'http://localhost:3000',
@@ -43,7 +38,7 @@ fetcher = Events()
 GeoWriter = ToGeojson()
 
 def ms_to_utc(ts):
-    utc = datetime.datetime.fromtimestamp(ts/1000.0, tz=datetime.timezone.utc)
+    utc = datetime.datetime.fromtimestamp(ts / 1000.0, tz=datetime.timezone.utc)
     return utc.strftime("%Y-%m-%d %H:%M:%S")
 
 @app.post("/fetch_and_store_fdsn_earthquakes/")
@@ -161,8 +156,17 @@ def fetch_and_generate():
     finally:
         db.close()  # Always close the database session
 
-if __name__ == "__main__":
+# Run the job every hour in the background
+def start_background_job():
     while True:
         fetch_and_generate()
         print(f"Task executed at {datetime.datetime.now()}. Waiting for the next run...")
         time.sleep(3600)  # Wait for 1 hour (3600 seconds) before running again
+
+# Use FastAPI's startup event to trigger the background job
+@app.on_event("startup")
+def startup_event():
+    thread = threading.Thread(target=start_background_job)
+    thread.start()
+
+# No need for a blocking while loop in the main script now
