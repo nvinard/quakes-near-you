@@ -169,7 +169,7 @@ scheduler.start()
 # Schedule the job to run once per hour
 scheduler.add_job(
     fetch_and_generate,
-    trigger=IntervalTrigger(hours=1, timezone=None),
+    trigger=IntervalTrigger(hours=1, timezone=datetime.timezone.utc),
     id='fetch_and_generate_job',
     name='Fetch earthquake data and update GeoJSON every hour',
     replace_existing=True
