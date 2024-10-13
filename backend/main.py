@@ -16,7 +16,7 @@ from external_data.events import Events
 from geojson.geojson import ToGeojson
 
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.interval import IntervalTrigger
+from apscheduler.triggers.cron import CronTrigger
 
 
 app = FastAPI()
@@ -169,7 +169,7 @@ scheduler.start()
 # Schedule the job to run once per hour
 scheduler.add_job(
     fetch_and_generate,
-    trigger=IntervalTrigger(hours=1),
+    trigger=CronTrigger(minute=0),
     id='fetch_and_generate_job',
     name='Fetch earthquake data and update GeoJSON every hour',
     replace_existing=True
