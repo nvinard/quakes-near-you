@@ -25,15 +25,11 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version  # Verify installation
 
-      - name: Create .env file
-        run: |
-          cp .env.local .env  # or create a .env file with needed values
-          ls -al  # List the files to verify the .env exists
-
       # Build and run Docker containers for development
       - name: Build and run Docker containers
         run: |
           docker-compose -f docker-compose.yml up --build -d
+
       # Deployment
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.3
@@ -42,4 +38,10 @@ jobs:
 
       - name: Deploy to Development Server
         run: | 
-          ssh -o StrictHostKeyChecking=no ec2-user@3.140.216.75 'cd quakes-near-you && git pull && docker-compose -f docker-compose.yml pull && docker-compose up -d'
+          ssh -o StrictHostKeyChecking=no ec2-user@3.140.216.75 '
+          cd quakes-near-you &&
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env &&
+          echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env &&
+          git pull &&
+          docker-compose -f docker-compose.yml pull &&
+          docker-compose up -d'
