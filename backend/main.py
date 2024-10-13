@@ -112,62 +112,13 @@ async def get_geojson_file():
 async def root():
     return {"message": "Backend is running"}
 
-def fetch_and_generate():
-    data = fetcher.fetch_events("FDSN")
-    features = data.get("features", [])
-    
-    # Manually create a new database session
-    db = SessionLocal()
-    try:
-        # Store in the database
-        for item in features:
-            try:
-                coordinates = item.get('geometry', {}).get('coordinates', [0, 0, 0])
-                properties = item.get('properties', {})
 
-                earthquake_data = schemas.EarthquakeBase(
-                    id=item.get('id', ''),
-                    magnitude=properties.get('mag', 0.0),
-                    latitude=coordinates[1],
-                    longitude=coordinates[0],
-                    depth=coordinates[2],
-                    place=properties.get('place', ''),
-                    origin_time=properties.get('time', 0),
-                    utc_time=ms_to_utc(properties.get('time', 0)),
-                    magnitude_type=properties.get('magType', ''),
-                    title=properties.get('title', '')
-                )
-
-                crud.create_or_update_earthquake(db, earthquake_data)
-            except Exception as e:
-                print(f"Error processing earthquake ID {item.get('id')}: {e}")
-                continue
-
-        db.commit()
-
-        # Generate and save GeoJSON
-        quake_dict = GeoWriter.read_earthquakes(limit=None)
-        data = GeoWriter.dict_to_geojson(quake_dict)
-
-        geojson_file_path = os.path.join(os.path.dirname(__file__), "geojson_files/earthquakes.geojson")
-        os.makedirs(os.path.dirname(geojson_file_path), exist_ok=True)
-        GeoWriter.save_geojson_to_file(data, geojson_file_path)
-        print("GeoJSON file updated")
-    
-    finally:
-        db.close()  # Always close the database session
-
-# Run the job every hour in the background
-def start_background_job():
-    while True:
-        fetch_and_generate()
-        print(f"Task executed at {datetime.datetime.now()}. Waiting for the next run...")
-        time.sleep(3600)  # Wait for 1 hour (3600 seconds) before running again
-
-# Use FastAPI's startup event to trigger the background job
 @app.on_event("startup")
-def startup_event():
-    thread = threading.Thread(target=start_background_job)
-    thread.start()
+async def startup_event():
+    print("Calling fetch_and_store_fdsn_earthquakes API...")
+    with SessionLocal() as db:
+        fetch_and_store(db)
 
-# No need for a blocking while loop in the main script now
+    print("Calling save_quakes_to_geojson API...")
+    await save_quakes_to_geojson()
+    print("API calls completed.")
