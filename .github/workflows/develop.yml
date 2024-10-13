@@ -42,16 +42,12 @@ jobs:
           ssh-private-key: ${{ secrets.EC2_SSH_Key }}
 
       - name: Deploy to Development Server
-        run: | 
-          ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 '
-          cd quakes-near-you &&
-          # Clean old Docker images (optional)
-          docker system prune -f &&
-          # Add environment variables if they don't already exist
-          grep -qxF "DATABASE_URL=${{ secrets.DATABASE_URL }}" .env || echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env &&
-          grep -qxF "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" .env || echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env &&
-          git pull &&
-          # Pull new images
-          docker-compose -f docker-compose.yml pull &&
-          # Bring up the updated containers
-          docker-compose up -d'
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 << 'EOF'
+            cd quakes-near-you
+            echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
+            echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env
+            git pull
+            docker-compose -f docker-compose.yml pull
+            docker-compose up -d
+          EOF
