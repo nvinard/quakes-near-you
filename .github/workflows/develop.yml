@@ -25,11 +25,15 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version  # Verify installation
 
+      - name: Create .env file
+        run: |
+          cp .env.local .env  # or create a .env file with needed values
+          ls -al  # List the files to verify the .env exists
+
       # Build and run Docker containers for development
       - name: Build and run Docker containers
         run: |
           docker-compose -f docker-compose.yml up --build -d
-
       # Deployment
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.3
