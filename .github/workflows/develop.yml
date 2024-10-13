@@ -27,13 +27,14 @@ jobs:
 
       - name: Create .env file
         run: |
-          cp .env.local .env  # or create a .env file with needed values
+          cp .env.local .env || echo "No .env.local found, creating empty .env file"
           ls -al  # List the files to verify the .env exists
 
       # Build and run Docker containers for development
       - name: Build and run Docker containers
         run: |
           docker-compose -f docker-compose.yml up --build -d
+
       # Deployment
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.3
@@ -44,8 +45,13 @@ jobs:
         run: | 
           ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 '
           cd quakes-near-you &&
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env &&
-          echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env &&
+          # Clean old Docker images (optional)
+          docker system prune -f &&
+          # Add environment variables if they don't already exist
+          grep -qxF "DATABASE_URL=${{ secrets.DATABASE_URL }}" .env || echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env &&
+          grep -qxF "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" .env || echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env &&
           git pull &&
+          # Pull new images
           docker-compose -f docker-compose.yml pull &&
+          # Bring up the updated containers
           docker-compose up -d'
