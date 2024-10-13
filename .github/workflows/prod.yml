@@ -39,7 +39,7 @@ jobs:
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.PROD_SSH_Key }}
+          ssh-private-key: ${{ secrets.EC2_SSH_Key }}
 
       - name: Deploy to Production Server
         run: |
