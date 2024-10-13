@@ -1,0 +1,34 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/frontend.dockerfile
+    ports:
+      - "80:3000"  # Map port 3000 in container to port 80 for production
+    env_file:
+      - .env
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL}  # Using environment variable for API URL in production
+    depends_on:
+      - backend
+    networks:
+      - quake-net
+    restart: always  # Ensure the service restarts in case of failure
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/backend.dockerfile
+    ports:
+      - "8000:8000"  # Expose the backend on port 8000
+    environment:
+      - DATABASE_URL=${DATABASE_URL}  # Use environment variable for database URL in production
+    networks:
+      - quake-net
+    volumes:
+      - ./backend/data:/app/data  # Ensure data is persisted across container restarts
+    restart: always  # Ensure the service restarts in case of failure
+
+networks:
+  quake-net:
+    driver: bridge
