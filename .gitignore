@@ -1,2 +1,4 @@
 .env
+.env.local
+.env.production
 quakes-pair-name.pem

@@ -3,6 +3,8 @@ FROM python:3.11.9
 # Set working directory
 WORKDIR /app
 
+RUN pip install --upgrade pip
+
 # Copy requirements and install dependencies
 COPY ./backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
