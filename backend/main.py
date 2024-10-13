@@ -37,6 +37,7 @@ models.Base.metadata.create_all(bind=engine, checkfirst=True)
 fetcher = Events()
 GeoWriter = ToGeojson()
 
+
 def ms_to_utc(ts):
     utc = datetime.datetime.fromtimestamp(ts / 1000.0, tz=datetime.timezone.utc)
     return utc.strftime("%Y-%m-%d %H:%M:%S")
