@@ -14,9 +14,7 @@ from typing import List
 
 from external_data.events import Events
 from geojson.geojson import ToGeojson
-
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.cron import CronTrigger
+import time
 
 
 app = FastAPI()
@@ -162,20 +160,9 @@ def fetch_and_generate():
     
     finally:
         db.close()  # Always close the database session
-# Initialize scheduler
-scheduler = BackgroundScheduler()
-scheduler.start()
 
-# Schedule the job to run once per hour
-scheduler.add_job(
-    fetch_and_generate,
-    trigger=CronTrigger(minute=0),
-    id='fetch_and_generate_job',
-    name='Fetch earthquake data and update GeoJSON every hour',
-    replace_existing=True
-)
-
-# Shutdown scheduler when app shuts down
-@app.on_event("shutdown")
-def shutdown_event():
-    scheduler.shutdown()
+if __name__ == "__main__":
+    while True:
+        fetch_and_generate()
+        print(f"Task executed at {datetime.datetime.now()}. Waiting for the next run...")
+        time.sleep(3600)  # Wait for 1 hour (3600 seconds) before running again
