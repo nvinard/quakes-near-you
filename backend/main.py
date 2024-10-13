@@ -17,6 +17,7 @@ from geojson.geojson import ToGeojson
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
+from pytz import utc
 
 
 app = FastAPI()
@@ -163,7 +164,7 @@ def fetch_and_generate():
     finally:
         db.close()  # Always close the database session
 # Initialize scheduler
-scheduler = BackgroundScheduler()
+scheduler = BackgroundScheduler(timezone=utc)
 scheduler.start()
 
 # Schedule the job to run once per hour
