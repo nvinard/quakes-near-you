@@ -25,27 +25,29 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version  # Verify installation
 
-      # Prepare Environment File (Optional)
-      - name: Create .env file (optional)
+      - name: Create .env file
         run: |
-          cp .env.production .env  # Ensure production environment variables
-          ls -al  # Verify that the .env exists
+          cp .env.production .env  # Use production environment variables
+          ls -al  # List the files to verify the .env exists
 
-      # Add SSH key for deployment
+      # Build and run Docker containers for production
+      - name: Build and run Docker containers
+        run: |
+          docker-compose -f docker-compose.prod.yml up --build -d  # Use production Docker Compose file
+
+      # Deployment to production server
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_Key }}
 
-      # Deploy to Production Server
       - name: Deploy to Production Server
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 << 'EOF'
             cd quakes-near-you
-            git pull origin master  # Pull the latest code from the master branch
-            echo "DATABASE_URL=${{ secrets.PROD_DATABASE_URL }}" > .env  # Recreate .env file
+            echo "DATABASE_URL=${{ secrets.PROD_DATABASE_URL }}" >> .env
             echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" >> .env
-            docker-compose -f docker-compose.prod.yml pull  # Pull latest images
-            docker-compose -f docker-compose.prod.yml up --build -d  # Build and restart containers
-            docker system prune -f  # Clean up unused Docker objects
+            git pull
+            docker-compose -f docker-compose.prod.yml pull
+            docker-compose up -d
           EOF
