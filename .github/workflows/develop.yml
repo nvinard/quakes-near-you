@@ -38,7 +38,7 @@ jobs:
       # (Optional) Run tests
       - name: Run tests
         run: |
-          docker-compose -f docker-compose.yml run backend pytest
+          docker-compose -f docker-compose.yml run backend pytest --maxfial=0 --disable-warnings
 
       # Deployment
       - name: Add SSH key
@@ -48,4 +48,4 @@ jobs:
 
       - name: Deploy to Development Server
         run: | 
-          ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-instance-public-ip 'cd quakes-near-you && git pull && docker-compose -f docker-compose.yml pull && docker-compose up -d'
+          ssh -o StrictHostKeyChecking=no ec2-user@3.140.216.75 'cd quakes-near-you && git pull && docker-compose -f docker-compose.yml pull && docker-compose up -d'
