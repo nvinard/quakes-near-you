@@ -11,8 +11,11 @@ RUN npm install
 # Copy the rest of the frontend code
 COPY ./frontend ./
 
-# Run the build with increased memory limit
-RUN node --max-old-space-size=4096 npm run build
+# Set memory limit via environment variable
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+# Run the build
+RUN npm run build
 
 # Install 'serve' to serve the build directory
 RUN npm install -g serve
