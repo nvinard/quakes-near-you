@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy to Development Server
         run: | 
-          ssh -o StrictHostKeyChecking=no ec2-user@3.140.216.75 '
+          ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 '
           cd quakes-near-you &&
           echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env &&
           echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env &&
