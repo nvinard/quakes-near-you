@@ -13,6 +13,7 @@
 .DS_Store
 .env
 .env.dev
+.env.local
 !.env.production  # Allow .env.production to be committed
 
 npm-debug.log*
