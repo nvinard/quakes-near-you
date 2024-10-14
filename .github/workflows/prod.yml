@@ -31,10 +31,6 @@ jobs:
           echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" > ./frontend/.env.production
           echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}" >> ./frontend/.env.production
 
-      # Debugging step to check .env.production file
-      - name: Debugging .env.production file
-        run: cat ./frontend/app/.env.production
-
       # Build and run Docker containers for production
       - name: Build and run Docker containers
         run: |
