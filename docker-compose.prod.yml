@@ -6,9 +6,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - .env.production
-    environment:
-      - REACT_APP_API_URL=https://quakesnearme.com/api  # Using environment variable for API URL in production
+      - ./frontend/.env.production  # Correct path for .env.production in the frontend folder
     depends_on:
       - backend
     networks:
@@ -22,7 +20,7 @@ services:
     ports:
       - "8000:8000"  # Expose the backend on port 8000
     environment:
-      - DATABASE_URL=${DATABASE_URL}  # Use environment variable for database URL in production
+      - DATABASE_URL=${DATABASE_URL}  # Ensure DATABASE_URL is passed from .env or the host
     networks:
       - quake-net
     volumes:
