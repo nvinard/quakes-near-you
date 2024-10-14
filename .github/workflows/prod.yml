@@ -28,8 +28,8 @@ jobs:
       # Create .env.production for frontend (add Mapbox token and API URL)
       - name: Set up .env.production in frontend
         run: |
-          echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" > ./app/.env.production
-          echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}" >> ./app/.env.production
+          echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" > ./frontend/.env.production
+          echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}" >> ./frontend/.env.production
 
       # Debugging step to check .env.production file
       - name: Debugging .env.production file
