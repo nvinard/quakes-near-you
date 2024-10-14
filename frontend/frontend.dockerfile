@@ -8,10 +8,10 @@ WORKDIR /app
 COPY ./frontend/package*.json ./
 RUN npm install
 
-# Copy the rest of the frontend code (this includes the .env.production file if it's created in the GitHub Actions workflow)
+# Copy the rest of the frontend code
 COPY ./frontend ./
 
-# Increase Node.js memory limit globally - may not longer be required
+# Increase Node.js memory limit globally (optional)
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 # Run the build
