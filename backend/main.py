@@ -104,7 +104,7 @@ async def save_quakes_to_geojson():
 
     return {"message": "GeoJSON file saved successfully!"}
 
-@app.get("/earthquakes.geojson")
+@app.get("/api/earthquakes.geojson")
 async def get_geojson_file():
     return FileResponse(geojson_file_path)
 
