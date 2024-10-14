@@ -11,8 +11,6 @@ RUN npm install
 # Copy the rest of the frontend code
 COPY ./frontend ./
 
-COPY ./frontend/.env.production /app/frontend/.env.production
-
 # Increase Node.js memory limit globally - may not longer be required
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
