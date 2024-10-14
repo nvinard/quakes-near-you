@@ -30,9 +30,8 @@ jobs:
         run: |
           echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" > ./frontend/.env.production
           echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}" >> ./frontend/.env.production
-          echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}" > ./frontend/.env
-          echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" >> ./frontend/.env
 
+      # Debugging step to check .env.production file
       - name: Debugging .env.production file
         run: cat ./frontend/.env.production
 
