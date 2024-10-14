@@ -33,6 +33,7 @@ jobs:
       # Build and run Docker containers for production
       - name: Build and run Docker containers
         run: |
+          docker-compose -f docker-compose.prod.yml down  # Stop any existing container
           docker-compose -f docker-compose.prod.yml up --build -d  # Use production Docker Compose file
 
       # Deployment to production server
@@ -48,6 +49,6 @@ jobs:
             echo "DATABASE_URL=${{ secrets.PROD_DATABASE_URL }}" >> .env
             echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" >> .env
             git pull
-            docker-compose -f docker-compose.prod.yml pull
-            docker-compose up -d
+            docker-compose -f docker-compose.prod.yml down  # Stop existing containers
+            docker-compose -f docker-compose.prod.yml up --build -d  # Rebuild and deploy the updated containers
           EOF
