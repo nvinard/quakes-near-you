@@ -30,6 +30,7 @@ jobs:
         run: |
           echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" > ./frontend/.env.production
           echo "REACT_APP_MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }}" >> ./frontend/.env.production
+          ls -al  # List the files to verify the .env exists
 
       - name: Verify .env.production file
         run: |
@@ -53,7 +54,9 @@ jobs:
           ssh -o StrictHostKeyChecking=no ec2-user@3.23.177.89 << 'EOF'
             cd quakes-near-you
             echo "DATABASE_URL=${{ secrets.PROD_DATABASE_URL }}" >> .env  # Backend uses root-level .env
+            echo "REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}" >> .env
             git pull
             docker-compose -f docker-compose.prod.yml down  # Stop existing containers
-            docker-compose -f docker-compose.prod.yml up --build -d  # Rebuild and deploy the updated containers
+            docker-compose -f docker-compose.prod.yml pull
+            docker-compose up -d
           EOF

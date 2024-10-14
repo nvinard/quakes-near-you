@@ -7,6 +7,8 @@ services:
       - "3000:3000"
     env_file:
       - ./frontend/.env.production  # Correct path for .env.production in the frontend folder
+    environment:
+      - REACT_APP_API_URL=https://quakesnearme.com/api  # Using environment variable for API URL in production
     depends_on:
       - backend
     networks:
