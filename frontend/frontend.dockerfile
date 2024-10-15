@@ -10,11 +10,12 @@ RUN npm install
 # Copy the rest of the frontend code
 COPY ./frontend ./
 
-# Explicitly copy .env.production into the container
-COPY ./frontend/.env.production ./
-
 # Increase Node.js memory limit globally
 ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+# Set the environment variable for build time
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
 # Run the build
 RUN npm run build

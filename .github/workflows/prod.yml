@@ -41,6 +41,7 @@ jobs:
       - name: Build and run Docker containers
         run: |
           docker-compose -f docker-compose.prod.yml down  # Stop any existing container
+          docker-compose -f docker-compose.prod.yml build --build-arg REACT_APP_API_URL=${{ secrets.PROD_REACT_APP_API_URL }}
           docker-compose -f docker-compose.prod.yml up --build -d  # Use production Docker Compose file
 
       # Deployment to production server
