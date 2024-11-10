@@ -90,7 +90,7 @@ async def read_earthquakes(db: db_dependency, skip: int=0, limit: int=10):
     return earthquakes
 
 geojson_file_path = os.path.join(os.path.dirname(__file__), "geojson_files/earthquakes.geojson")
-
+print(geojson_file_path)
 @app.get("/save_quakes_to_geojson/")
 async def save_quakes_to_geojson():
     quake_dict = GeoWriter.read_earthquakes(limit=None)
@@ -98,6 +98,7 @@ async def save_quakes_to_geojson():
 
     # Ensure the directory exists
     os.makedirs(os.path.dirname(geojson_file_path), exist_ok=True)  # Create if it doesn't exist
+    print(geojson_file_path)
 
     # Save the GeoJSON data
     GeoWriter.save_geojson_to_file(data, geojson_file_path)
