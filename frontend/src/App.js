@@ -33,7 +33,7 @@ const App = () => {
   const fetchGeojson = useCallback(async () => {
     if (!geojsonFetched) {  // Prevent multiple fetches
       try {
-        const response = await fetch('http://localhost:8000/earthquakes.geojson?v=' + new Date().getTime());
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/earthquakes.geojson?v=` + new Date().getTime());
         const data = await response.json();
         setGeojsonData(data);
         setGeojsonFetched(true);
