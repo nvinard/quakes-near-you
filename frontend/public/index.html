@@ -34,6 +34,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    
+    <!-- Inject runtime environment variable for the API URL -->
+    <script>
+      window.REACT_APP_API_URL = "%REACT_APP_API_URL%";
+    </script>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

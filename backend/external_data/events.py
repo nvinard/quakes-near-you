@@ -3,9 +3,8 @@ import requests
 
 class Events:
     def __init__(self):
-        self.end_time = datetime.today().strftime('%Y-%m-%d')
-        self.start_time = datetime.today() - timedelta(days=1)
-        self.start_time = self.start_time.strftime('%Y-%m-%d')
+        self.end_time = datetime.now().strftime('%Y-%m-%dT%H:%M:%S') # datetime.today().strftime('%Y-%m-%d')
+        self.start_time = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%dT%H:%M:%S') # datetime.today() - timedelta(days=1)
         self.sources = {
             "FDSN": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime={}&endtime={}".format(
                 self.start_time,
