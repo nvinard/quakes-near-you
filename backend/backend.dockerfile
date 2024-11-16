@@ -7,7 +7,7 @@ RUN pip install --upgrade pip
 
 # Copy requirements and install dependencies
 COPY ./backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --timeout=100 -r requirements.txt
 
 # Copy application code into /app/backend
 COPY ./backend /app/backend

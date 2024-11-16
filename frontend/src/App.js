@@ -9,7 +9,6 @@ import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons'
 
 const App = () => {
   const [geojsonData, setGeojsonData] = useState(null);
-  const [fetchMessage, setFetchMessage] = useState('');
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
@@ -20,11 +19,10 @@ const App = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [hoverInfo, setHoverInfo] = useState(null); // Hover state for tooltip
-  const itemsPerPage = 10;
+  const itemsPerPage = 20;
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedData = geojsonData ? geojsonData.features.slice(startIndex, endIndex) : [];
 
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const [geojsonFetched, setGeojsonFetched] = useState(false);
@@ -33,10 +31,15 @@ const App = () => {
   const fetchGeojson = useCallback(async () => {
     if (!geojsonFetched) {  // Prevent multiple fetches
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/earthquakes.geojson?v=` + new Date().getTime());
-        const data = await response.json();
-        setGeojsonData(data);
-        setGeojsonFetched(true);
+        const url = `${window.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
+        console.log("Fetching GeoJSON data from:", url);
+
+        const response = await fetch(url);
+        const data = await response.json(); // Assign fetched data to 'data'
+        console.log(data);
+
+        setGeojsonData(data); // Save data to state
+        setGeojsonFetched(true); // Mark data as fetched
 
         if (data.features && data.features.length > 0 && !isViewportSet) {
           const boundingBox = bbox(data);
@@ -57,22 +60,21 @@ const App = () => {
     }
   }, [geojsonFetched, isViewportSet, viewport]);
 
+  // reset geojsonfetched every minute
+  useEffect(() => {
+    if (geojsonFetched) {
+      const timerId = setTimeout(() => {
+        setGeojsonFetched(false);
+      }, 60000);
+
+      return () => clearTimeout(timerId); 
+    }
+  }, [geojsonFetched]);
+
   useEffect(() => {
     fetchGeojson();
     console.log("GeoJSON data: ", geojsonData);
   }, [fetchGeojson]);
-
-  const handleFetchLatestData = async () => {
-    try {
-      const response = await api.post('/fetch_and_store_fdsn_earthquakes/');
-      setFetchMessage(response.data.message);
-      setGeojsonFetched(false);  // Allow refetching
-      fetchGeojson();  // Fetch updated data
-    } catch (error) {
-      console.error('Error fetching latest data:', error);
-      setFetchMessage('Error fetching latest data');
-    }
-  };
 
   const handleViewportChange = (newViewport) => {
     setViewport(newViewport);  // Only update viewport without fetching data
@@ -113,7 +115,20 @@ const App = () => {
     }
   };
 
-  const onSort = (columnKey) => {
+  const columnKeyMap = {
+    'Place': 'place',
+    'Magnitude': 'magnitude',
+    'Magnitude Type': 'magnitude_type',
+    'Longitude': 'coordinates[0]',
+    'Latitude': 'coordinates[1]',
+    'Depth': 'depth',
+    'Origin Time (UTC)': 'utc_time',
+  };
+
+  const onSort = (header) => {
+    const columnKey = columnKeyMap[header];
+    if (!columnKey) return; // Exit if the column key is invalid
+  
     let direction = 'ascending';
     if (sortConfig.key === columnKey && sortConfig.direction === 'ascending') {
       direction = 'descending';
@@ -123,23 +138,40 @@ const App = () => {
 
   const sortedData = React.useMemo(() => {
     if (!geojsonData || !geojsonData.features) return [];
+  
     let sortableData = [...geojsonData.features];
     if (sortConfig.key) {
+      const { key, direction } = sortConfig;
+  
       sortableData.sort((a, b) => {
-        const aValue = a.properties[sortConfig.key];
-        const bValue = b.properties[sortConfig.key];
-
-        if (aValue < bValue) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
-        }
-        if (aValue > bValue) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
+        const aValue = key.includes('coordinates') 
+          ? a.geometry.coordinates[parseInt(key.split('[')[1][0])] // Extract longitude/latitude index
+          : a.properties[key];
+        const bValue = key.includes('coordinates') 
+          ? b.geometry.coordinates[parseInt(key.split('[')[1][0])] 
+          : b.properties[key];
+  
+        // Handle undefined/null values
+        if (aValue == null && bValue == null) return 0;
+        if (aValue == null) return direction === 'ascending' ? 1 : -1;
+        if (bValue == null) return direction === 'ascending' ? -1 : 1;
+  
+        // Normalize values for comparison
+        const normalizedA = typeof aValue === 'string' ? aValue.toLowerCase() : aValue;
+        const normalizedB = typeof bValue === 'string' ? bValue.toLowerCase() : bValue;
+  
+        // Compare values
+        if (normalizedA < normalizedB) return direction === 'ascending' ? -1 : 1;
+        if (normalizedA > normalizedB) return direction === 'ascending' ? 1 : -1;
         return 0;
       });
     }
+  
     return sortableData.slice(startIndex, endIndex);
   }, [geojsonData, sortConfig, startIndex, endIndex]);
+  
+
+  
 
   const getMarkerSize = (magnitude) => {
     if (magnitude < -1.0) return 15;  // Temporary larger marker for easier hover
@@ -254,12 +286,12 @@ const App = () => {
         <table className='table table-striped table-bordered table-hover'>
           <thead>
             <tr>
-              {['Place', 'Magnitude', 'Magnitude Type', 'Longitude', 'Latitude', 'Depth', 'Origin Time (UTC)'].map((header, index) => (
+            {Object.keys(columnKeyMap).map((header, index) => (
                 <th key={index}>
                   <div className="header-container">
                     <span>{header}</span>
-                    <button onClick={() => onSort(header.toLowerCase().replace(' ', '_'))} className="sort-button">
-                      {sortConfig.key === header.toLowerCase().replace(' ', '_')
+                    <button onClick={() => onSort(header)} className="sort-button">
+                    {sortConfig.key === columnKeyMap[header]
                         ? (sortConfig.direction === 'ascending'
                           ? <FontAwesomeIcon icon={faSortUp} />
                           : <FontAwesomeIcon icon={faSortDown} />)

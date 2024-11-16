@@ -5,10 +5,8 @@ services:
       dockerfile: ./frontend/frontend.dockerfile
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     environment:
-      - REACT_APP_API_URL=http://backend:8000
+      - REACT_APP_API_URL=http://localhost:8000
     depends_on:
       - backend
     networks:
@@ -20,10 +18,10 @@ services:
       dockerfile: ./backend/backend.dockerfile
     ports:
       - "8000:8000"
-    environment:
-      - DATABASE_URL=sqlite:///app/data/quakes_near_me.db
     networks:
       - quake-net
+    volumes:
+      - ./backend/earthquakes.geojson:/app/earthquakes.geojson
 
 networks:
   quake-net:
