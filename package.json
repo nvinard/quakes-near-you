@@ -4,24 +4,29 @@
     "description": "A web application to visualize recent earthquakes.",
     "main": "index.js",
     "scripts": {
-      "postinstall": "npm run build",
-      "start": "react-scripts start",
-      "build": "react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject"
+        "postinstall": "npm run build",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
     },
     "dependencies": {
-      "react": "^18.0.0",
-      "react-dom": "^18.0.0",
-      "react-scripts": "5.0.0",
-      "axios": "^0.21.1",
-      "react-router-dom": "^6.0.0"
+        "axios": "^0.21.1",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "react-router-dom": "^6.0.0",
+        "react-scripts": "5.0.0"
     },
     "devDependencies": {
-      "eslint": "^7.32.0",
-      "prettier": "^2.4.1"
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "eslint": "^7.32.0",
+        "prettier": "^2.4.1"
     },
-    "keywords": ["earthquake", "react", "visualization"],
+    "keywords": [
+        "earthquake",
+        "react",
+        "visualization"
+    ],
     "author": "Nicolas Vinard",
     "license": "MIT"
-  }
+}

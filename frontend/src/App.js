@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import api from './api';
 import './App.css';
 import logo from './quakes_near_me.JPG';
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
@@ -74,7 +73,7 @@ const App = () => {
   useEffect(() => {
     fetchGeojson();
     console.log("GeoJSON data: ", geojsonData);
-  }, [fetchGeojson]);
+  }, [fetchGeojson, geojsonData]);
 
   const handleViewportChange = (newViewport) => {
     setViewport(newViewport);  // Only update viewport without fetching data
