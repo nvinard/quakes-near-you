@@ -14,6 +14,8 @@ origins = [
     'http://frontend:3000',
     'https://quakesnearme.com',
     'http://quakesnearme.com',
+    'https://673a68f4057182500a3b9d6d--sparkly-sable-9b671f.netlify.app/',
+    'https://673a68f4057182500a3b9d6d--sparkly-sable-9b671f.netlify.app/',
 ]
 
 app.add_middleware(
