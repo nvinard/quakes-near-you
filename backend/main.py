@@ -10,10 +10,13 @@ from external_data.events import Events
 app = FastAPI()
 
 origins = [
+    'http://20.246.252.199:3000',
     'http://localhost:3000',
     'http://frontend:3000',
     'https://quakesnearme.com',
     'http://quakesnearme.com',
+    'https://www.quakesnearme.com',
+    'http://www.quakesnearme.com',
 ]
 
 app.add_middleware(
@@ -103,3 +106,11 @@ async def get_geojson_file():
 @app.get("/")
 async def root():
     return {"message": "Backend is running"}
+
+@app.head("/")
+def read_root_head():
+    return None
+
+@app.get("/api/health")
+def health_check():
+    return {"status": "healthy"}

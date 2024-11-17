@@ -21,13 +21,10 @@ services:
       dockerfile: ./backend/backend.dockerfile
     ports:
       - "8000:8000"  # Expose the backend on port 8000
-    environment:
-      - DATABASE_URL=${DATABASE_URL}  # Ensure DATABASE_URL is passed from .env or the host
     networks:
       - quake-net
     volumes:
-      - ./backend/data:/app/data  # Ensure data is persisted across container restarts
-      - ./backend/geojson_files:/app/backend/geojson_files
+      - ./backend/earthquakes.geojson:/app/earthquakes.geojson
     restart: always  # Ensure the service restarts in case of failure
 
 networks:

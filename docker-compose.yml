@@ -25,4 +25,4 @@ services:
 
 networks:
   quake-net:
-    driver: bridge
+    driver: bridge  
