@@ -88,7 +88,7 @@ def scheduled_task():
 async def startup_event():
     print("initlaizing scheduler...")
     scheduler = AsyncIOScheduler()  # Changed to AsyncIOScheduler
-    scheduler.add_job(scheduled_task, 'interval', minutes=1)
+    scheduler.add_job(scheduled_task, 'interval', minutes=15)
     scheduler.start()
     print("Scheduled task started to fetch and save earthquakes every minute")
 
