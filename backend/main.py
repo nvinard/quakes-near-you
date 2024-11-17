@@ -10,7 +10,6 @@ from external_data.events import Events
 app = FastAPI()
 
 origins = [
-    'http://20.246.252.199:3000',
     'http://localhost:3000',
     'http://frontend:3000',
     'https://quakesnearme.com',
