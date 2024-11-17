@@ -15,8 +15,6 @@ origins = [
     'http://frontend:3000',
     'https://quakesnearme.com',
     'http://quakesnearme.com',
-    'https://www.quakesnearme.com',
-    'http://www.quakesnearme.com',
 ]
 
 app.add_middleware(
