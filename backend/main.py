@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import create_engine, MetaData, Table, Column, String, Float, DateTime
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import text
-from external_data import Events
+from external_data.events import Events
 
 load_dotenv()
 
@@ -32,6 +32,9 @@ app.add_middleware(
 )
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set!")
+
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
