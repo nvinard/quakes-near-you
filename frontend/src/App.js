@@ -30,7 +30,7 @@ const App = () => {
   const fetchGeojson = useCallback(async () => {
     if (!geojsonFetched) {  // Prevent multiple fetches
       try {
-        const url = `${window.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
+        const url = `${process.env.REACT_APP_BACKEND_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
         console.log("Fetching GeoJSON data from:", url);
 
         const response = await fetch(url);
@@ -54,6 +54,7 @@ const App = () => {
           setIsViewportSet(true);
         }
       } catch (error) {
+        alert('Failed to load earthquake data. Please try again later.');
         console.error('Error loading GeoJSON data:', error);
       }
     }
