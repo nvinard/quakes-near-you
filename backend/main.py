@@ -113,7 +113,8 @@ async def get_geojson_file():
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [row.longitude, row.latitude, row.depth],
+                    "coordinates": [row.longitude, row.latitude],
+                    "depth": row.depth
                 },
                 "properties": {
                     "place": row.place,
@@ -126,6 +127,7 @@ async def get_geojson_file():
         ],
     }
     return JSONResponse(content=geojson_data)
+
 
 # Health check endpoint
 @app.get("/api/health")
