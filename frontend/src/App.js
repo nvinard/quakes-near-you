@@ -266,7 +266,7 @@ const App = () => {
                   <strong>{hoverInfo.properties.place}</strong><br />
                   <div>Magnitude: {hoverInfo.properties.magnitude.toFixed(1)}</div>
                   <div>Depth: {hoverInfo.geometry.coordinates[2].toFixed(1)} km</div>
-                  <div>Time: {hoverInfo.properies.utc_time} UTC</div>
+                  <div>Time: {hoverInfo.properties.utc_time} UTC</div>
                 </div>
               </Popup>
             )}
