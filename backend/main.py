@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import create_engine, MetaData, Table, Column, String, Float, DateTime
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import text
+from sqlalchemy.exc import IntegrityError
 from external_data.events import Events
 
 load_dotenv()
@@ -34,7 +35,7 @@ app.add_middleware(
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
-    
+
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -52,7 +53,10 @@ earthquakes = Table(
     Column("utc_time", DateTime),
 )
 
-metadata.create_all(engine)
+try:
+    metadata.create_all(engine)
+except IntegrityError as e:
+    print(f"Table already exists or conflict occurred: {e}")
 
 fetcher = Events()
 
