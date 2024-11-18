@@ -115,7 +115,3 @@ def read_root_head():
 def health_check():
     return {"status": "healthy"}
 
-if __name__ == "__main__":
-    if "fetch" in sys.argv:
-        print("Run fetch_and_save from heroku")
-        fetch_and_save()
