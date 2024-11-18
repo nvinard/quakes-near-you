@@ -1,5 +1,7 @@
 import os
 import json
+import sys
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -112,3 +114,8 @@ def read_root_head():
 @app.get("/api/health")
 def health_check():
     return {"status": "healthy"}
+
+if __name__ == "__main__":
+    if "fetch" in sys.argv:
+        print("Run fetch_and_save from heroku")
+        fetch_and_save()
