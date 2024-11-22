@@ -285,7 +285,9 @@ const App = () => {
 
             {userLocation && (
               <Marker latitude={userLocation.latitude} longitude={userLocation.longitude}>
-                <div className="user-location-marker"></div>
+                <div style={{ fontSize: '30px', transform: 'translate(-50%, -100%)' }}>
+                  📍
+                </div>
               </Marker>
             )}
 

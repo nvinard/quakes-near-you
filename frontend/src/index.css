@@ -56,15 +56,6 @@ code {
   z-index: 1;
 }
 
-.user-location-marker {
-  background-color: blue;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid white;
-  cursor: pointer;
-}
-
 .sort-button {
   background: none;
   border: none;
