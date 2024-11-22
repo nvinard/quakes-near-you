@@ -174,7 +174,7 @@ const App = () => {
   
 
   const getMarkerSize = (magnitude) => {
-    if (magnitude < -1.0) return 5;
+    if (magnitude < -1.0) return 8;
     if (magnitude < 0.0) return 10;
     if (magnitude < 1.0) return 15;
     if (magnitude < 2.0) return 20;
@@ -211,7 +211,7 @@ const App = () => {
 
       <div className='container'>
         <div className="d-flex align-items-center my-3">
-          <button className='btn btn-primary button custom mx-3' onClick={fetchUserLocation}>
+          <button className='btn btn-primary button custom mx-3' onClick={fetchUserLocation} aria-label="Use my location">
             Use my location
           </button>
         </div>
@@ -219,11 +219,11 @@ const App = () => {
         <div className='map-container'>
           <ReactMapGL
             {...viewport}
-            width="80%"
-            height="100%"
+            width="100%"
+            height="50vh"
             mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
             onMove={(evt) => handleViewportChange(evt.viewState)} // Update viewport only
-            mapStyle="mapbox://styles/mapbox/dark-v11"
+            mapStyle="mapbox://styles/nvinard/cm3t2gjki004l01sif7mpdb4p"
             scrollZoom={true}
             doubleClickZoom={true}
             dragPan={true}
@@ -295,47 +295,49 @@ const App = () => {
           </ReactMapGL>
         </div>
 
-        <table className='table table-striped table-bordered table-hover'>
-          <thead>
-            <tr>
-            {Object.keys(columnKeyMap).map((header, index) => (
-                <th key={index}>
-                  <div className="header-container">
-                    <span>{header}</span>
-                    <button onClick={() => onSort(header)} className="sort-button">
-                    {sortConfig.key === columnKeyMap[header]
-                        ? (sortConfig.direction === 'ascending'
-                          ? <FontAwesomeIcon icon={faSortUp} />
-                          : <FontAwesomeIcon icon={faSortDown} />)
-                        : <FontAwesomeIcon icon={faSort} />}
-                    </button>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {sortedData.map((feature, index) => (
-              <tr key={index}>
-                <td>{feature.properties.place}</td>
-                <td>{feature.properties.magnitude.toFixed(2)}</td>
-                <td>{feature.properties.magnitude_type}</td>
-                <td>{feature.geometry.coordinates[0].toFixed(2)}</td>
-                <td>{feature.geometry.coordinates[1].toFixed(2)}</td>
-                <td>{feature.geometry.coordinates[2].toFixed(2)}</td>
-                <td>{feature.properties.utc_time}</td>
+        <div className="table-container">
+          <table className='table table-striped table-bordered table-hover'>
+            <thead>
+              <tr>
+              {Object.keys(columnKeyMap).map((header, index) => (
+                  <th key={index}>
+                    <div className="header-container">
+                      <span>{header}</span>
+                      <button onClick={() => onSort(header)} className="sort-button">
+                      {sortConfig.key === columnKeyMap[header]
+                          ? (sortConfig.direction === 'ascending'
+                            ? <FontAwesomeIcon icon={faSortUp} />
+                            : <FontAwesomeIcon icon={faSortDown} />)
+                          : <FontAwesomeIcon icon={faSort} />}
+                      </button>
+                    </div>
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {sortedData.map((feature, index) => (
+                <tr key={index}>
+                  <td>{feature.properties.place}</td>
+                  <td>{feature.properties.magnitude.toFixed(2)}</td>
+                  <td>{feature.properties.magnitude_type}</td>
+                  <td>{feature.geometry.coordinates[0].toFixed(2)}</td>
+                  <td>{feature.geometry.coordinates[1].toFixed(2)}</td>
+                  <td>{feature.geometry.coordinates[2].toFixed(2)}</td>
+                  <td>{feature.properties.utc_time}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <div className="pagination-controls">
-          <button onClick={previousPage} disabled={currentPage === 0}>
+          <button onClick={previousPage} disabled={currentPage === 0} aria-label="Go to the previous page">
             Previous
           </button>
           <button
             onClick={nextPage}
-            disabled={!geojsonData || currentPage >= Math.ceil(geojsonData.features.length / itemsPerPage) - 1}
+            disabled={!geojsonData || currentPage >= Math.ceil(geojsonData.features.length / itemsPerPage) - 1} aria-label="Go to the next page"
           >
             Next
           </button>
