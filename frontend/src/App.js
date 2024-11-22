@@ -192,10 +192,20 @@ const App = () => {
     <div className="app-container">
       <nav className='navbar navbar-dark navbar-custom'>
         <div className='container-fluid'>
-          <a className='navbar-brand' href="#" onClick={(e) => e.preventDefault()}>
+          <button
+            className='navbar-brand'
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' }); // Example action
+            }}
+            style={{
+              all: 'unset', // Remove default button styles
+              cursor: 'pointer',
+            }}
+          >
             <img src={logo} alt="Logo" />
             Earthquakes near me
-          </a>
+          </button>
         </div>
       </nav>
 
