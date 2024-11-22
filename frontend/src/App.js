@@ -174,24 +174,25 @@ const App = () => {
   
 
   const getMarkerSize = (magnitude) => {
-    if (magnitude < -1.0) return 15;  // Temporary larger marker for easier hover
-    if (magnitude < 0.0) return 20;
-    if (magnitude < 1.0) return 25;
-    if (magnitude < 2.0) return 30;
-    if (magnitude < 3.0) return 35;
+    if (magnitude < -1.0) return 5;
+    if (magnitude < 0.0) return 10;
+    if (magnitude < 1.0) return 15;
+    if (magnitude < 2.0) return 20;
+    if (magnitude < 3.0) return 30;
     if (magnitude < 4.0) return 40;
-    if (magnitude < 5.0) return 45;
-    if (magnitude < 6.0) return 50;
-    if (magnitude < 7.0) return 55;
-    if (magnitude < 8.0) return 60;
-    return 70;
+    if (magnitude < 5.0) return 55;
+    if (magnitude < 6.0) return 70;
+    if (magnitude < 7.0) return 90;
+    if (magnitude < 8.0) return 110;
+    return 130;
   };
+
 
   return (
     <div className="app-container">
       <nav className='navbar navbar-dark navbar-custom'>
         <div className='container-fluid'>
-          <a className='navbar-brand' href="/home">
+          <a className='navbar-brand' href="#" onClick={(e) => e.preventDefault()}>
             <img src={logo} alt="Logo" />
             Earthquakes near me
           </a>
