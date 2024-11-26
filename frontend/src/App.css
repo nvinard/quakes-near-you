@@ -38,7 +38,8 @@
 }
 
 .navbar-custom {
-  background-color: #07a74c;
+  background-color: #333; /* Adjust as needed */
+  padding: 10px;
 }
 
 .navbar-brand img {
@@ -82,4 +83,76 @@
   word-wrap: break-word;  /* Ensure long text wraps within the container */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);  /* Shadow for better visibility */
   z-index: 1000;  /* Ensure it's above other elements */
+}
+
+.burger-menu {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.menu-container {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000; /* Ensures it appears above the map */
+  width: 200px;
+}
+
+.menu-container a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 4px;
+  background: #444; /* Button-like background */
+  text-align: center;
+}
+
+.menu-container a:hover {
+  background: #666;
+}
+
+.page-container {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px; /* Limit the width for better readability */
+}
+
+.page-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-container p,
+.page-container ul {
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.page-container h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.page-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.page-container ul li {
+  margin-bottom: 10px;
+}
+
+.page-container ul li strong {
+  color: #007bff; /* Highlighted color for magnitude types */
 }

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import Data from './pages/Data';
 import About from './pages/About';
-import logo from './quakes_near_me.JPG';
 import { FaBars } from 'react-icons/fa'; // For burger icon
 
 const App = () => {
@@ -20,10 +19,9 @@ const App = () => {
         {/* Navbar */}
         <nav className="navbar navbar-dark navbar-custom">
           <div className="container-fluid">
-          <Link to="/" className="navbar-brand" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
-            <span style={{ color: 'white' }}>Earthquakes Near Me</span>
-           </Link>
+            <button className="navbar-brand" style={{ all: 'unset', cursor: 'pointer' }}>
+              Earthquakes Near Me
+            </button>
             <button className="burger-menu" onClick={toggleMenu}>
               <FaBars />
             </button>
