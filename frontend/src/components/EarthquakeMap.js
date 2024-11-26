@@ -121,11 +121,15 @@ const EarthquakeMap = () => {
                 <div
                   className="map-marker"
                   style={{
+                    pointerEvents: 'auto',
                     width: `${getMarkerSize(feature.properties.magnitude)}px`,
                     height: `${getMarkerSize(feature.properties.magnitude)}px`,
                     backgroundImage: `url('./earthquake.png')`,
                     backgroundSize: 'cover',
                     borderRadius: '50%',
+                    cursor: 'pointer',
+                    border: '2px solid transparent',
+                    zIndex: 1000
                   }}
                   onMouseEnter={() => setHoverInfo(feature)}
                   onMouseLeave={() => setHoverInfo(null)}
