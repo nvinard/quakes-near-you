@@ -38,14 +38,36 @@
 }
 
 .navbar-custom {
+  display: flex;
+  justify-content: space-between; /* Space between title/logo and burger menu */
+  align-items: center;
   background-color: #333; /* Adjust as needed */
-  padding: 10px;
+  padding: 10px 20px; /* Add some padding */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
 }
 
 .navbar-brand img {
-  height: 80px;
+  max-height: 40px;
   margin-right: 10px;
 }
+@media (max-width: 480px) {
+  .navbar-brand span {
+    display: none; /* Hide title text on very small screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+  }
+}
+
 
 .button-custom {
   background-color: #e60101;
@@ -53,9 +75,10 @@
 }
 
 .button-custom:hover {
-  background-color: #138496;
-  border-color: #2caa0d;
+  background-color: #444; /* Darker button background */
+  border-color: #666; /* Darker border */
 }
+
 
 .tooltip {
   background: rgba(0, 0, 0, 0.7);
@@ -85,7 +108,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 1000; /* Ensures it appears above the map */
+  z-index: 1500; /* Ensures it appears above the map */
   width: 200px;
 }
 
