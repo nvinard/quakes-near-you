@@ -1,0 +1,56 @@
+
+.table-hover tbody tr:hover {
+    background-color: #444444; /* Darker hover background for better visibility */
+}
+  
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #3a3a3a; /* Darker alternate row colors */
+}
+  
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #2c2c2c; /* Slightly lighter for even rows */
+}
+  
+.table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Remove space between borders */
+    border: 1px solid #555; /* Light border color */
+}
+  
+.table th {
+    background-color: #2c2c2c; /* Lighter header background for contrast */
+    color: #ffffff; /* White text color */
+    padding: 12px; /* Padding for header cells */
+}
+  
+.table td {
+    color: #e0e0e0; /* Light grey text for the table body */
+    padding: 12px; /* Padding for cells */
+    vertical-align: middle; /* Vertically center content */
+    border: 1px solid #555; /* Light border for cells */
+}
+  
+@media (max-width: 600px) {
+    .table {
+      display: block; /* Block layout on small screens */
+      overflow-x: auto; /* Allow horizontal scrolling */
+    }
+}
+  
+.header-container {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out elements */
+    align-items: center; /* Center vertically */
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+  
+.pagination-controls button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+  
