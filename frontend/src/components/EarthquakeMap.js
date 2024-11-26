@@ -141,7 +141,7 @@ const EarthquakeMap = () => {
               closeOnClick={false}
               anchor="top"
             >
-              <div>
+              <div className='hover-popup'>
                 <strong>{hoverInfo.properties.place}</strong>
                 <div>Magnitude: {hoverInfo.properties.magnitude.toFixed(1)}</div>
                 <div>Depth: {hoverInfo.geometry.coordinates[2].toFixed(1)} km</div>
