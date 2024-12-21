@@ -67,7 +67,7 @@ def ms_to_utc(ts):
 
 @app.post("/fetch_and_save_fdsn_earthquakes/")
 def fetch_and_save():
-    data = fetcher.fetch_events("FDSN")
+    data = fetcher.fetch_events()
     features = data.get("features", [])
 
     print(f"Fetched {len(features)} earthquakes at {datetime.datetime.utcnow()}")
@@ -113,8 +113,7 @@ async def get_geojson_file():
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [row.longitude, row.latitude],
-                    "depth": row.depth
+                    "coordinates": [row.longitude, row.latitude, row.depth],
                 },
                 "properties": {
                     "place": row.place,
@@ -127,7 +126,6 @@ async def get_geojson_file():
         ],
     }
     return JSONResponse(content=geojson_data)
-
 
 # Health check endpoint
 @app.get("/api/health")
