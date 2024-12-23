@@ -10,9 +10,6 @@ const Home = () => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const itemsPerPage = 20;
 
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
   const fetchGeojson = useCallback(async () => {
     try {
       const url = `${window.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
@@ -28,6 +25,22 @@ const Home = () => {
     fetchGeojson();
   }, [fetchGeojson]);
 
+  // Utility to safely access nested properties
+  const getNestedValue = (obj, path) => {
+    try {
+      return path.split('.').reduce((acc, key) => {
+        if (key.includes('[')) {
+          const [base, index] = key.replace(']', '').split('[');
+          return acc[base] ? acc[base][parseInt(index, 10)] : undefined;
+        }
+        return acc[key];
+      }, obj);
+    } catch {
+      return undefined;
+    }
+  };
+
+  // Sort the entire dataset before pagination
   const sortedData = React.useMemo(() => {
     if (!geojsonData || !geojsonData.features) return [];
 
@@ -36,22 +49,40 @@ const Home = () => {
       const { key, direction } = sortConfig;
 
       sortableData.sort((a, b) => {
-        const aValue = a.properties[key];
-        const bValue = b.properties[key];
+        const aValue = getNestedValue(a, key);
+        const bValue = getNestedValue(b, key);
 
+        // Handle null or undefined values
         if (aValue == null && bValue == null) return 0;
         if (aValue == null) return direction === 'ascending' ? 1 : -1;
         if (bValue == null) return direction === 'ascending' ? -1 : 1;
 
-        return direction === 'ascending' ? aValue - bValue : bValue - aValue;
+        // Numeric comparison
+        if (typeof aValue === 'number' && typeof bValue === 'number') {
+          return direction === 'ascending' ? aValue - bValue : bValue - aValue;
+        }
+
+        // String comparison
+        if (typeof aValue === 'string' && typeof bValue === 'string') {
+          return direction === 'ascending'
+            ? aValue.localeCompare(bValue)
+            : bValue.localeCompare(aValue);
+        }
+
+        return 0; // Default to equality
       });
     }
 
-    return sortableData.slice(startIndex, endIndex);
-  }, [geojsonData, sortConfig, startIndex, endIndex]);
+    return sortableData;
+  }, [geojsonData, sortConfig]);
+
+  // Paginate sorted data
+  const paginatedData = React.useMemo(() => {
+    return sortedData.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+  }, [sortedData, currentPage, itemsPerPage]);
 
   const nextPage = () => {
-    if (geojsonData && currentPage < Math.ceil(geojsonData.features.length / itemsPerPage) - 1) {
+    if (geojsonData && currentPage < Math.ceil(sortedData.length / itemsPerPage) - 1) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -63,26 +94,25 @@ const Home = () => {
   };
 
   const columnKeyMap = {
-    'Place': 'place',
-    'Magnitude': 'magnitude',
-    'Magnitude Type': 'magnitude_type',
-    'Longitude': 'coordinates[0]',
-    'Latitude': 'coordinates[1]',
-    'Depth': 'depth',
-    'Origin Time (UTC)': 'utc_time',
+    'Place': 'properties.place',
+    'Magnitude': 'properties.magnitude',
+    'Magnitude Type': 'properties.magnitude_type',
+    'Longitude': 'geometry.coordinates[0]',
+    'Latitude': 'geometry.coordinates[1]',
+    'Depth': 'geometry.coordinates[2]',
+    'Origin Time (UTC)': 'properties.utc_time',
   };
 
   const onSort = (header) => {
     const columnKey = columnKeyMap[header];
-    if (!columnKey) return; // Exit if the column key is invalid
-  
+    if (!columnKey) return;
+
     let direction = 'ascending';
     if (sortConfig.key === columnKey && sortConfig.direction === 'ascending') {
       direction = 'descending';
     }
     setSortConfig({ key: columnKey, direction });
   };
-
 
   return (
     <div>
@@ -91,38 +121,38 @@ const Home = () => {
 
       {/* Earthquake Table */}
       <div className="table-container">
-        <table className='table table-striped table-bordered table-hover'>
-            <thead>
-              <tr>
+        <table className="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
               {Object.keys(columnKeyMap).map((header, index) => (
-                  <th key={index}>
-                    <div className="header-container">
-                      <span>{header}</span>
-                      <button onClick={() => onSort(header)} className="sort-button">
+                <th key={index}>
+                  <div className="header-container">
+                    <span>{header}</span>
+                    <button onClick={() => onSort(header)} className="sort-button">
                       {sortConfig.key === columnKeyMap[header]
-                          ? (sortConfig.direction === 'ascending'
-                            ? <FontAwesomeIcon icon={faSortUp} />
-                            : <FontAwesomeIcon icon={faSortDown} />)
-                          : <FontAwesomeIcon icon={faSort} />}
-                      </button>
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {sortedData.map((feature, index) => (
-                <tr key={index}>
-                  <td>{feature.properties.place}</td>
-                  <td>{feature.properties.magnitude.toFixed(2)}</td>
-                  <td>{feature.properties.magnitude_type}</td>
-                  <td>{feature.geometry.coordinates[0].toFixed(2)}</td>
-                  <td>{feature.geometry.coordinates[1].toFixed(2)}</td>
-                  <td>{feature.geometry.coordinates[2].toFixed(2)}</td>
-                  <td>{feature.properties.utc_time}</td>
-                </tr>
+                        ? sortConfig.direction === 'ascending'
+                          ? <FontAwesomeIcon icon={faSortUp} />
+                          : <FontAwesomeIcon icon={faSortDown} />
+                        : <FontAwesomeIcon icon={faSort} />}
+                    </button>
+                  </div>
+                </th>
               ))}
-            </tbody>
+            </tr>
+          </thead>
+          <tbody>
+            {paginatedData.map((feature, index) => (
+              <tr key={index}>
+                <td>{feature.properties.place}</td>
+                <td>{feature.properties.magnitude.toFixed(2)}</td>
+                <td>{feature.properties.magnitude_type}</td>
+                <td>{feature.geometry.coordinates[0].toFixed(2)}</td>
+                <td>{feature.geometry.coordinates[1].toFixed(2)}</td>
+                <td>{feature.geometry.coordinates[2].toFixed(2)}</td>
+                <td>{feature.properties.utc_time}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
 
         {/* Pagination Controls */}
@@ -132,7 +162,7 @@ const Home = () => {
           </button>
           <button
             onClick={nextPage}
-            disabled={!geojsonData || currentPage >= Math.ceil(geojsonData.features.length / itemsPerPage) - 1}
+            disabled={!geojsonData || currentPage >= Math.ceil(sortedData.length / itemsPerPage) - 1}
           >
             Next
           </button>

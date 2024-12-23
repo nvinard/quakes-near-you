@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
 import { bbox } from '@turf/turf';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import './EarthquakeMap.css';
 
 const EarthquakeMap = () => {
@@ -12,8 +14,10 @@ const EarthquakeMap = () => {
   });
   const [isViewportSet, setIsViewportSet] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
-  const [hoverInfo, setHoverInfo] = useState(null); // Hover state for tooltip
+  const [hoverInfo, setHoverInfo] = useState(null);
   const [geojsonFetched, setGeojsonFetched] = useState(false);
+
+  const mapRef = useRef(null);
 
   const fetchGeojson = useCallback(async () => {
     if (!geojsonFetched) {
@@ -53,6 +57,28 @@ const EarthquakeMap = () => {
   useEffect(() => {
     fetchGeojson();
   }, [fetchGeojson]);
+
+  useEffect(() => {
+    if (mapRef.current) {
+      const map = mapRef.current.getMap();
+  
+      const geocoder = new MapboxGeocoder({
+        accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
+        mapboxgl: mapRef.current.getMapboxApiAccessInstance(),
+        placeholder: 'Type your address here...',
+        flyTo: false,
+      });
+  
+      const geocoderContainer = document.getElementById('geocoder-container');
+      if (geocoderContainer) {
+        geocoderContainer.appendChild(geocoder.onAdd(map)); 
+      }
+  
+      return () => {
+        geocoderContainer?.removeChild(geocoder.onRemove());
+      };
+    }
+  }, [mapRef]);
 
   const handleViewportChange = (newViewport) => {
     setViewport(newViewport);
@@ -96,18 +122,21 @@ const EarthquakeMap = () => {
 
   return (
     <div>
+      <div id="geocoder-container" style={{ position: 'relative', zIndex: 1, marginBottom: '10px' }}></div>
+
       <button className="btn btn-primary button custom mx-3" onClick={fetchUserLocation}>
         Use my location
       </button>
 
       <div className="map-container">
         <ReactMapGL
+          ref={mapRef}
           {...viewport}
           width="100%"
           height="50vh"
           mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           onMove={(evt) => handleViewportChange(evt.viewState)}
-          mapStyle="mapbox://styles/nvinard/cm3t2gjki004l01sif7mpdb4p"
+          mapStyle="mapbox://styles/mapbox/streets-v12"
           scrollZoom={true}
         >
           {geojsonData &&
@@ -129,7 +158,7 @@ const EarthquakeMap = () => {
                     borderRadius: '50%',
                     cursor: 'pointer',
                     border: '2px solid transparent',
-                    zIndex: 1000
+                    zIndex: 1000,
                   }}
                   onMouseEnter={() => setHoverInfo(feature)}
                   onMouseLeave={() => setHoverInfo(null)}
@@ -145,7 +174,7 @@ const EarthquakeMap = () => {
               closeOnClick={false}
               anchor="top"
             >
-              <div className='hover-popup'>
+              <div className="hover-popup">
                 <strong>{hoverInfo.properties.place}</strong>
                 <div>Magnitude: {hoverInfo.properties.magnitude.toFixed(1)}</div>
                 <div>Depth: {hoverInfo.geometry.coordinates[2].toFixed(1)} km</div>
