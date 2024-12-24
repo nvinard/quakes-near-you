@@ -34,27 +34,12 @@
     margin-top: 20px; /* Adds space above the table */
   }
   
-  @media screen and (max-width: 768px) {
-    /* Hide less important columns */
-    .table-container td:nth-child(2),
-    .table-container td:nth-child(3),
-    .table-container td:nth-child(4), {
-      display: none;
-    }
-  }
   
   @media screen and (max-width: 600px) {
     /* Override to prevent hidden columns from scrolling */
     .table-container {
       display: block; /* Allow block layout for small screens */
       overflow-x: auto; /* Add horizontal scrolling */
-    }
-  
-    /* Ensure hidden columns are consistent */
-    .table-container td:nth-child(2),
-    .table-container td:nth-child(3),
-    .table-container td:nth-child(4), {
-      display: none; /* Reinforce hidden columns */
     }
   }
   
