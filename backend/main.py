@@ -39,7 +39,7 @@ if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-metadata = MetaData(schema="quakesnearme")
+metadata = MetaData()
 earthquakes = Table(
     "earthquakes",
     metadata,
@@ -64,6 +64,11 @@ geojson_file_path = os.path.join(os.path.dirname(__file__), "earthquakes.geojson
 def ms_to_utc(ts):
     utc = datetime.datetime.fromtimestamp(ts / 1000.0, tz=datetime.timezone.utc)
     return utc.strftime("%Y-%m-%d %H:%M:%S")
+
+@app.on_event("startup")
+def create_tables():
+    metadata.create_all(engine)
+
 
 @app.post("/fetch_and_save_fdsn_earthquakes/")
 def fetch_and_save():
