@@ -39,7 +39,7 @@ if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-metadata = MetaData()
+metadata = MetaData(schema="quakesnearme")
 earthquakes = Table(
     "earthquakes",
     metadata,

@@ -5,7 +5,7 @@ const Data = () => {
     <div className="page-container">
       <h1>Data Information</h1>
       <p>
-        The earthquake data displayed in this application is sourced from United States Geological Survey, USGS, API.
+        The earthquake data displayed in this application is sourced from United States Geological Survey, USGS, and European-Mediterranean Seismological Survey EMSC APIs.
       </p>
       <p>
         The data includes information about recent earthquakes worldwide, including magnitude, depth, location, and time.
