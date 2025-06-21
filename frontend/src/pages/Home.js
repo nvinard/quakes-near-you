@@ -11,15 +11,16 @@ const Home = () => {
   const itemsPerPage = 20;
 
   const fetchGeojson = useCallback(async () => {
-    try {
-      const url = `${window.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
-      const response = await fetch(url);
-      const data = await response.json();
-      setGeojsonData(data);
-    } catch (error) {
-      alert('Failed to load earthquake data. Please try again later.');
-    }
-  }, []);
+  try {
+    const url = `${process.env.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
+    const response = await fetch(url);
+    const data = await response.json();
+    setGeojsonData(data);
+  } catch (error) {
+    alert('Failed to load earthquake data. Please try again later.');
+  }
+}, []);
+
 
   useEffect(() => {
     fetchGeojson();
