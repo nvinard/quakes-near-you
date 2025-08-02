@@ -36,9 +36,9 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
+# Initialize engine and metadata
+engine = None
+SessionLocal = None
 metadata = MetaData()
 earthquakes = Table(
     "earthquakes",
@@ -53,10 +53,17 @@ earthquakes = Table(
     Column("utc_time", DateTime),
 )
 
-try:
-    metadata.create_all(engine)
-except IntegrityError as e:
-    print(f"Table already exists or conflict occurred: {e}")
+def init_database():
+    global engine, SessionLocal
+    try:
+        engine = create_engine(DATABASE_URL)
+        SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+        metadata.create_all(engine)
+        print("Database connection established successfully")
+        return True
+    except Exception as e:
+        print(f"Database connection failed: {e}")
+        return False
 
 fetcher = Events()
 
@@ -67,7 +74,29 @@ def ms_to_utc(ts):
 
 @app.on_event("startup")
 def create_tables():
-    metadata.create_all(engine)
+    # Initialize database connection
+    import time
+    max_retries = 30
+    retry_count = 0
+    
+    while retry_count < max_retries:
+        if init_database():
+            print("Database initialized successfully")
+            break
+        retry_count += 1
+        print(f"Database connection attempt {retry_count}/{max_retries} failed. Retrying in 2 seconds...")
+        time.sleep(2)
+    
+    if retry_count >= max_retries:
+        print("Failed to connect to database after maximum retries")
+        return
+    
+    # For local development, fetch earthquake data on startup
+    try:
+        fetch_and_save()
+        print("Initial earthquake data loaded on startup")
+    except Exception as e:
+        print(f"Could not fetch initial data on startup: {e}")
 
 
 @app.post("/fetch_and_save_fdsn_earthquakes/")
@@ -108,29 +137,36 @@ def fetch_and_save():
 # API endpoint to serve the GeoJSON data dynamically
 @app.get("/api/earthquakes.geojson")
 async def get_geojson_file():
-    with engine.connect() as conn:
-        result = conn.execute(text("SELECT * FROM earthquakes")).fetchall()
+    if engine is None:
+        return JSONResponse(content={"error": "Database not connected"}, status_code=503)
+    
+    try:
+        with engine.connect() as conn:
+            result = conn.execute(text("SELECT * FROM earthquakes")).fetchall()
 
-    geojson_data = {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [row.longitude, row.latitude, row.depth],
-                },
-                "properties": {
-                    "place": row.place,
-                    "magnitude": row.magnitude,
-                    "magnitude_type": row.magnitude_type,
-                    "utc_time": row.utc_time.strftime("%Y-%m-%d %H:%M:%S"),
-                },
-            }
-            for row in result
-        ],
-    }
-    return JSONResponse(content=geojson_data)
+        geojson_data = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [row.longitude, row.latitude, row.depth],
+                    },
+                    "properties": {
+                        "place": row.place,
+                        "magnitude": row.magnitude,
+                        "magnitude_type": row.magnitude_type,
+                        "utc_time": row.utc_time.strftime("%Y-%m-%d %H:%M:%S"),
+                    },
+                }
+                for row in result
+            ],
+        }
+        return JSONResponse(content=geojson_data)
+    except Exception as e:
+        print(f"Error fetching earthquake data: {e}")
+        return JSONResponse(content={"error": "Failed to fetch earthquake data"}, status_code=500)
 
 # Health check endpoint
 @app.get("/api/health")

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationCrosshairs, faSearch, faSpinner, faLayerGroup, faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 import './EarthquakeMap.css';
 
-const EarthquakeMap = () => {
+const EarthquakeMap = ({ filteredData, onLocationUpdate }) => {
   const [geojsonData, setGeojsonData] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 0,
@@ -142,17 +142,19 @@ const EarthquakeMap = () => {
 
   const selectLocation = (location) => {
     const { lat, lon, display_name } = location;
+    const locationData = { 
+      latitude: parseFloat(lat), 
+      longitude: parseFloat(lon),
+      name: display_name 
+    };
     setViewport({
       latitude: parseFloat(lat),
       longitude: parseFloat(lon),
       zoom: 10,
       transitionDuration: 1000,
     });
-    setSelectedLocation({ 
-      latitude: parseFloat(lat), 
-      longitude: parseFloat(lon),
-      name: display_name 
-    });
+    setSelectedLocation(locationData);
+    onLocationUpdate && onLocationUpdate(locationData);
     setSearchInput('');
     setShowSuggestions(false);
     setSearchSuggestions([]);
@@ -185,7 +187,9 @@ const EarthquakeMap = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
+          const location = { latitude, longitude };
+          setUserLocation(location);
+          onLocationUpdate && onLocationUpdate(location);
           setViewport((prevViewport) => ({
             ...prevViewport,
             latitude,
@@ -363,8 +367,8 @@ const EarthquakeMap = () => {
             mapStyle={currentMapStyle}
             scrollZoom={true}
           >
-          {geojsonData &&
-            geojsonData.features.map((feature, index) => (
+          {filteredData &&
+            filteredData.map((feature, index) => (
               <Marker
                 key={index}
                 latitude={feature.geometry.coordinates[1]}

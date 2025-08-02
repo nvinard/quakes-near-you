@@ -1,4 +1,40 @@
 services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: quakes_db
+      POSTGRES_USER: quakes_user
+      POSTGRES_PASSWORD: quakes_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - quake-net
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quakes_user -d quakes_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/backend.dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://quakes_user:quakes_password@db:5432/quakes_db
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - quake-net
+    volumes:
+      - ./backend/earthquakes.geojson:/app/earthquakes.geojson
+    restart: always
+
   frontend:
     build:
       context: .
@@ -15,17 +51,8 @@ services:
     networks:
       - quake-net
 
-  backend:
-    build:
-      context: .
-      dockerfile: ./backend/backend.dockerfile
-    ports:
-      - "8000:8000"
-    networks:
-      - quake-net
-    volumes:
-      - ./backend/earthquakes.geojson:/app/earthquakes.geojson
-    restart: always
+volumes:
+  postgres_data:
 
 networks:
   quake-net:

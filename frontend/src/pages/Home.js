@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import EarthquakeMap from '../components/EarthquakeMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSort, faSortUp, faSortDown, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faSort, faSortUp, faSortDown, faChevronDown, faChevronUp, faFilter, faSliders } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
 
 const Home = () => {
@@ -9,6 +9,13 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const [showTable, setShowTable] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
+  const [userLocation, setUserLocation] = useState(null);
+  const [filters, setFilters] = useState({
+    magnitude: { min: 0, max: 10 },
+    distance: { max: 1000, enabled: false }, // km from user location
+    depth: { min: 0, max: 1000 } // km
+  });
   const itemsPerPage = 20;
 
   const fetchGeojson = useCallback(async () => {
@@ -41,11 +48,62 @@ const Home = () => {
     }
   };
 
-  // Sort the entire dataset before pagination
+  // Calculate distance between two coordinates using Haversine formula
+  const calculateDistance = (lat1, lon1, lat2, lon2) => {
+    const R = 6371; // Radius of the Earth in kilometers
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c; // Distance in kilometers
+  };
+
+  // Filter earthquakes based on current filter settings
+  const filterEarthquakes = (features) => {
+    if (!features) return [];
+    
+    return features.filter(feature => {
+      const magnitude = feature.properties.magnitude;
+      const depth = Math.abs(feature.geometry.coordinates[2]); // Depth is usually negative
+      const lat = feature.geometry.coordinates[1];
+      const lon = feature.geometry.coordinates[0];
+      
+      // Magnitude filter
+      if (magnitude < filters.magnitude.min || magnitude > filters.magnitude.max) {
+        return false;
+      }
+      
+      // Depth filter
+      if (depth < filters.depth.min || depth > filters.depth.max) {
+        return false;
+      }
+      
+      // Distance filter (only if enabled and user location is available)
+      if (filters.distance.enabled && userLocation) {
+        const distance = calculateDistance(
+          userLocation.latitude, 
+          userLocation.longitude, 
+          lat, 
+          lon
+        );
+        if (distance > filters.distance.max) {
+          return false;
+        }
+      }
+      
+      return true;
+    });
+  };
+
+  // Filter and sort the dataset before pagination
   const sortedData = React.useMemo(() => {
     if (!geojsonData || !geojsonData.features) return [];
 
-    let sortableData = [...geojsonData.features];
+    // First apply filters
+    let sortableData = filterEarthquakes(geojsonData.features);
     if (sortConfig.key) {
       const { key, direction } = sortConfig;
 
@@ -75,7 +133,7 @@ const Home = () => {
     }
 
     return sortableData;
-  }, [geojsonData, sortConfig]);
+  }, [geojsonData, sortConfig, filters, userLocation]);
 
   // Paginate sorted data
   const paginatedData = React.useMemo(() => {
@@ -119,11 +177,23 @@ const Home = () => {
     <div className="home-page">
       {/* Earthquake Map */}
       <div className="map-section">
-        <EarthquakeMap />
+        <EarthquakeMap 
+          filteredData={sortedData} 
+          onLocationUpdate={setUserLocation}
+        />
       </div>
 
-      {/* Toggle Button for Earthquake Table - Between Map and Table */}
-      <div className="table-toggle-section">
+      {/* Control Buttons Section */}
+      <div className="control-buttons-section">
+        <button 
+          className="filter-toggle-btn"
+          onClick={() => setShowFilters(!showFilters)}
+        >
+          <FontAwesomeIcon icon={faSliders} />
+          Filters
+          <FontAwesomeIcon icon={showFilters ? faChevronUp : faChevronDown} />
+        </button>
+        
         <button 
           className="toggle-table-btn"
           onClick={() => setShowTable(!showTable)}
@@ -133,6 +203,128 @@ const Home = () => {
           {geojsonData && ` (${sortedData.length} records)`}
         </button>
       </div>
+
+      {/* Filter Panel */}
+      {showFilters && (
+        <div className="filter-panel">
+          <div className="filter-grid">
+            {/* Magnitude Filter */}
+            <div className="filter-group">
+              <label className="filter-label">Magnitude Range</label>
+              <div className="range-inputs">
+                <input
+                  type="number"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  value={filters.magnitude.min}
+                  onChange={(e) => setFilters({
+                    ...filters,
+                    magnitude: { ...filters.magnitude, min: parseFloat(e.target.value) || 0 }
+                  })}
+                  className="range-input"
+                />
+                <span className="range-separator">to</span>
+                <input
+                  type="number"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                  value={filters.magnitude.max}
+                  onChange={(e) => setFilters({
+                    ...filters,
+                    magnitude: { ...filters.magnitude, max: parseFloat(e.target.value) || 10 }
+                  })}
+                  className="range-input"
+                />
+              </div>
+            </div>
+
+            {/* Depth Filter */}
+            <div className="filter-group">
+              <label className="filter-label">Depth Range (km)</label>
+              <div className="range-inputs">
+                <input
+                  type="number"
+                  min="0"
+                  max="1000"
+                  step="1"
+                  value={filters.depth.min}
+                  onChange={(e) => setFilters({
+                    ...filters,
+                    depth: { ...filters.depth, min: parseFloat(e.target.value) || 0 }
+                  })}
+                  className="range-input"
+                />
+                <span className="range-separator">to</span>
+                <input
+                  type="number"
+                  min="0"
+                  max="1000"
+                  step="1"
+                  value={filters.depth.max}
+                  onChange={(e) => setFilters({
+                    ...filters,
+                    depth: { ...filters.depth, max: parseFloat(e.target.value) || 1000 }
+                  })}
+                  className="range-input"
+                />
+              </div>
+            </div>
+
+            {/* Distance Filter */}
+            <div className="filter-group">
+              <label className="filter-label">
+                <input
+                  type="checkbox"
+                  checked={filters.distance.enabled}
+                  onChange={(e) => setFilters({
+                    ...filters,
+                    distance: { ...filters.distance, enabled: e.target.checked }
+                  })}
+                  className="filter-checkbox"
+                />
+                Distance from Location (km)
+              </label>
+              <div className="range-inputs">
+                <span className="range-label">Within</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="20000"
+                  step="10"
+                  value={filters.distance.max}
+                  onChange={(e) => setFilters({
+                    ...filters,
+                    distance: { ...filters.distance, max: parseFloat(e.target.value) || 1000 }
+                  })}
+                  className="range-input"
+                  disabled={!filters.distance.enabled}
+                />
+                <span className="range-label">km</span>
+              </div>
+              {filters.distance.enabled && !userLocation && (
+                <div className="filter-warning">
+                  📍 Use location search or GPS to enable distance filtering
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div className="filter-actions">
+            <button 
+              className="reset-filters-btn"
+              onClick={() => setFilters({
+                magnitude: { min: 0, max: 10 },
+                distance: { max: 1000, enabled: false },
+                depth: { min: 0, max: 1000 }
+              })}
+            >
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Earthquake Table */}
       <div className={`table-container ${showTable ? 'expanded' : 'collapsed'}`}>
