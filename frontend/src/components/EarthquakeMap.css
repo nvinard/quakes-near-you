@@ -1,4 +1,32 @@
 
+/* Map Container Styling */
+.map-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+.map-wrapper {
+  width: 75%;
+  height: 70vh;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Force map height through CSS */
+.map-wrapper .mapboxgl-map {
+  height: 70vh !important;
+  min-height: 70vh !important;
+}
+
+.map-wrapper canvas {
+  height: 70vh !important;
+}
+
 .map-marker {
   z-index: 1000;  /* Ensure markers are on top */
   pointer-events: auto;  /* Ensure markers can receive pointer events */
@@ -17,14 +45,337 @@
   z-index: 1000;  /* Ensure it's above other elements */
 }
 
-#geocoder-container {
-  width: 100%;
-  max-width: 400px; /* Adjust width as needed */
-  margin: 10px auto; /* Center the input box */
+/* Floating Location Controls */
+.location-controls {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
 }
 
-.mapboxgl-ctrl-geocoder {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  z-index: 2;
+.search-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  pointer-events: auto;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-container:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.location-search-input {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  font-size: 14px;
+  width: 280px;
+  background: transparent;
+  color: #333;
+}
+
+.location-search-input::placeholder {
+  color: #999;
+}
+
+.location-search-input:disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.search-button {
+  border: none;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  min-width: 48px;
+}
+
+.search-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-1px);
+}
+
+.search-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.location-button {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  color: #007bff;
+  min-width: 48px;
+  min-height: 48px;
+  pointer-events: auto;
+}
+
+.location-button:hover:not(:disabled) {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+  color: #0056b3;
+}
+
+.location-button:disabled {
+  background: #f5f5f5;
+  color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Tectonic Plates Button */
+.tectonic-button {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  color: #666;
+  min-width: 48px;
+  min-height: 48px;
+  pointer-events: auto;
+}
+
+.tectonic-button:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+  color: #ff6b6b;
+}
+
+.tectonic-button.active {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+}
+
+.tectonic-button.active:hover {
+  background: linear-gradient(135deg, #ee5a24, #d63031);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .location-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+  
+  .search-container {
+    width: 100%;
+  }
+  
+  .location-search-input {
+    width: 100%;
+    min-width: 200px;
+  }
+  
+  .location-button,
+  .tectonic-button {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-search-input {
+    width: 180px;
+    padding: 10px 12px;
+  }
+  
+  .search-button,
+  .location-button,
+  .tectonic-button {
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Map Style Selector */
+.map-style-selector {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.style-selector-button {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 48px;
+}
+
+.style-selector-button:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.style-selector-button .style-name {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.style-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  min-width: 220px;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.style-option {
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.style-option:hover {
+  background: #f8f9fa;
+}
+
+.style-option.active {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+}
+
+.style-option:last-child {
+  border-bottom: none;
+}
+
+.style-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.style-info .style-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.style-info .style-description {
+  font-size: 12px;
+  color: #666;
+}
+
+.style-option.active .style-info .style-description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Mobile Responsive for Style Selector */
+@media (max-width: 768px) {
+  .map-style-selector {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .style-selector-button {
+    padding: 10px 12px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+  
+  .style-dropdown {
+    min-width: 200px;
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .style-selector-button .style-name {
+    display: none;
+  }
+  
+  .style-selector-button {
+    padding: 10px;
+    min-width: 44px;
+  }
+  
+  .style-dropdown {
+    min-width: 180px;
+  }
+}
+
+/* Responsive Map Dimensions */
+@media (max-width: 1024px) {
+  .map-wrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-wrapper {
+    width: 95%;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-wrapper {
+    width: 100%;
+    border-radius: 8px;
+  }
 }

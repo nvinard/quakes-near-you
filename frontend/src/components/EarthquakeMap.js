@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
 import { bbox } from '@turf/turf';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationCrosshairs, faSearch, faSpinner, faLayerGroup, faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 import './EarthquakeMap.css';
 
 const EarthquakeMap = () => {
@@ -16,8 +16,54 @@ const EarthquakeMap = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [hoverInfo, setHoverInfo] = useState(null);
   const [geojsonFetched, setGeojsonFetched] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const [isLocating, setIsLocating] = useState(false);
+  const [currentMapStyle, setCurrentMapStyle] = useState('mapbox://styles/mapbox/streets-v12');
+  const [showStyleSelector, setShowStyleSelector] = useState(false);
+  const [showTectonicPlates, setShowTectonicPlates] = useState(false);
 
   const mapRef = useRef(null);
+
+  // Available map styles
+  const mapStyles = [
+    { 
+      id: 'streets', 
+      name: 'Streets', 
+      style: 'mapbox://styles/mapbox/streets-v12',
+      description: 'Default street map'
+    },
+    { 
+      id: 'satellite-streets', 
+      name: 'Satellite Streets', 
+      style: 'mapbox://styles/mapbox/satellite-streets-v12',
+      description: 'Satellite with street labels'
+    },
+    { 
+      id: 'light', 
+      name: 'Light', 
+      style: 'mapbox://styles/mapbox/light-v11',
+      description: 'Light theme'
+    },
+    { 
+      id: 'dark', 
+      name: 'Dark', 
+      style: 'mapbox://styles/mapbox/dark-v11',
+      description: 'Dark theme'
+    },
+    { 
+      id: 'outdoors', 
+      name: 'Outdoors', 
+      style: 'mapbox://styles/mapbox/outdoors-v12',
+      description: 'Outdoor/terrain style'
+    },
+    { 
+      id: 'monochrome', 
+      name: 'Monochrome', 
+      style: 'mapbox://styles/nvinard/cm3t2gjki004l01sif7mpdb4p',
+      description: 'Custom monochrome style'
+    }
+  ];
 
   const fetchGeojson = useCallback(async () => {
     if (!geojsonFetched) {
@@ -58,34 +104,42 @@ const EarthquakeMap = () => {
     fetchGeojson();
   }, [fetchGeojson]);
 
-  useEffect(() => {
-    if (mapRef.current) {
-      const map = mapRef.current.getMap();
-  
-      const geocoder = new MapboxGeocoder({
-        accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
-        mapboxgl: mapRef.current.getMapboxApiAccessInstance(),
-        placeholder: 'Type your address here...',
-        flyTo: false,
-      });
-  
-      const geocoderContainer = document.getElementById('geocoder-container');
-      if (geocoderContainer) {
-        geocoderContainer.appendChild(geocoder.onAdd(map)); 
-      }
-  
-      return () => {
-        geocoderContainer?.removeChild(geocoder.onRemove());
-      };
-    }
-  }, [mapRef]);
 
   const handleViewportChange = (newViewport) => {
     setViewport(newViewport);
   };
 
+  const searchLocation = async () => {
+    if (!searchInput.trim()) return;
+    
+    setIsSearching(true);
+    try {
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchInput.trim())}&limit=1`);
+      const data = await response.json();
+      
+      if (data.length > 0) {
+        const { lat, lon } = data[0];
+        setViewport({
+          latitude: parseFloat(lat),
+          longitude: parseFloat(lon),
+          zoom: 10,
+          transitionDuration: 1000,
+        });
+        setSearchInput('');
+      } else {
+        alert('Location not found. Please try a different search term.');
+      }
+    } catch (error) {
+      console.error('Error searching location:', error);
+      alert('Failed to search location. Please try again.');
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
   const fetchUserLocation = () => {
     if (navigator.geolocation) {
+      setIsLocating(true);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -97,15 +151,92 @@ const EarthquakeMap = () => {
             zoom: 10,
             transitionDuration: 1000,
           }));
+          setIsLocating(false);
         },
         (error) => {
           console.error('Error fetching user location:', error);
+          alert('Unable to get your location. Please ensure location services are enabled.');
+          setIsLocating(false);
         }
       );
     } else {
-      console.error("Geolocation is not supported by this browser.");
+      alert("Geolocation is not supported by this browser.");
     }
   };
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      searchLocation();
+    }
+  };
+
+  const handleStyleChange = (newStyle) => {
+    setCurrentMapStyle(newStyle);
+    setShowStyleSelector(false);
+  };
+
+  const toggleStyleSelector = () => {
+    setShowStyleSelector(!showStyleSelector);
+  };
+
+  const getCurrentStyleName = () => {
+    const currentStyle = mapStyles.find(style => style.style === currentMapStyle);
+    return currentStyle ? currentStyle.name : 'Streets';
+  };
+
+  const toggleTectonicPlates = () => {
+    setShowTectonicPlates(!showTectonicPlates);
+  };
+
+  // Add tectonic plates layer when map loads and toggle state changes
+  useEffect(() => {
+    if (mapRef.current) {
+      const map = mapRef.current.getMap();
+      
+      const addTectonicPlatesLayer = () => {
+        // Check if source already exists
+        if (!map.getSource('tectonic-plates')) {
+          map.addSource('tectonic-plates', {
+            type: 'geojson',
+            data: 'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json'
+          });
+        }
+
+        // Check if layer already exists
+        if (!map.getLayer('tectonic-plates-layer')) {
+          map.addLayer({
+            id: 'tectonic-plates-layer',
+            type: 'line',
+            source: 'tectonic-plates',
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round'
+            },
+            paint: {
+              'line-color': '#ff6b6b',
+              'line-width': 2,
+              'line-opacity': 0.8
+            }
+          });
+        }
+
+        // Set initial visibility
+        map.setLayoutProperty('tectonic-plates-layer', 'visibility', showTectonicPlates ? 'visible' : 'none');
+      };
+
+      // Wait for map to load before adding layer
+      if (map.isStyleLoaded()) {
+        addTectonicPlatesLayer();
+      } else {
+        map.on('style.load', addTectonicPlatesLayer);
+      }
+
+      // Update layer visibility when toggle changes
+      if (map.getLayer('tectonic-plates-layer')) {
+        map.setLayoutProperty('tectonic-plates-layer', 'visibility', showTectonicPlates ? 'visible' : 'none');
+      }
+    }
+  }, [showTectonicPlates, currentMapStyle]); // Re-run when map style changes too
 
   const getMarkerSize = (magnitude) => {
     if (magnitude < 0.0) return 10;
@@ -122,23 +253,56 @@ const EarthquakeMap = () => {
 
   return (
     <div>
-      <div id="geocoder-container" style={{ position: 'relative', zIndex: 1, marginBottom: '10px' }}></div>
-
-      <button className="btn btn-primary button custom mx-3" onClick={fetchUserLocation}>
-        Use my location
-      </button>
-
       <div className="map-container">
-        <ReactMapGL
-          ref={mapRef}
-          {...viewport}
-          width="100%"
-          height="50vh"
-          mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          onMove={(evt) => handleViewportChange(evt.viewState)}
-          mapStyle="mapbox://styles/mapbox/streets-v12"
-          scrollZoom={true}
-        >
+        <div className="map-wrapper">
+          {/* Floating Location Controls */}
+          <div className="location-controls">
+            <div className="search-container">
+              <input
+                type="text"
+                className="location-search-input"
+                placeholder="Search location..."
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                onKeyPress={handleSearchKeyPress}
+                disabled={isSearching}
+              />
+              <button 
+                className="search-button"
+                onClick={searchLocation}
+                disabled={isSearching || !searchInput.trim()}
+              >
+                <FontAwesomeIcon icon={isSearching ? faSpinner : faSearch} spin={isSearching} />
+              </button>
+            </div>
+            <button 
+              className="location-button"
+              onClick={fetchUserLocation}
+              disabled={isLocating}
+              title="Use my location"
+            >
+              <FontAwesomeIcon icon={isLocating ? faSpinner : faLocationCrosshairs} spin={isLocating} />
+            </button>
+            
+            <button 
+              className={`tectonic-button ${showTectonicPlates ? 'active' : ''}`}
+              onClick={toggleTectonicPlates}
+              title="Toggle tectonic plate boundaries"
+            >
+              <FontAwesomeIcon icon={faGlobeAmericas} />
+            </button>
+          </div>
+
+          <ReactMapGL
+            ref={mapRef}
+            {...viewport}
+            width="100%"
+            height="70vh"
+            mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            onMove={(evt) => handleViewportChange(evt.viewState)}
+            mapStyle={currentMapStyle}
+            scrollZoom={true}
+          >
           {geojsonData &&
             geojsonData.features.map((feature, index) => (
               <Marker
@@ -189,10 +353,40 @@ const EarthquakeMap = () => {
             </Marker>
           )}
 
+          {/* Map Style Selector */}
+          <div className="map-style-selector">
+            <button 
+              className="style-selector-button"
+              onClick={toggleStyleSelector}
+              title="Change map style"
+            >
+              <FontAwesomeIcon icon={faLayerGroup} />
+              <span className="style-name">{getCurrentStyleName()}</span>
+            </button>
+            
+            {showStyleSelector && (
+              <div className="style-dropdown">
+                {mapStyles.map((style) => (
+                  <button
+                    key={style.id}
+                    className={`style-option ${currentMapStyle === style.style ? 'active' : ''}`}
+                    onClick={() => handleStyleChange(style.style)}
+                  >
+                    <div className="style-info">
+                      <span className="style-name">{style.name}</span>
+                      <span className="style-description">{style.description}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <div style={{ position: 'absolute', right: 10, top: 10 }}>
             <NavigationControl />
           </div>
         </ReactMapGL>
+        </div>
       </div>
     </div>
   );
