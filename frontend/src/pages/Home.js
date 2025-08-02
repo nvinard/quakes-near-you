@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import EarthquakeMap from '../components/EarthquakeMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
@@ -9,76 +9,22 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
   const [showTable, setShowTable] = useState(false);
-  const [locationInput, setLocationInput] = useState('');
-  const [lastUpdated, setLastUpdated] = useState(null);
-  const mapRef = useRef(null);
   const itemsPerPage = 20;
 
   const fetchGeojson = useCallback(async () => {
-  try {
-    const url = `${process.env.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
-    const response = await fetch(url);
-    const data = await response.json();
-    setGeojsonData(data);
-    setLastUpdated(new Date());
-  } catch (error) {
-    alert('Failed to load earthquake data. Please try again later.');
-  }
-}, []);
+    try {
+      const url = `${process.env.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
+      const response = await fetch(url);
+      const data = await response.json();
+      setGeojsonData(data);
+    } catch (error) {
+      alert('Failed to load earthquake data. Please try again later.');
+    }
+  }, []);
 
   useEffect(() => {
     fetchGeojson();
   }, [fetchGeojson]);
-
-  const searchLocation = async () => {
-    try {
-      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${locationInput}`);
-      const data = await res.json();
-      if (data.length > 0) {
-        const { lat, lon } = data[0];
-        if (mapRef.current) {
-          mapRef.current.setView([parseFloat(lat), parseFloat(lon)], 8);
-        }
-      }
-    } catch (e) {
-      alert('Failed to search location.');
-    }
-  };
-
-  const renderTable = () => {
-    if (!geojsonData) return null;
-    const features = geojsonData.features || [];
-    const paginated = features.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
-    return (
-      <div className="earthquake-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Place</th>
-              <th>Magnitude</th>
-              <th>Type</th>
-              <th>Time (UTC)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginated.map((feature, index) => {
-              const props = feature.properties;
-              return (
-                <tr key={index}>
-                  <td>{props.place}</td>
-                  <td>{props.magnitude}</td>
-                  <td>{props.magnitude_type}</td>
-                  <td>{props.utc_time}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <button onClick={() => setCurrentPage(p => Math.max(p - 1, 0))}>Previous</button>
-        <button onClick={() => setCurrentPage(p => p + 1)}>Next</button>
-      </div>
-    );
-  };
 
   // Utility to safely access nested properties
   const getNestedValue = (obj, path) => {
