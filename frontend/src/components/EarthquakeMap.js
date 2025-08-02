@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
 import { bbox } from '@turf/turf';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,7 +6,6 @@ import { faLocationCrosshairs, faSearch, faSpinner, faLayerGroup, faGlobeAmerica
 import './EarthquakeMap.css';
 
 const EarthquakeMap = ({ filteredData, onLocationUpdate }) => {
-  const [geojsonData, setGeojsonData] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
@@ -15,7 +14,6 @@ const EarthquakeMap = ({ filteredData, onLocationUpdate }) => {
   const [isViewportSet, setIsViewportSet] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
   const [hoverInfo, setHoverInfo] = useState(null);
-  const [geojsonFetched, setGeojsonFetched] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -68,44 +66,28 @@ const EarthquakeMap = ({ filteredData, onLocationUpdate }) => {
     }
   ];
 
-  const fetchGeojson = useCallback(async () => {
-    if (!geojsonFetched) {
+  // Set initial viewport when filtered data is available
+  useEffect(() => {
+    if (filteredData && filteredData.length > 0 && !isViewportSet) {
       try {
-        const url = `${window.REACT_APP_API_URL}/api/earthquakes.geojson?v=` + new Date().getTime();
-        const response = await fetch(url);
-        const data = await response.json();
-        setGeojsonData(data);
-        setGeojsonFetched(true);
-
-        if (data.features && data.features.length > 0 && !isViewportSet) {
-          const boundingBox = bbox(data);
-          const [minLng, minLat, maxLng, maxLat] = boundingBox;
-          setViewport({
-            latitude: (minLat + maxLat) / 2,
-            longitude: (minLng + maxLng) / 2,
-            zoom: 2,
-            transitionDuration: 1000,
-          });
-          setIsViewportSet(true);
-        }
+        const geojsonData = {
+          type: "FeatureCollection",
+          features: filteredData
+        };
+        const boundingBox = bbox(geojsonData);
+        const [minLng, minLat, maxLng, maxLat] = boundingBox;
+        setViewport({
+          latitude: (minLat + maxLat) / 2,
+          longitude: (minLng + maxLng) / 2,
+          zoom: 2,
+          transitionDuration: 1000,
+        });
+        setIsViewportSet(true);
       } catch (error) {
-        alert('Failed to load earthquake data. Please try again later.');
+        console.error('Error setting initial viewport:', error);
       }
     }
-  }, [geojsonFetched, isViewportSet]);
-
-  useEffect(() => {
-    if (geojsonFetched) {
-      const timerId = setTimeout(() => {
-        setGeojsonFetched(false);
-      }, 60000);
-      return () => clearTimeout(timerId);
-    }
-  }, [geojsonFetched]);
-
-  useEffect(() => {
-    fetchGeojson();
-  }, [fetchGeojson]);
+  }, [filteredData, isViewportSet]);
 
   // Debounced search suggestions
   useEffect(() => {

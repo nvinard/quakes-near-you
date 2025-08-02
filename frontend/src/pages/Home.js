@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import EarthquakeMap from '../components/EarthquakeMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSort, faSortUp, faSortDown, faChevronDown, faChevronUp, faFilter, faSliders } from '@fortawesome/free-solid-svg-icons';
+import { faSort, faSortUp, faSortDown, faChevronDown, faChevronUp, faSliders } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
 
 const Home = () => {
@@ -62,7 +62,7 @@ const Home = () => {
   };
 
   // Filter earthquakes based on current filter settings
-  const filterEarthquakes = (features) => {
+  const filterEarthquakes = useCallback((features) => {
     if (!features) return [];
     
     return features.filter(feature => {
@@ -96,7 +96,7 @@ const Home = () => {
       
       return true;
     });
-  };
+  }, [filters, userLocation]);
 
   // Filter and sort the dataset before pagination
   const sortedData = React.useMemo(() => {
@@ -133,7 +133,7 @@ const Home = () => {
     }
 
     return sortableData;
-  }, [geojsonData, sortConfig, filters, userLocation]);
+  }, [geojsonData, sortConfig, filterEarthquakes]);
 
   // Paginate sorted data
   const paginatedData = React.useMemo(() => {
