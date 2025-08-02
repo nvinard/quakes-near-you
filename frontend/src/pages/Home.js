@@ -12,7 +12,7 @@ const Home = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
   const [filters, setFilters] = useState({
-    magnitude: { min: 0, max: 10 },
+    magnitude: { min: -10, max: 10 },
     distance: { max: 1000, enabled: false }, // km from user location
     depth: { min: 0, max: 1000 } // km
   });
@@ -214,27 +214,35 @@ const Home = () => {
               <div className="range-inputs">
                 <input
                   type="number"
-                  min="0"
+                  min="-10"
                   max="10"
                   step="0.1"
                   value={filters.magnitude.min}
-                  onChange={(e) => setFilters({
-                    ...filters,
-                    magnitude: { ...filters.magnitude, min: parseFloat(e.target.value) || 0 }
-                  })}
+                  onChange={(e) => {
+                    const value = e.target.value === '' ? -10 : parseFloat(e.target.value);
+                    setFilters({
+                      ...filters,
+                      magnitude: { ...filters.magnitude, min: isNaN(value) ? -10 : value }
+                    });
+                  }}
+                  onFocus={(e) => e.target.select()}
                   className="range-input"
                 />
                 <span className="range-separator">to</span>
                 <input
                   type="number"
-                  min="0"
+                  min="-10"
                   max="10"
                   step="0.1"
                   value={filters.magnitude.max}
-                  onChange={(e) => setFilters({
-                    ...filters,
-                    magnitude: { ...filters.magnitude, max: parseFloat(e.target.value) || 10 }
-                  })}
+                  onChange={(e) => {
+                    const value = e.target.value === '' ? 10 : parseFloat(e.target.value);
+                    setFilters({
+                      ...filters,
+                      magnitude: { ...filters.magnitude, max: isNaN(value) ? 10 : value }
+                    });
+                  }}
+                  onFocus={(e) => e.target.select()}
                   className="range-input"
                 />
               </div>
@@ -250,10 +258,14 @@ const Home = () => {
                   max="1000"
                   step="1"
                   value={filters.depth.min}
-                  onChange={(e) => setFilters({
-                    ...filters,
-                    depth: { ...filters.depth, min: parseFloat(e.target.value) || 0 }
-                  })}
+                  onChange={(e) => {
+                    const value = e.target.value === '' ? 0 : parseFloat(e.target.value);
+                    setFilters({
+                      ...filters,
+                      depth: { ...filters.depth, min: isNaN(value) ? 0 : value }
+                    });
+                  }}
+                  onFocus={(e) => e.target.select()}
                   className="range-input"
                 />
                 <span className="range-separator">to</span>
@@ -263,10 +275,14 @@ const Home = () => {
                   max="1000"
                   step="1"
                   value={filters.depth.max}
-                  onChange={(e) => setFilters({
-                    ...filters,
-                    depth: { ...filters.depth, max: parseFloat(e.target.value) || 1000 }
-                  })}
+                  onChange={(e) => {
+                    const value = e.target.value === '' ? 1000 : parseFloat(e.target.value);
+                    setFilters({
+                      ...filters,
+                      depth: { ...filters.depth, max: isNaN(value) ? 1000 : value }
+                    });
+                  }}
+                  onFocus={(e) => e.target.select()}
                   className="range-input"
                 />
               </div>
@@ -294,10 +310,14 @@ const Home = () => {
                   max="20000"
                   step="10"
                   value={filters.distance.max}
-                  onChange={(e) => setFilters({
-                    ...filters,
-                    distance: { ...filters.distance, max: parseFloat(e.target.value) || 1000 }
-                  })}
+                  onChange={(e) => {
+                    const value = e.target.value === '' ? 1000 : parseFloat(e.target.value);
+                    setFilters({
+                      ...filters,
+                      distance: { ...filters.distance, max: isNaN(value) ? 1000 : value }
+                    });
+                  }}
+                  onFocus={(e) => e.target.select()}
                   className="range-input"
                   disabled={!filters.distance.enabled}
                 />
@@ -315,7 +335,7 @@ const Home = () => {
             <button 
               className="reset-filters-btn"
               onClick={() => setFilters({
-                magnitude: { min: 0, max: 10 },
+                magnitude: { min: -10, max: 10 },
                 distance: { max: 1000, enabled: false },
                 depth: { min: 0, max: 1000 }
               })}
