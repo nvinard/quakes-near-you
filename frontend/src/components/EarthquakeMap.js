@@ -17,8 +17,11 @@ const EarthquakeMap = () => {
   const [hoverInfo, setHoverInfo] = useState(null);
   const [geojsonFetched, setGeojsonFetched] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const [currentMapStyle, setCurrentMapStyle] = useState('mapbox://styles/mapbox/streets-v12');
   const [showStyleSelector, setShowStyleSelector] = useState(false);
   const [showTectonicPlates, setShowTectonicPlates] = useState(false);
@@ -104,9 +107,55 @@ const EarthquakeMap = () => {
     fetchGeojson();
   }, [fetchGeojson]);
 
+  // Debounced search suggestions
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      fetchSearchSuggestions(searchInput);
+    }, 300);
+    
+    return () => clearTimeout(timeoutId);
+  }, [searchInput]);
+
 
   const handleViewportChange = (newViewport) => {
     setViewport(newViewport);
+  };
+
+  const fetchSearchSuggestions = async (query) => {
+    if (!query.trim() || query.length < 3) {
+      setSearchSuggestions([]);
+      setShowSuggestions(false);
+      return;
+    }
+    
+    try {
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query.trim())}&limit=5&addressdetails=1`);
+      const data = await response.json();
+      setSearchSuggestions(data);
+      setShowSuggestions(data.length > 0);
+    } catch (error) {
+      console.error('Error fetching suggestions:', error);
+      setSearchSuggestions([]);
+      setShowSuggestions(false);
+    }
+  };
+
+  const selectLocation = (location) => {
+    const { lat, lon, display_name } = location;
+    setViewport({
+      latitude: parseFloat(lat),
+      longitude: parseFloat(lon),
+      zoom: 10,
+      transitionDuration: 1000,
+    });
+    setSelectedLocation({ 
+      latitude: parseFloat(lat), 
+      longitude: parseFloat(lon),
+      name: display_name 
+    });
+    setSearchInput('');
+    setShowSuggestions(false);
+    setSearchSuggestions([]);
   };
 
   const searchLocation = async () => {
@@ -118,14 +167,7 @@ const EarthquakeMap = () => {
       const data = await response.json();
       
       if (data.length > 0) {
-        const { lat, lon } = data[0];
-        setViewport({
-          latitude: parseFloat(lat),
-          longitude: parseFloat(lon),
-          zoom: 10,
-          transitionDuration: 1000,
-        });
-        setSearchInput('');
+        selectLocation(data[0]);
       } else {
         alert('Location not found. Please try a different search term.');
       }
@@ -265,6 +307,8 @@ const EarthquakeMap = () => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyPress={handleSearchKeyPress}
+                onFocus={() => setShowSuggestions(searchSuggestions.length > 0)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 disabled={isSearching}
               />
               <button 
@@ -274,6 +318,22 @@ const EarthquakeMap = () => {
               >
                 <FontAwesomeIcon icon={isSearching ? faSpinner : faSearch} spin={isSearching} />
               </button>
+              
+              {/* Search Suggestions Dropdown */}
+              {showSuggestions && searchSuggestions.length > 0 && (
+                <div className="search-suggestions">
+                  {searchSuggestions.map((suggestion, index) => (
+                    <div
+                      key={index}
+                      className="search-suggestion"
+                      onClick={() => selectLocation(suggestion)}
+                    >
+                      <div className="suggestion-name">{suggestion.display_name}</div>
+                      <div className="suggestion-type">{suggestion.type || suggestion.class}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <button 
               className="location-button"
@@ -349,6 +409,12 @@ const EarthquakeMap = () => {
 
           {userLocation && (
             <Marker latitude={userLocation.latitude} longitude={userLocation.longitude}>
+              <div style={{ fontSize: '30px', transform: 'translate(-50%, -100%)' }}>📍</div>
+            </Marker>
+          )}
+
+          {selectedLocation && (
+            <Marker latitude={selectedLocation.latitude} longitude={selectedLocation.longitude}>
               <div style={{ fontSize: '30px', transform: 'translate(-50%, -100%)' }}>📍</div>
             </Marker>
           )}
