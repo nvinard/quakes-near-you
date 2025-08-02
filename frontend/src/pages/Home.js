@@ -122,6 +122,18 @@ const Home = () => {
         <EarthquakeMap />
       </div>
 
+      {/* Toggle Button for Earthquake Table - Between Map and Table */}
+      <div className="table-toggle-section">
+        <button 
+          className="toggle-table-btn"
+          onClick={() => setShowTable(!showTable)}
+        >
+          <FontAwesomeIcon icon={showTable ? faChevronUp : faChevronDown} />
+          {showTable ? 'Hide' : 'Show'} Earthquake Data 
+          {geojsonData && ` (${sortedData.length} records)`}
+        </button>
+      </div>
+
       {/* Earthquake Table */}
       <div className={`table-container ${showTable ? 'expanded' : 'collapsed'}`}>
         {showTable && (
@@ -174,18 +186,6 @@ const Home = () => {
             </div>
           </>
         )}
-      </div>
-
-      {/* Toggle Button for Earthquake Table - Moved to Bottom */}
-      <div className="table-toggle-section bottom-toggle">
-        <button 
-          className="toggle-table-btn"
-          onClick={() => setShowTable(!showTable)}
-        >
-          <FontAwesomeIcon icon={showTable ? faChevronUp : faChevronDown} />
-          {showTable ? 'Hide' : 'Show'} Earthquake Data 
-          {geojsonData && ` (${sortedData.length} records)`}
-        </button>
       </div>
     </div>
   );
