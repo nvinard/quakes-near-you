@@ -1,4 +1,18 @@
 
+/* Main page layout */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.map-section {
+    position: relative;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
 .table-hover tbody tr:hover {
     background-color: #444444; /* Darker hover background for better visibility */
 }
@@ -127,7 +141,11 @@
 .table-container.expanded {
     max-height: 2000px; /* Large enough to accommodate table */
     opacity: 1;
-    margin-top: 20px;
+    margin-top: 60px;
+    padding-top: 20px;
+    clear: both;
+    position: relative;
+    z-index: 1;
 }
 
 /* Mobile responsive for bottom toggle */

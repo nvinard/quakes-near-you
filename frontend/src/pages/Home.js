@@ -116,9 +116,11 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="home-page">
       {/* Earthquake Map */}
-      <EarthquakeMap />
+      <div className="map-section">
+        <EarthquakeMap />
+      </div>
 
       {/* Earthquake Table */}
       <div className={`table-container ${showTable ? 'expanded' : 'collapsed'}`}>
