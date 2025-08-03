@@ -65,8 +65,141 @@ def process_emsc_geojson(emsc_data):
         "features": features
     }
 
-def combine_geojson(usgs_geojson, emsc_geojson):
-    combined_features = usgs_geojson['features'] + emsc_geojson['features']
+def process_knmi_geojson(knmi_data):
+    features = []
+    
+    for feature in knmi_data.get('features', []):
+        processed_feature = {
+            "type": "Feature",
+            "properties": {
+                "mag": feature['properties'].get('mag'),
+                "place": feature['properties'].get('description', 'KNMI Netherlands'),
+                "time": int(datetime.fromisoformat(feature['properties']['time'].rstrip('Z')).timestamp() * 1000),
+                "magType": feature['properties'].get('magType', 'unknown'),
+                "type": feature['properties'].get('type', 'earthquake'),
+                "title": f"M {feature['properties'].get('mag', '?')} - KNMI Netherlands"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    feature['geometry']['coordinates'][0],
+                    feature['geometry']['coordinates'][1],
+                    abs(feature['geometry']['coordinates'][2]) if len(feature['geometry']['coordinates']) > 2 else 0
+                ]
+            },
+            "id": feature.get('id', f"knmi_{len(features)}")
+        }
+        features.append(processed_feature)
+    
+    return {
+        "type": "FeatureCollection",
+        "metadata": {
+            "title": "KNMI Netherlands Earthquakes",
+            "count": len(features)
+        },
+        "features": features
+    }
+
+def process_resif_geojson(resif_data):
+    features = []
+    
+    for feature in resif_data.get('features', []):
+        props = feature['properties']
+        
+        # Handle description field which can be a dict with lang keys or a string
+        place = props.get('description', 'RESIF France')
+        if isinstance(place, dict):
+            place = place.get('en', place.get('fr', 'RESIF France'))
+        
+        processed_feature = {
+            "type": "Feature",
+            "properties": {
+                "mag": props.get('mag'),
+                "place": place,
+                "time": int(datetime.fromisoformat(props['time'].rstrip('Z')).timestamp() * 1000),
+                "magType": props.get('magType', 'unknown'),
+                "type": props.get('type', 'earthquake'),
+                "title": f"M {props.get('mag', '?')} - {place}"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    props['longitude'],
+                    props['latitude'],
+                    abs(props.get('depth', 0))
+                ]
+            },
+            "id": feature.get('id', f"resif_{len(features)}")
+        }
+        features.append(processed_feature)
+    
+    return {
+        "type": "FeatureCollection",
+        "metadata": {
+            "title": "RESIF France Earthquakes",
+            "count": len(features)
+        },
+        "features": features
+    }
+
+def process_sed_geojson(sed_data):
+    """
+    Process Swiss SED text format data into GeoJSON
+    Format: EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType
+    """
+    features = []
+    
+    for event_parts in sed_data:
+        if len(event_parts) >= 13:
+            try:
+                event_id = event_parts[0]
+                time_str = event_parts[1]
+                latitude = float(event_parts[2])
+                longitude = float(event_parts[3])
+                depth = float(event_parts[4])
+                magnitude = float(event_parts[10]) if event_parts[10] else None
+                mag_type = event_parts[9]
+                location_name = event_parts[12]
+                event_type = event_parts[13]
+                
+                # Convert time to timestamp
+                time_dt = datetime.fromisoformat(time_str.rstrip('Z'))
+                time_ms = int(time_dt.timestamp() * 1000)
+                
+                processed_feature = {
+                    "type": "Feature",
+                    "properties": {
+                        "mag": magnitude,
+                        "place": location_name,
+                        "time": time_ms,
+                        "magType": mag_type,
+                        "type": event_type,
+                        "title": f"M {magnitude} - {location_name} (SED Switzerland)"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [longitude, latitude, abs(depth)]
+                    },
+                    "id": event_id
+                }
+                features.append(processed_feature)
+            except (ValueError, IndexError) as e:
+                # Skip malformed entries
+                continue
+    
+    return {
+        "type": "FeatureCollection",
+        "metadata": {
+            "title": "SED Switzerland Earthquakes",
+            "count": len(features)
+        },
+        "features": features
+    }
+
+def combine_geojson(*geojson_data):
+    combined_features = []
+    for geojson in geojson_data:
+        combined_features.extend(geojson['features'])
     
     combined_geojson = {
         "type": "FeatureCollection",
