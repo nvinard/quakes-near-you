@@ -142,6 +142,60 @@ def process_resif_geojson(resif_data):
         "features": features
     }
 
+def process_sed_geojson(sed_data):
+    """
+    Process Swiss SED text format data into GeoJSON
+    Format: EventID|Time|Latitude|Longitude|Depth/km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName|EventType
+    """
+    features = []
+    
+    for event_parts in sed_data:
+        if len(event_parts) >= 13:
+            try:
+                event_id = event_parts[0]
+                time_str = event_parts[1]
+                latitude = float(event_parts[2])
+                longitude = float(event_parts[3])
+                depth = float(event_parts[4])
+                magnitude = float(event_parts[10]) if event_parts[10] else None
+                mag_type = event_parts[9]
+                location_name = event_parts[12]
+                event_type = event_parts[13]
+                
+                # Convert time to timestamp
+                time_dt = datetime.fromisoformat(time_str.rstrip('Z'))
+                time_ms = int(time_dt.timestamp() * 1000)
+                
+                processed_feature = {
+                    "type": "Feature",
+                    "properties": {
+                        "mag": magnitude,
+                        "place": location_name,
+                        "time": time_ms,
+                        "magType": mag_type,
+                        "type": event_type,
+                        "title": f"M {magnitude} - {location_name} (SED Switzerland)"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [longitude, latitude, abs(depth)]
+                    },
+                    "id": event_id
+                }
+                features.append(processed_feature)
+            except (ValueError, IndexError) as e:
+                # Skip malformed entries
+                continue
+    
+    return {
+        "type": "FeatureCollection",
+        "metadata": {
+            "title": "SED Switzerland Earthquakes",
+            "count": len(features)
+        },
+        "features": features
+    }
+
 def combine_geojson(*geojson_data):
     combined_features = []
     for geojson in geojson_data:

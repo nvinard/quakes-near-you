@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import requests
-from external_data.utils import process_usgs_geojson, process_emsc_geojson, process_knmi_geojson, process_resif_geojson, combine_geojson
+from external_data.utils import process_usgs_geojson, process_emsc_geojson, process_knmi_geojson, process_resif_geojson, process_sed_geojson, combine_geojson
 
 class Events:
     def __init__(self):
@@ -22,6 +22,10 @@ class Events:
                 self.end_time
             ),
             "RESIF": "http://ws.resif.fr/fdsnws/event/1/query?format=json&starttime={}&endtime={}".format(
+                self.start_time,
+                self.end_time
+            ),
+            "SED": "http://arclink.ethz.ch/fdsnws/event/1/query?format=text&starttime={}&endtime={}&minmagnitude=0.1".format(
                 self.start_time,
                 self.end_time
             ),
@@ -70,6 +74,24 @@ class Events:
         else:
             return response.raise_for_status()
 
+    def fetch_sed_data(self):
+        url = self.sources["SED"]
+        response = requests.get(url, timeout=30)
+        if response.status_code == 200:
+            # SED returns text format, convert to structured data
+            lines = response.text.strip().split('\n')
+            events = []
+            for line in lines[1:]:  # Skip header
+                if line.strip():
+                    parts = line.split('|')
+                    if len(parts) >= 13:  # Ensure we have all required fields
+                        events.append(parts)
+            return events
+        elif response.status_code == 204:  # No data
+            return []
+        else:
+            return response.raise_for_status()
+
 
         
     def fetch_events(self):
@@ -78,12 +100,14 @@ class Events:
         emsc_data = self.fetch_emsc_data()
         knmi_data = self.fetch_knmi_data()
         resif_data = self.fetch_resif_data()
+        sed_data = self.fetch_sed_data()
 
         usgs_data = process_usgs_geojson(usgs_data)
         emsc_data = process_emsc_geojson(emsc_data)
         knmi_data = process_knmi_geojson(knmi_data)
         resif_data = process_resif_geojson(resif_data)
+        sed_data = process_sed_geojson(sed_data)
 
-        combined_data = combine_geojson(usgs_data, emsc_data, knmi_data, resif_data)
+        combined_data = combine_geojson(usgs_data, emsc_data, knmi_data, resif_data, sed_data)
 
         return combined_data
