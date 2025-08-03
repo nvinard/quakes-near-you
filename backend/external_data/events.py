@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import requests
-from external_data.utils import process_usgs_geojson, process_emsc_geojson, combine_geojson
+from external_data.utils import process_usgs_geojson, process_emsc_geojson, process_knmi_geojson, process_resif_geojson, combine_geojson
 
 class Events:
     def __init__(self):
@@ -16,6 +16,14 @@ class Events:
                 self.start_time,
                 self.end_time,
                 "json"
+            ),
+            "KNMI": "https://rdsa.knmi.nl/fdsnws/event/1/query?format=json&starttime={}&endtime={}".format(
+                self.start_time,
+                self.end_time
+            ),
+            "RESIF": "http://ws.resif.fr/fdsnws/event/1/query?format=json&starttime={}&endtime={}".format(
+                self.start_time,
+                self.end_time
             ),
         }
 
@@ -40,16 +48,42 @@ class Events:
         else:
             return response.raise_for_status()
 
+    def fetch_knmi_data(self):
+        url = self.sources["KNMI"]
+        response = requests.get(url, timeout=30)
+        if response.status_code == 200:
+            data = response.json()
+            return data
+        elif response.status_code == 204:  # No data
+            return {"type": "FeatureCollection", "features": []}
+        else:
+            return response.raise_for_status()
+
+    def fetch_resif_data(self):
+        url = self.sources["RESIF"]
+        response = requests.get(url, timeout=30)
+        if response.status_code == 200:
+            data = response.json()
+            return data
+        elif response.status_code == 204:  # No data
+            return {"type": "FeatureCollection", "features": []}
+        else:
+            return response.raise_for_status()
+
 
         
     def fetch_events(self):
 
         usgs_data = self.fetch_usgs_data()
         emsc_data = self.fetch_emsc_data()
+        knmi_data = self.fetch_knmi_data()
+        resif_data = self.fetch_resif_data()
 
         usgs_data = process_usgs_geojson(usgs_data)
         emsc_data = process_emsc_geojson(emsc_data)
+        knmi_data = process_knmi_geojson(knmi_data)
+        resif_data = process_resif_geojson(resif_data)
 
-        combined_data = combine_geojson(usgs_data, emsc_data)
+        combined_data = combine_geojson(usgs_data, emsc_data, knmi_data, resif_data)
 
         return combined_data
