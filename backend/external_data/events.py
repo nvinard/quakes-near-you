@@ -92,8 +92,6 @@ class Events:
         else:
             return response.raise_for_status()
 
-
-        
     def fetch_events(self):
 
         usgs_data = self.fetch_usgs_data()
