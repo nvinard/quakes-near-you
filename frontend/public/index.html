@@ -5,7 +5,58 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Track recent earthquakes near your location in real time." />
+    <meta name="description" content="Real-time earthquake tracker showing recent seismic activity near you. Interactive map with live earthquake data from USGS and EMSC. Track magnitude, depth, and location of earthquakes worldwide." />
+    <meta name="keywords" content="earthquakes near me, recent earthquakes, earthquake tracker, seismic activity, earthquake map, live earthquake data, USGS earthquakes, earthquake monitoring, real time earthquakes" />
+    <meta name="author" content="Quakes Near Me" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://quakesnearme.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quakesnearme.com/" />
+    <meta property="og:title" content="Earthquakes Near Me - Real-Time Earthquake Tracker" />
+    <meta property="og:description" content="Track recent earthquakes near your location with our interactive real-time map. Live seismic data from USGS and EMSC." />
+    <meta property="og:image" content="https://quakesnearme.com/earthquake-map-preview.png" />
+    <meta property="og:site_name" content="Quakes Near Me" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://quakesnearme.com/" />
+    <meta property="twitter:title" content="Earthquakes Near Me - Real-Time Earthquake Tracker" />
+    <meta property="twitter:description" content="Track recent earthquakes near your location with our interactive real-time map. Live seismic data from USGS and EMSC." />
+    <meta property="twitter:image" content="https://quakesnearme.com/earthquake-map-preview.png" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Quakes Near Me",
+      "description": "Real-time earthquake tracking application with interactive map showing seismic activity worldwide",
+      "url": "https://quakesnearme.com",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Quakes Near Me"
+      },
+      "featureList": [
+        "Real-time earthquake tracking",
+        "Interactive earthquake map",
+        "Location-based filtering",
+        "Magnitude and depth filtering",
+        "Multiple map styles",
+        "Tectonic plate overlay",
+        "Mobile responsive design"
+      ]
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
@@ -15,7 +66,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Earthquakes Near Me</title>
+    <title>Earthquakes Near Me - Real-Time Earthquake Tracker & Interactive Map</title>
 
     <style>
       body {

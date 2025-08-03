@@ -2,6 +2,85 @@
   text-align: center;
 }
 
+/* Location pages styling */
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.location-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: #f9f9f9;
+  transition: box-shadow 0.3s ease;
+}
+
+.location-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.location-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.location-card h3 a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+.location-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.risk-indicator {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: #f0f0f0;
+}
+
+.risk-very-high {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.risk-extreme {
+  color: #b71c1c;
+  font-weight: bold;
+}
+
+.risk-high {
+  color: #f57c00;
+  font-weight: bold;
+}
+
+.location-nav {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.location-nav a {
+  color: #0066cc;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #0066cc;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.location-nav a:hover {
+  background-color: #0066cc;
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

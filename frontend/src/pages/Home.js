@@ -5,6 +5,15 @@ import { faSort, faSortUp, faSortDown, faChevronDown, faChevronUp, faSliders } f
 import './Home.css';
 
 const Home = () => {
+  // Set SEO meta tags for home page
+  React.useEffect(() => {
+    document.title = 'Earthquakes Near Me - Real-Time Earthquake Tracker & Interactive Map';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 
+        'Real-time earthquake tracker showing recent seismic activity near you. Interactive map with live earthquake data from USGS and EMSC. Track magnitude, depth, and location of earthquakes worldwide.');
+    }
+  }, []);
   const [geojsonData, setGeojsonData] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });

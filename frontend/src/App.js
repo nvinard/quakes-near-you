@@ -4,6 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import Data from './pages/Data';
 import About from './pages/About';
+import Locations from './pages/Locations';
 import logo from './quakes_near_me.JPG';
 import { FaBars } from 'react-icons/fa'; // For burger icon
 
@@ -32,6 +33,7 @@ const App = () => {
             <div className="menu-container">
               <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
               <Link to="/data" onClick={() => setIsMenuOpen(false)}>Data</Link>
+              <Link to="/locations" onClick={() => setIsMenuOpen(false)}>Locations</Link>
               <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
             </div>
           )}
@@ -42,6 +44,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/data" element={<Data />} />
           <Route path="/about" element={<About />} />
+          <Route path="/locations" element={<Locations />} />
+          <Route path="/locations/:location" element={<Locations />} />
         </Routes>
       </div>
     </Router>
